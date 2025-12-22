@@ -1,9 +1,10 @@
-Django>=4.2.0
+Django==4.2.11
 gunicorn
 
-
+# Database (PyMySQL only)
 PyMySQL>=1.1.0
-# Django core extensions
+
+# Django extensions
 djangorestframework>=3.14.0
 django-filter>=23.0
 django-cors-headers
