@@ -1,9 +1,8 @@
 Django>=4.2.0
 gunicorn
 
-# Database
-mysqlclient>=2.2.1
 
+PyMySQL>=1.1.0
 # Django core extensions
 djangorestframework>=3.14.0
 django-filter>=23.0
