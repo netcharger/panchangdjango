@@ -1,0 +1,526 @@
+{
+  "profile": {
+    "code": "te",
+    "language": "Telugu",
+    "script": "Telugu"
+  },
+  "date": "2025-12-02",
+  "sections": [
+    {
+      "title": "భారత జాతీయ క్యాలెండర్",
+      "items": [
+        {
+          "label": "సంవత్సరం",
+          "value": 1947
+        },
+        {
+          "label": "మాసం",
+          "value": "ఆగాహన"
+        },
+        {
+          "label": "తేది",
+          "value": 11
+        }
+      ]
+    },
+    {
+      "title": "చంద్ర మాస సమాచారం",
+      "items": [
+        {
+          "label": "అమాంత మాసం",
+          "value": "ఫాల్గుణం"
+        },
+        {
+          "label": "పౌర్ణిమాంత మాసం",
+          "value": "ఫాల్గుణం"
+        },
+        {
+          "label": "పక్షం",
+          "value": "శుక్ల పక్షం"
+        }
+      ]
+    },
+    {
+      "title": "సూర్య చంద్రోదయాలు",
+      "items": [
+        {
+          "label": "సూర్యోదయం",
+          "value": "06:16 AM"
+        },
+        {
+          "label": "సూర్యాస్తమయం",
+          "value": "05:40 PM"
+        },
+        {
+          "label": "చంద్రోదయం",
+          "value": "03:10 PM"
+        },
+        {
+          "label": "చంద్రాస్తమయం",
+          "value": "03:10 AM"
+        }
+      ]
+    },
+    {
+      "title": "మూల పంచాంగం",
+      "items": [
+        {
+          "label": "తిథులు",
+          "type": "event_list",
+          "events": [
+            {
+              "name": "ద్వాదశి",
+              "start": "Dec 02 12:00 AM",
+              "end": "Dec 02 03:57 PM",
+              "ordinal": 12
+            },
+            {
+              "name": "త్రయోదశి",
+              "start": "Dec 02 03:57 PM",
+              "end": "Dec 03 12:00 AM",
+              "ordinal": 13
+            }
+          ],
+          "event_labels": {
+            "name": "పేరు",
+            "start": "ప్రారంభం",
+            "end": "ముగింపు"
+          }
+        },
+        {
+          "label": "నక్షత్రాలు",
+          "type": "event_list",
+          "events": [
+            {
+              "name": "రేవతి",
+              "start": "Dec 02 12:00 AM",
+              "end": "Dec 02 12:45 AM",
+              "ordinal": 27
+            },
+            {
+              "name": "అశ్విని",
+              "start": "Dec 02 12:45 AM",
+              "end": "Dec 02 10:16 PM",
+              "ordinal": 1
+            },
+            {
+              "name": "భరణి",
+              "start": "Dec 02 10:16 PM",
+              "end": "Dec 03 12:00 AM",
+              "ordinal": 2
+            }
+          ],
+          "event_labels": {
+            "name": "పేరు",
+            "start": "ప్రారంభం",
+            "end": "ముగింపు"
+          }
+        },
+        {
+          "label": "కరణాలు",
+          "type": "event_list",
+          "events": [
+            {
+              "name": "బాలవ",
+              "start": "Dec 02 12:00 AM",
+              "end": "Dec 02 05:33 AM",
+              "ordinal": 2
+            },
+            {
+              "name": "కౌలవ",
+              "start": "Dec 02 05:33 AM",
+              "end": "Dec 02 03:57 PM",
+              "ordinal": 3
+            },
+            {
+              "name": "తైతిల",
+              "start": "Dec 02 03:57 PM",
+              "end": "Dec 03 12:00 AM",
+              "ordinal": 4
+            }
+          ],
+          "event_labels": {
+            "name": "పేరు",
+            "start": "ప్రారంభం",
+            "end": "ముగింపు"
+          }
+        },
+        {
+          "label": "యోగాలు",
+          "type": "event_list",
+          "events": [
+            {
+              "name": "వ్యతిపాత",
+              "start": "Dec 02 12:00 AM",
+              "end": "Dec 02 03:40 AM",
+              "ordinal": 17
+            },
+            {
+              "name": "వరియన్",
+              "start": "Dec 02 03:40 AM",
+              "end": "Dec 02 11:46 PM",
+              "ordinal": 18
+            },
+            {
+              "name": "పరిఘ",
+              "start": "Dec 02 11:46 PM",
+              "end": "Dec 03 12:00 AM",
+              "ordinal": 19
+            }
+          ],
+          "event_labels": {
+            "name": "పేరు",
+            "start": "ప్రారంభం",
+            "end": "ముగింపు"
+          }
+        }
+      ]
+    },
+    {
+      "title": "శుభ సమయాలు",
+      "items": [
+        {
+          "label": "అభిజిత్ ముహూర్తం",
+          "value": "11:34 AM - 12:22 PM"
+        },
+        {
+          "label": "అమృత కాలం",
+          "value": "09:25 PM - 10:50 PM"
+        },
+        {
+          "label": "బ్రహ్మ ముహూర్తం",
+          "value": "04:40 AM - 05:28 AM"
+        },
+        {
+          "label": "ప్రాతః సాంధ్య",
+          "value": "06:01 AM - 07:16 AM"
+        },
+        {
+          "label": "విజయ ముహూర్తం",
+          "value": "03:16 PM - 04:04 PM"
+        },
+        {
+          "label": "గోదూలి ముహూర్తం",
+          "value": "05:25 PM - 05:55 PM"
+        },
+        {
+          "label": "సాయంసాంధ్య",
+          "value": "05:40 PM - 06:55 PM"
+        },
+        {
+          "label": "నిశీత ముహూర్తం",
+          "value": "11:34 PM - 12:22 AM"
+        }
+      ]
+    },
+    {
+      "title": "అశుభ సమయాలు",
+      "items": [
+        {
+          "label": "రాహు కాలం",
+          "value": "02:49 PM - 04:14 PM"
+        },
+        {
+          "label": "యమగండం",
+          "value": "09:07 AM - 10:32 AM"
+        },
+        {
+          "label": "గులిక కాలం",
+          "value": "11:58 AM - 01:23 PM"
+        }
+      ]
+    },
+    {
+      "title": "హోరాలు",
+      "items": [
+        {
+          "label": "పగటి హోరాలు",
+          "value": [
+            "కుజుడు: 06:16 AM - 07:13 AM",
+            "సూర్యుడు: 07:13 AM - 08:10 AM",
+            "శుక్రుడు: 08:10 AM - 09:07 AM",
+            "బుధుడు: 09:07 AM - 10:04 AM",
+            "చంద్రుడు: 10:04 AM - 11:01 AM",
+            "శని: 11:01 AM - 11:58 AM",
+            "బృహస్పతి: 11:58 AM - 12:55 PM",
+            "కుజుడు: 12:55 PM - 01:52 PM",
+            "సూర్యుడు: 01:52 PM - 02:49 PM",
+            "శుక్రుడు: 02:49 PM - 03:46 PM",
+            "బుధుడు: 03:46 PM - 04:43 PM",
+            "చంద్రుడు: 04:43 PM - 05:40 PM"
+          ]
+        },
+        {
+          "label": "రాత్రి హోరాలు",
+          "value": [
+            "శని: 05:40 PM - 06:43 PM",
+            "బృహస్పతి: 06:43 PM - 07:46 PM",
+            "కుజుడు: 07:46 PM - 08:49 PM",
+            "సూర్యుడు: 08:49 PM - 09:52 PM",
+            "శుక్రుడు: 09:52 PM - 10:55 PM",
+            "బుధుడు: 10:55 PM - 11:58 PM",
+            "చంద్రుడు: 11:58 PM - 01:01 AM",
+            "శని: 01:01 AM - 02:04 AM",
+            "బృహస్పతి: 02:04 AM - 03:07 AM",
+            "కుజుడు: 03:07 AM - 04:10 AM",
+            "సూర్యుడు: 04:10 AM - 05:13 AM",
+            "శుక్రుడు: 05:13 AM - 06:16 AM"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "పండుగలు",
+      "items": [
+        {
+          "label": "పండుగలు",
+          "value": "ఈ రోజు ముఖ్యమైన పండుగలు లేవు"
+        }
+      ]
+    }
+  ],
+  "festivals": [
+    {
+      "id": 247,
+      "festival_name": "Phalguna Amavasya",
+      "slug": "phalguna-amavasya",
+      "type": "Hindu",
+      "importance": "Major",
+      "description": "Regional festival observed in West Bengal",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Phalguna",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "West Bengal"
+      ],
+      "created_at": "2025-11-08T16:10:04.544860",
+      "updated_at": "2025-11-08T16:10:04.545834"
+    },
+    {
+      "id": 261,
+      "festival_name": "Phalguna Brahmotsavam 6",
+      "slug": "phalguna-brahmotsavam-6",
+      "type": "Religious",
+      "importance": "Moderate",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Phalguna",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Odisha"
+      ],
+      "created_at": "2025-11-08T16:10:04.612869",
+      "updated_at": "2025-11-08T16:10:04.612869"
+    },
+    {
+      "id": 264,
+      "festival_name": "Phalguna Brahmotsavam 9",
+      "slug": "phalguna-brahmotsavam-9",
+      "type": "Religious",
+      "importance": "Moderate",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Phalguna",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "North India"
+      ],
+      "created_at": "2025-11-08T16:10:04.626872",
+      "updated_at": "2025-11-08T16:10:04.626872"
+    },
+    {
+      "id": 256,
+      "festival_name": "Phalguna Kalyanam 1",
+      "slug": "phalguna-kalyanam-1",
+      "type": "Religious",
+      "importance": "Moderate",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Phalguna",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Karnataka"
+      ],
+      "created_at": "2025-11-08T16:10:04.586864",
+      "updated_at": "2025-11-08T16:10:04.586864"
+    },
+    {
+      "id": 257,
+      "festival_name": "Phalguna Kalyanam 2",
+      "slug": "phalguna-kalyanam-2",
+      "type": "Religious",
+      "importance": "Moderate",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Phalguna",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Telangana"
+      ],
+      "created_at": "2025-11-08T16:10:04.595835",
+      "updated_at": "2025-11-08T16:10:04.595835"
+    },
+    {
+      "id": 265,
+      "festival_name": "Phalguna Mandala Utsav 10",
+      "slug": "phalguna-mandala-utsav-10",
+      "type": "Religious",
+      "importance": "Moderate",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Phalguna",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Andhra Pradesh"
+      ],
+      "created_at": "2025-11-08T16:10:04.630869",
+      "updated_at": "2025-11-08T16:10:04.630869"
+    },
+    {
+      "id": 260,
+      "festival_name": "Phalguna Rathotsavam 5",
+      "slug": "phalguna-rathotsavam-5",
+      "type": "Religious",
+      "importance": "Moderate",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Phalguna",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Odisha"
+      ],
+      "created_at": "2025-11-08T16:10:04.607837",
+      "updated_at": "2025-11-08T16:10:04.607837"
+    },
+    {
+      "id": 263,
+      "festival_name": "Phalguna Kalyanam 8",
+      "slug": "phalguna-kalyanam-8",
+      "type": "Religious",
+      "importance": "Minor",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Phalguna",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Maharashtra"
+      ],
+      "created_at": "2025-11-08T16:10:04.620835",
+      "updated_at": "2025-11-08T16:10:04.620835"
+    },
+    {
+      "id": 258,
+      "festival_name": "Phalguna Kumbhabhishekam 3",
+      "slug": "phalguna-kumbhabhishekam-3",
+      "type": "Religious",
+      "importance": "Minor",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Phalguna",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Maharashtra"
+      ],
+      "created_at": "2025-11-08T16:10:04.599870",
+      "updated_at": "2025-11-08T16:10:04.599870"
+    },
+    {
+      "id": 262,
+      "festival_name": "Phalguna Rathotsavam 7",
+      "slug": "phalguna-rathotsavam-7",
+      "type": "Religious",
+      "importance": "Minor",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Phalguna",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "North India"
+      ],
+      "created_at": "2025-11-08T16:10:04.616863",
+      "updated_at": "2025-11-08T16:10:04.616863"
+    },
+    {
+      "id": 259,
+      "festival_name": "Phalguna Temple Utsav 4",
+      "slug": "phalguna-temple-utsav-4",
+      "type": "Religious",
+      "importance": "Minor",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Phalguna",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "All India"
+      ],
+      "created_at": "2025-11-08T16:10:04.603869",
+      "updated_at": "2025-11-08T16:10:04.603869"
+    }
+  ]
+}

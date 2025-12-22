@@ -1,0 +1,534 @@
+{
+  "profile": {
+    "code": "te",
+    "language": "Telugu",
+    "script": "Telugu"
+  },
+  "date": "2026-09-24",
+  "sections": [
+    {
+      "title": "భారత జాతీయ క్యాలెండర్",
+      "items": [
+        {
+          "label": "సంవత్సరం",
+          "value": 1948
+        },
+        {
+          "label": "మాసం",
+          "value": "ఆశ్విన"
+        },
+        {
+          "label": "తేది",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "title": "చంద్ర మాస సమాచారం",
+      "items": [
+        {
+          "label": "అమాంత మాసం",
+          "value": "మార్గశిరం"
+        },
+        {
+          "label": "పౌర్ణిమాంత మాసం",
+          "value": "Agrahayana"
+        },
+        {
+          "label": "పక్షం",
+          "value": "శుక్ల పక్షం"
+        }
+      ]
+    },
+    {
+      "title": "సూర్య చంద్రోదయాలు",
+      "items": [
+        {
+          "label": "సూర్యోదయం",
+          "value": "05:58 AM"
+        },
+        {
+          "label": "సూర్యాస్తమయం",
+          "value": "06:03 PM"
+        },
+        {
+          "label": "చంద్రోదయం",
+          "value": "04:29 PM"
+        },
+        {
+          "label": "చంద్రాస్తమయం",
+          "value": "03:43 AM"
+        }
+      ]
+    },
+    {
+      "title": "మూల పంచాంగం",
+      "items": [
+        {
+          "label": "తిథులు",
+          "type": "event_list",
+          "events": [
+            {
+              "name": "త్రయోదశి",
+              "start": "Sep 24 12:00 AM",
+              "end": "Sep 24 11:18 PM",
+              "ordinal": 13
+            },
+            {
+              "name": "చతుర్దశి",
+              "start": "Sep 24 11:18 PM",
+              "end": "Sep 25 12:00 AM",
+              "ordinal": 14
+            }
+          ],
+          "event_labels": {
+            "name": "పేరు",
+            "start": "ప్రారంభం",
+            "end": "ముగింపు"
+          }
+        },
+        {
+          "label": "నక్షత్రాలు",
+          "type": "event_list",
+          "events": [
+            {
+              "name": "ధనిష్ఠ",
+              "start": "Sep 24 12:00 AM",
+              "end": "Sep 24 12:15 PM",
+              "ordinal": 23
+            },
+            {
+              "name": "శతభిషం",
+              "start": "Sep 24 12:15 PM",
+              "end": "Sep 25 12:00 AM",
+              "ordinal": 24
+            }
+          ],
+          "event_labels": {
+            "name": "పేరు",
+            "start": "ప్రారంభం",
+            "end": "ముగింపు"
+          }
+        },
+        {
+          "label": "కరణాలు",
+          "type": "event_list",
+          "events": [
+            {
+              "name": "తైతిల",
+              "start": "Sep 24 12:00 AM",
+              "end": "Sep 24 11:10 AM",
+              "ordinal": 4
+            },
+            {
+              "name": "గరజ",
+              "start": "Sep 24 11:10 AM",
+              "end": "Sep 24 11:18 PM",
+              "ordinal": 5
+            },
+            {
+              "name": "వణిజ",
+              "start": "Sep 24 11:18 PM",
+              "end": "Sep 25 12:00 AM",
+              "ordinal": 6
+            }
+          ],
+          "event_labels": {
+            "name": "పేరు",
+            "start": "ప్రారంభం",
+            "end": "ముగింపు"
+          }
+        },
+        {
+          "label": "యోగాలు",
+          "type": "event_list",
+          "events": [
+            {
+              "name": "ధృతి",
+              "start": "Sep 24 12:00 AM",
+              "end": "Sep 24 06:58 PM",
+              "ordinal": 8
+            },
+            {
+              "name": "శూల",
+              "start": "Sep 24 06:58 PM",
+              "end": "Sep 25 12:00 AM",
+              "ordinal": 9
+            }
+          ],
+          "event_labels": {
+            "name": "పేరు",
+            "start": "ప్రారంభం",
+            "end": "ముగింపు"
+          }
+        }
+      ]
+    },
+    {
+      "title": "శుభ సమయాలు",
+      "items": [
+        {
+          "label": "అభిజిత్ ముహూర్తం",
+          "value": "11:36 AM - 12:24 PM"
+        },
+        {
+          "label": "అమృత కాలం",
+          "value": "09:48 PM - 11:13 PM"
+        },
+        {
+          "label": "బ్రహ్మ ముహూర్తం",
+          "value": "04:22 AM - 05:10 AM"
+        },
+        {
+          "label": "ప్రాతః సాంధ్య",
+          "value": "05:43 AM - 06:58 AM"
+        },
+        {
+          "label": "విజయ ముహూర్తం",
+          "value": "03:39 PM - 04:27 PM"
+        },
+        {
+          "label": "గోదూలి ముహూర్తం",
+          "value": "05:48 PM - 06:18 PM"
+        },
+        {
+          "label": "సాయంసాంధ్య",
+          "value": "06:03 PM - 07:18 PM"
+        },
+        {
+          "label": "నిశీత ముహూర్తం",
+          "value": "11:36 PM - 12:24 AM"
+        }
+      ]
+    },
+    {
+      "title": "అశుభ సమయాలు",
+      "items": [
+        {
+          "label": "రాహు కాలం",
+          "value": "01:31 PM - 03:02 PM"
+        },
+        {
+          "label": "యమగండం",
+          "value": "05:58 AM - 07:28 AM"
+        },
+        {
+          "label": "గులిక కాలం",
+          "value": "08:59 AM - 10:30 AM"
+        }
+      ]
+    },
+    {
+      "title": "హోరాలు",
+      "items": [
+        {
+          "label": "పగటి హోరాలు",
+          "value": [
+            "బృహస్పతి: 05:58 AM - 06:58 AM",
+            "కుజుడు: 06:58 AM - 07:59 AM",
+            "సూర్యుడు: 07:59 AM - 08:59 AM",
+            "శుక్రుడు: 08:59 AM - 10:00 AM",
+            "బుధుడు: 10:00 AM - 11:00 AM",
+            "చంద్రుడు: 11:00 AM - 12:00 PM",
+            "శని: 12:00 PM - 01:01 PM",
+            "బృహస్పతి: 01:01 PM - 02:01 PM",
+            "కుజుడు: 02:01 PM - 03:02 PM",
+            "సూర్యుడు: 03:02 PM - 04:02 PM",
+            "శుక్రుడు: 04:02 PM - 05:03 PM",
+            "బుధుడు: 05:03 PM - 06:03 PM"
+          ]
+        },
+        {
+          "label": "రాత్రి హోరాలు",
+          "value": [
+            "చంద్రుడు: 06:03 PM - 07:03 PM",
+            "శని: 07:03 PM - 08:02 PM",
+            "బృహస్పతి: 08:02 PM - 09:02 PM",
+            "కుజుడు: 09:02 PM - 10:01 PM",
+            "సూర్యుడు: 10:01 PM - 11:01 PM",
+            "శుక్రుడు: 11:01 PM - 12:00 AM",
+            "బుధుడు: 12:00 AM - 01:00 AM",
+            "చంద్రుడు: 01:00 AM - 02:00 AM",
+            "శని: 02:00 AM - 02:59 AM",
+            "బృహస్పతి: 02:59 AM - 03:59 AM",
+            "కుజుడు: 03:59 AM - 04:58 AM",
+            "సూర్యుడు: 04:58 AM - 05:58 AM"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "పండుగలు",
+      "items": [
+        {
+          "label": "పండుగలు",
+          "value": "ఈ రోజు ముఖ్యమైన పండుగలు లేవు"
+        }
+      ]
+    }
+  ],
+  "festivals": [
+    {
+      "id": 195,
+      "festival_name": "Margashirsha Annual Utsav 3",
+      "slug": "margashirsha-annual-utsav-3",
+      "type": "Religious",
+      "importance": "Moderate",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Margashirsha",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "North India"
+      ],
+      "created_at": "2025-11-08T16:10:04.285454",
+      "updated_at": "2025-11-08T16:10:04.285454"
+    },
+    {
+      "id": 196,
+      "festival_name": "Margashirsha Annual Utsav 4",
+      "slug": "margashirsha-annual-utsav-4",
+      "type": "Religious",
+      "importance": "Moderate",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Margashirsha",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Maharashtra"
+      ],
+      "created_at": "2025-11-08T16:10:04.290983",
+      "updated_at": "2025-11-08T16:10:04.290983"
+    },
+    {
+      "id": 194,
+      "festival_name": "Margashirsha Temple Utsav 2",
+      "slug": "margashirsha-temple-utsav-2",
+      "type": "Religious",
+      "importance": "Moderate",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Margashirsha",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Andhra Pradesh"
+      ],
+      "created_at": "2025-11-08T16:10:04.281480",
+      "updated_at": "2025-11-08T16:10:04.281480"
+    },
+    {
+      "id": 199,
+      "festival_name": "Margashirsha Annual Utsav 7",
+      "slug": "margashirsha-annual-utsav-7",
+      "type": "Religious",
+      "importance": "Minor",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Margashirsha",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Karnataka"
+      ],
+      "created_at": "2025-11-08T16:10:04.306664",
+      "updated_at": "2025-11-08T16:10:04.306664"
+    },
+    {
+      "id": 200,
+      "festival_name": "Margashirsha Brahmotsavam 8",
+      "slug": "margashirsha-brahmotsavam-8",
+      "type": "Religious",
+      "importance": "Minor",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Margashirsha",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "North India"
+      ],
+      "created_at": "2025-11-08T16:10:04.311663",
+      "updated_at": "2025-11-08T16:10:04.311663"
+    },
+    {
+      "id": 193,
+      "festival_name": "Margashirsha Local Utsav 1",
+      "slug": "margashirsha-local-utsav-1",
+      "type": "Religious",
+      "importance": "Minor",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Margashirsha",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Maharashtra"
+      ],
+      "created_at": "2025-11-08T16:10:04.275492",
+      "updated_at": "2025-11-08T16:10:04.275492"
+    },
+    {
+      "id": 202,
+      "festival_name": "Margashirsha Local Utsav 10",
+      "slug": "margashirsha-local-utsav-10",
+      "type": "Religious",
+      "importance": "Minor",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Margashirsha",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Karnataka"
+      ],
+      "created_at": "2025-11-08T16:10:04.320664",
+      "updated_at": "2025-11-08T16:10:04.320664"
+    },
+    {
+      "id": 198,
+      "festival_name": "Margashirsha Mandala Utsav 6",
+      "slug": "margashirsha-mandala-utsav-6",
+      "type": "Religious",
+      "importance": "Minor",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Margashirsha",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Maharashtra"
+      ],
+      "created_at": "2025-11-08T16:10:04.301978",
+      "updated_at": "2025-11-08T16:10:04.301978"
+    },
+    {
+      "id": 197,
+      "festival_name": "Margashirsha Rathotsavam 5",
+      "slug": "margashirsha-rathotsavam-5",
+      "type": "Religious",
+      "importance": "Minor",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Margashirsha",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "All India"
+      ],
+      "created_at": "2025-11-08T16:10:04.297981",
+      "updated_at": "2025-11-08T16:10:04.297981"
+    },
+    {
+      "id": 191,
+      "festival_name": "Margashirsha Shukla Pradosha",
+      "slug": "margashirsha-shukla-pradosha",
+      "type": "Hindu",
+      "importance": "Minor",
+      "description": "Evening vrata for Shiva on Shukla Trayodashi.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Margashirsha",
+      "paksha": "Shukla",
+      "tithi": "Trayodashi",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "lunar",
+      "regions": [
+        "All India"
+      ],
+      "created_at": "2025-11-08T16:10:04.265454",
+      "updated_at": "2025-11-08T16:10:04.265454"
+    },
+    {
+      "id": 201,
+      "festival_name": "Margashirsha Temple Utsav 9",
+      "slug": "margashirsha-temple-utsav-9",
+      "type": "Religious",
+      "importance": "Minor",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Margashirsha",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "West Bengal"
+      ],
+      "created_at": "2025-11-08T16:10:04.316664",
+      "updated_at": "2025-11-08T16:10:04.316664"
+    },
+    {
+      "id": 62,
+      "sequence_id": 63,
+      "date": "24 September",
+      "day_name": "World Maritime Day",
+      "slug": "world-maritime-day-24-september",
+      "type_of": "Awareness Day",
+      "importance": "Minor",
+      "description": "Highlights maritime industry.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "is_holiday": "observance_only",
+      "regions": [
+        "All India"
+      ],
+      "calendar_type": "gregorian",
+      "created_at": "2025-11-08T16:10:10.662077",
+      "updated_at": "2025-11-08T16:10:10.662077"
+    }
+  ]
+}

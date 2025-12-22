@@ -1,0 +1,734 @@
+{
+  "profile": {
+    "code": "te",
+    "language": "Telugu",
+    "script": "Telugu"
+  },
+  "date": "2025-12-14",
+  "sections": [
+    {
+      "title": "భారత జాతీయ క్యాలెండర్",
+      "items": [
+        {
+          "label": "సంవత్సరం",
+          "value": 1947
+        },
+        {
+          "label": "మాసం",
+          "value": "ఆగాహన"
+        },
+        {
+          "label": "తేది",
+          "value": 23
+        }
+      ]
+    },
+    {
+      "title": "చంద్ర మాస సమాచారం",
+      "items": [
+        {
+          "label": "అమాంత మాసం",
+          "value": "ఫాల్గుణం"
+        },
+        {
+          "label": "పౌర్ణిమాంత మాసం",
+          "value": "చైత్రం"
+        },
+        {
+          "label": "పక్షం",
+          "value": "కృష్ణ పక్షం"
+        }
+      ]
+    },
+    {
+      "title": "సూర్య చంద్రోదయాలు",
+      "items": [
+        {
+          "label": "సూర్యోదయం",
+          "value": "06:22 AM"
+        },
+        {
+          "label": "సూర్యాస్తమయం",
+          "value": "05:44 PM"
+        },
+        {
+          "label": "చంద్రోదయం",
+          "value": "01:34 AM"
+        },
+        {
+          "label": "చంద్రాస్తమయం",
+          "value": "01:35 PM"
+        }
+      ]
+    },
+    {
+      "title": "మూల పంచాంగం",
+      "items": [
+        {
+          "label": "తిథులు",
+          "type": "event_list",
+          "events": [
+            {
+              "name": "దశమి",
+              "start": "Dec 14 12:00 AM",
+              "end": "Dec 14 06:50 PM",
+              "ordinal": 25
+            },
+            {
+              "name": "ఏకాదశి",
+              "start": "Dec 14 06:50 PM",
+              "end": "Dec 15 12:00 AM",
+              "ordinal": 26
+            }
+          ],
+          "event_labels": {
+            "name": "పేరు",
+            "start": "ప్రారంభం",
+            "end": "ముగింపు"
+          }
+        },
+        {
+          "label": "నక్షత్రాలు",
+          "type": "event_list",
+          "events": [
+            {
+              "name": "హస్త",
+              "start": "Dec 14 12:00 AM",
+              "end": "Dec 14 10:04 AM",
+              "ordinal": 13
+            },
+            {
+              "name": "చిత్ర",
+              "start": "Dec 14 10:04 AM",
+              "end": "Dec 15 12:00 AM",
+              "ordinal": 14
+            }
+          ],
+          "event_labels": {
+            "name": "పేరు",
+            "start": "ప్రారంభం",
+            "end": "ముగింపు"
+          }
+        },
+        {
+          "label": "కరణాలు",
+          "type": "event_list",
+          "events": [
+            {
+              "name": "విష్టి",
+              "start": "Dec 14 12:00 AM",
+              "end": "Dec 14 05:41 AM",
+              "ordinal": 7
+            },
+            {
+              "name": "బవ",
+              "start": "Dec 14 05:41 AM",
+              "end": "Dec 14 06:50 PM",
+              "ordinal": 1
+            },
+            {
+              "name": "బాలవ",
+              "start": "Dec 14 06:50 PM",
+              "end": "Dec 15 12:00 AM",
+              "ordinal": 2
+            }
+          ],
+          "event_labels": {
+            "name": "పేరు",
+            "start": "ప్రారంభం",
+            "end": "ముగింపు"
+          }
+        },
+        {
+          "label": "యోగాలు",
+          "type": "event_list",
+          "events": [
+            {
+              "name": "సౌభాగ్య",
+              "start": "Dec 14 12:00 AM",
+              "end": "Dec 14 03:01 PM",
+              "ordinal": 4
+            },
+            {
+              "name": "శోభన",
+              "start": "Dec 14 03:01 PM",
+              "end": "Dec 15 12:00 AM",
+              "ordinal": 5
+            }
+          ],
+          "event_labels": {
+            "name": "పేరు",
+            "start": "ప్రారంభం",
+            "end": "ముగింపు"
+          }
+        }
+      ]
+    },
+    {
+      "title": "శుభ సమయాలు",
+      "items": [
+        {
+          "label": "అభిజిత్ ముహూర్తం",
+          "value": "11:39 AM - 12:27 PM"
+        },
+        {
+          "label": "అమృత కాలం",
+          "value": "09:29 PM - 10:54 PM"
+        },
+        {
+          "label": "బ్రహ్మ ముహూర్తం",
+          "value": "04:46 AM - 05:34 AM"
+        },
+        {
+          "label": "ప్రాతః సాంధ్య",
+          "value": "06:07 AM - 07:22 AM"
+        },
+        {
+          "label": "విజయ ముహూర్తం",
+          "value": "03:20 PM - 04:08 PM"
+        },
+        {
+          "label": "గోదూలి ముహూర్తం",
+          "value": "05:29 PM - 05:59 PM"
+        },
+        {
+          "label": "సాయంసాంధ్య",
+          "value": "05:44 PM - 06:59 PM"
+        },
+        {
+          "label": "నిశీత ముహూర్తం",
+          "value": "11:39 PM - 12:27 AM"
+        }
+      ]
+    },
+    {
+      "title": "అశుభ సమయాలు",
+      "items": [
+        {
+          "label": "రాహు కాలం",
+          "value": "04:19 PM - 05:44 PM"
+        },
+        {
+          "label": "యమగండం",
+          "value": "10:38 AM - 12:03 PM"
+        },
+        {
+          "label": "గులిక కాలం",
+          "value": "02:53 PM - 04:19 PM"
+        }
+      ]
+    },
+    {
+      "title": "హోరాలు",
+      "items": [
+        {
+          "label": "పగటి హోరాలు",
+          "value": [
+            "సూర్యుడు: 06:22 AM - 07:19 AM",
+            "శుక్రుడు: 07:19 AM - 08:16 AM",
+            "బుధుడు: 08:16 AM - 09:13 AM",
+            "చంద్రుడు: 09:13 AM - 10:09 AM",
+            "శని: 10:09 AM - 11:06 AM",
+            "బృహస్పతి: 11:06 AM - 12:03 PM",
+            "కుజుడు: 12:03 PM - 01:00 PM",
+            "సూర్యుడు: 01:00 PM - 01:57 PM",
+            "శుక్రుడు: 01:57 PM - 02:53 PM",
+            "బుధుడు: 02:53 PM - 03:50 PM",
+            "చంద్రుడు: 03:50 PM - 04:47 PM",
+            "శని: 04:47 PM - 05:44 PM"
+          ]
+        },
+        {
+          "label": "రాత్రి హోరాలు",
+          "value": [
+            "బృహస్పతి: 05:44 PM - 06:47 PM",
+            "కుజుడు: 06:47 PM - 07:50 PM",
+            "సూర్యుడు: 07:50 PM - 08:54 PM",
+            "శుక్రుడు: 08:54 PM - 09:57 PM",
+            "బుధుడు: 09:57 PM - 11:00 PM",
+            "చంద్రుడు: 11:00 PM - 12:03 AM",
+            "శని: 12:03 AM - 01:07 AM",
+            "బృహస్పతి: 01:07 AM - 02:10 AM",
+            "కుజుడు: 02:10 AM - 03:13 AM",
+            "సూర్యుడు: 03:13 AM - 04:16 AM",
+            "శుక్రుడు: 04:16 AM - 05:20 AM",
+            "బుధుడు: 05:20 AM - 06:23 AM"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "పండుగలు",
+      "items": [
+        {
+          "label": "పండుగలు",
+          "value": "ఈ రోజు ముఖ్యమైన పండుగలు లేవు"
+        }
+      ]
+    }
+  ],
+  "festivals": [
+    {
+      "id": 247,
+      "festival_name": "Phalguna Amavasya",
+      "slug": "phalguna-amavasya",
+      "type": "Hindu",
+      "importance": "Major",
+      "description": "Regional festival observed in West Bengal",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Phalguna",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "West Bengal"
+      ],
+      "created_at": "2025-11-08T16:10:04.544860",
+      "updated_at": "2025-11-08T16:10:04.545834"
+    },
+    {
+      "id": 24,
+      "festival_name": "Chaitra Kalyanam 10",
+      "slug": "chaitra-kalyanam-10",
+      "type": "Religious",
+      "importance": "Moderate",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Chaitra",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Karnataka"
+      ],
+      "created_at": "2025-11-08T16:10:03.440193",
+      "updated_at": "2025-11-08T16:10:03.440193"
+    },
+    {
+      "id": 16,
+      "festival_name": "Chaitra Kumbhabhishekam 2",
+      "slug": "chaitra-kumbhabhishekam-2",
+      "type": "Religious",
+      "importance": "Moderate",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Chaitra",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Kerala"
+      ],
+      "created_at": "2025-11-08T16:10:03.401305",
+      "updated_at": "2025-11-08T16:10:03.401305"
+    },
+    {
+      "id": 18,
+      "festival_name": "Chaitra Mandala Utsav 4",
+      "slug": "chaitra-mandala-utsav-4",
+      "type": "Religious",
+      "importance": "Moderate",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Chaitra",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Kerala"
+      ],
+      "created_at": "2025-11-08T16:10:03.411652",
+      "updated_at": "2025-11-08T16:10:03.411652"
+    },
+    {
+      "id": 15,
+      "festival_name": "Chaitra Rathotsavam 1",
+      "slug": "chaitra-rathotsavam-1",
+      "type": "Religious",
+      "importance": "Moderate",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Chaitra",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "All India"
+      ],
+      "created_at": "2025-11-08T16:10:03.395306",
+      "updated_at": "2025-11-08T16:10:03.396306"
+    },
+    {
+      "id": 22,
+      "festival_name": "Chaitra Rathotsavam 8",
+      "slug": "chaitra-rathotsavam-8",
+      "type": "Religious",
+      "importance": "Moderate",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Chaitra",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Andhra Pradesh"
+      ],
+      "created_at": "2025-11-08T16:10:03.429508",
+      "updated_at": "2025-11-08T16:10:03.429508"
+    },
+    {
+      "id": 261,
+      "festival_name": "Phalguna Brahmotsavam 6",
+      "slug": "phalguna-brahmotsavam-6",
+      "type": "Religious",
+      "importance": "Moderate",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Phalguna",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Odisha"
+      ],
+      "created_at": "2025-11-08T16:10:04.612869",
+      "updated_at": "2025-11-08T16:10:04.612869"
+    },
+    {
+      "id": 264,
+      "festival_name": "Phalguna Brahmotsavam 9",
+      "slug": "phalguna-brahmotsavam-9",
+      "type": "Religious",
+      "importance": "Moderate",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Phalguna",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "North India"
+      ],
+      "created_at": "2025-11-08T16:10:04.626872",
+      "updated_at": "2025-11-08T16:10:04.626872"
+    },
+    {
+      "id": 256,
+      "festival_name": "Phalguna Kalyanam 1",
+      "slug": "phalguna-kalyanam-1",
+      "type": "Religious",
+      "importance": "Moderate",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Phalguna",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Karnataka"
+      ],
+      "created_at": "2025-11-08T16:10:04.586864",
+      "updated_at": "2025-11-08T16:10:04.586864"
+    },
+    {
+      "id": 257,
+      "festival_name": "Phalguna Kalyanam 2",
+      "slug": "phalguna-kalyanam-2",
+      "type": "Religious",
+      "importance": "Moderate",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Phalguna",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Telangana"
+      ],
+      "created_at": "2025-11-08T16:10:04.595835",
+      "updated_at": "2025-11-08T16:10:04.595835"
+    },
+    {
+      "id": 265,
+      "festival_name": "Phalguna Mandala Utsav 10",
+      "slug": "phalguna-mandala-utsav-10",
+      "type": "Religious",
+      "importance": "Moderate",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Phalguna",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Andhra Pradesh"
+      ],
+      "created_at": "2025-11-08T16:10:04.630869",
+      "updated_at": "2025-11-08T16:10:04.630869"
+    },
+    {
+      "id": 260,
+      "festival_name": "Phalguna Rathotsavam 5",
+      "slug": "phalguna-rathotsavam-5",
+      "type": "Religious",
+      "importance": "Moderate",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Phalguna",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Odisha"
+      ],
+      "created_at": "2025-11-08T16:10:04.607837",
+      "updated_at": "2025-11-08T16:10:04.607837"
+    },
+    {
+      "id": 19,
+      "festival_name": "Chaitra Kumbhabhishekam 5",
+      "slug": "chaitra-kumbhabhishekam-5",
+      "type": "Religious",
+      "importance": "Minor",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Chaitra",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Telangana"
+      ],
+      "created_at": "2025-11-08T16:10:03.415628",
+      "updated_at": "2025-11-08T16:10:03.415628"
+    },
+    {
+      "id": 23,
+      "festival_name": "Chaitra Kumbhabhishekam 9",
+      "slug": "chaitra-kumbhabhishekam-9",
+      "type": "Religious",
+      "importance": "Minor",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Chaitra",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Gujarat"
+      ],
+      "created_at": "2025-11-08T16:10:03.434192",
+      "updated_at": "2025-11-08T16:10:03.434192"
+    },
+    {
+      "id": 21,
+      "festival_name": "Chaitra Local Utsav 7",
+      "slug": "chaitra-local-utsav-7",
+      "type": "Religious",
+      "importance": "Minor",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Chaitra",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "North India"
+      ],
+      "created_at": "2025-11-08T16:10:03.425628",
+      "updated_at": "2025-11-08T16:10:03.425628"
+    },
+    {
+      "id": 20,
+      "festival_name": "Chaitra Mandala Utsav 6",
+      "slug": "chaitra-mandala-utsav-6",
+      "type": "Religious",
+      "importance": "Minor",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Chaitra",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Telangana"
+      ],
+      "created_at": "2025-11-08T16:10:03.420633",
+      "updated_at": "2025-11-08T16:10:03.420633"
+    },
+    {
+      "id": 17,
+      "festival_name": "Chaitra Temple Utsav 3",
+      "slug": "chaitra-temple-utsav-3",
+      "type": "Religious",
+      "importance": "Minor",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Chaitra",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Kerala"
+      ],
+      "created_at": "2025-11-08T16:10:03.406339",
+      "updated_at": "2025-11-08T16:10:03.406339"
+    },
+    {
+      "id": 263,
+      "festival_name": "Phalguna Kalyanam 8",
+      "slug": "phalguna-kalyanam-8",
+      "type": "Religious",
+      "importance": "Minor",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Phalguna",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Maharashtra"
+      ],
+      "created_at": "2025-11-08T16:10:04.620835",
+      "updated_at": "2025-11-08T16:10:04.620835"
+    },
+    {
+      "id": 258,
+      "festival_name": "Phalguna Kumbhabhishekam 3",
+      "slug": "phalguna-kumbhabhishekam-3",
+      "type": "Religious",
+      "importance": "Minor",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Phalguna",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Maharashtra"
+      ],
+      "created_at": "2025-11-08T16:10:04.599870",
+      "updated_at": "2025-11-08T16:10:04.599870"
+    },
+    {
+      "id": 262,
+      "festival_name": "Phalguna Rathotsavam 7",
+      "slug": "phalguna-rathotsavam-7",
+      "type": "Religious",
+      "importance": "Minor",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Phalguna",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "North India"
+      ],
+      "created_at": "2025-11-08T16:10:04.616863",
+      "updated_at": "2025-11-08T16:10:04.616863"
+    },
+    {
+      "id": 259,
+      "festival_name": "Phalguna Temple Utsav 4",
+      "slug": "phalguna-temple-utsav-4",
+      "type": "Religious",
+      "importance": "Minor",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Phalguna",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "All India"
+      ],
+      "created_at": "2025-11-08T16:10:04.603869",
+      "updated_at": "2025-11-08T16:10:04.603869"
+    }
+  ]
+}

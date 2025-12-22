@@ -1,0 +1,754 @@
+{
+  "profile": {
+    "code": "te",
+    "language": "Telugu",
+    "script": "Telugu"
+  },
+  "date": "2026-02-11",
+  "sections": [
+    {
+      "title": "భారత జాతీయ క్యాలెండర్",
+      "items": [
+        {
+          "label": "సంవత్సరం",
+          "value": 1947
+        },
+        {
+          "label": "మాసం",
+          "value": "మాఘ"
+        },
+        {
+          "label": "తేది",
+          "value": 22
+        }
+      ]
+    },
+    {
+      "title": "చంద్ర మాస సమాచారం",
+      "items": [
+        {
+          "label": "అమాంత మాసం",
+          "value": "వైశాఖం"
+        },
+        {
+          "label": "పౌర్ణిమాంత మాసం",
+          "value": "జ్యేష్ఠం"
+        },
+        {
+          "label": "పక్షం",
+          "value": "కృష్ణ పక్షం"
+        }
+      ]
+    },
+    {
+      "title": "సూర్య చంద్రోదయాలు",
+      "items": [
+        {
+          "label": "సూర్యోదయం",
+          "value": "06:33 AM"
+        },
+        {
+          "label": "సూర్యాస్తమయం",
+          "value": "06:13 PM"
+        },
+        {
+          "label": "చంద్రోదయం",
+          "value": "01:26 AM"
+        },
+        {
+          "label": "చంద్రాస్తమయం",
+          "value": "12:53 PM"
+        }
+      ]
+    },
+    {
+      "title": "మూల పంచాంగం",
+      "items": [
+        {
+          "label": "తిథులు",
+          "type": "event_list",
+          "events": [
+            {
+              "name": "నవమి",
+              "start": "Feb 11 12:00 AM",
+              "end": "Feb 11 09:59 AM",
+              "ordinal": 24
+            },
+            {
+              "name": "దశమి",
+              "start": "Feb 11 09:59 AM",
+              "end": "Feb 12 12:00 AM",
+              "ordinal": 25
+            }
+          ],
+          "event_labels": {
+            "name": "పేరు",
+            "start": "ప్రారంభం",
+            "end": "ముగింపు"
+          }
+        },
+        {
+          "label": "నక్షత్రాలు",
+          "type": "event_list",
+          "events": [
+            {
+              "name": "అనురాధ",
+              "start": "Feb 11 12:00 AM",
+              "end": "Feb 11 12:39 PM",
+              "ordinal": 17
+            },
+            {
+              "name": "జ్యేష్ఠ",
+              "start": "Feb 11 12:39 PM",
+              "end": "Feb 12 12:00 AM",
+              "ordinal": 18
+            }
+          ],
+          "event_labels": {
+            "name": "పేరు",
+            "start": "ప్రారంభం",
+            "end": "ముగింపు"
+          }
+        },
+        {
+          "label": "కరణాలు",
+          "type": "event_list",
+          "events": [
+            {
+              "name": "వణిజ",
+              "start": "Feb 11 12:00 AM",
+              "end": "Feb 11 09:59 AM",
+              "ordinal": 6
+            },
+            {
+              "name": "విష్టి",
+              "start": "Feb 11 09:59 AM",
+              "end": "Feb 11 11:12 PM",
+              "ordinal": 7
+            },
+            {
+              "name": "బవ",
+              "start": "Feb 11 11:12 PM",
+              "end": "Feb 12 12:00 AM",
+              "ordinal": 1
+            }
+          ],
+          "event_labels": {
+            "name": "పేరు",
+            "start": "ప్రారంభం",
+            "end": "ముగింపు"
+          }
+        },
+        {
+          "label": "యోగాలు",
+          "type": "event_list",
+          "events": [
+            {
+              "name": "ధ్రువ",
+              "start": "Feb 11 12:00 AM",
+              "end": "Feb 11 04:59 AM",
+              "ordinal": 12
+            },
+            {
+              "name": "వ్యాఘాత",
+              "start": "Feb 11 04:59 AM",
+              "end": "Feb 12 12:00 AM",
+              "ordinal": 13
+            }
+          ],
+          "event_labels": {
+            "name": "పేరు",
+            "start": "ప్రారంభం",
+            "end": "ముగింపు"
+          }
+        }
+      ]
+    },
+    {
+      "title": "శుభ సమయాలు",
+      "items": [
+        {
+          "label": "అభిజిత్ ముహూర్తం",
+          "value": "11:59 AM - 12:47 PM"
+        },
+        {
+          "label": "అమృత కాలం",
+          "value": "09:58 PM - 11:23 PM"
+        },
+        {
+          "label": "బ్రహ్మ ముహూర్తం",
+          "value": "04:57 AM - 05:45 AM"
+        },
+        {
+          "label": "ప్రాతః సాంధ్య",
+          "value": "06:18 AM - 07:33 AM"
+        },
+        {
+          "label": "విజయ ముహూర్తం",
+          "value": "03:49 PM - 04:37 PM"
+        },
+        {
+          "label": "గోదూలి ముహూర్తం",
+          "value": "05:58 PM - 06:28 PM"
+        },
+        {
+          "label": "సాయంసాంధ్య",
+          "value": "06:13 PM - 07:28 PM"
+        },
+        {
+          "label": "నిశీత ముహూర్తం",
+          "value": "11:59 PM - 12:47 AM"
+        }
+      ]
+    },
+    {
+      "title": "అశుభ సమయాలు",
+      "items": [
+        {
+          "label": "రాహు కాలం",
+          "value": "12:23 PM - 01:50 PM"
+        },
+        {
+          "label": "యమగండం",
+          "value": "08:00 AM - 09:28 AM"
+        },
+        {
+          "label": "గులిక కాలం",
+          "value": "10:55 AM - 12:23 PM"
+        }
+      ]
+    },
+    {
+      "title": "హోరాలు",
+      "items": [
+        {
+          "label": "పగటి హోరాలు",
+          "value": [
+            "బుధుడు: 06:33 AM - 07:31 AM",
+            "చంద్రుడు: 07:31 AM - 08:29 AM",
+            "శని: 08:29 AM - 09:28 AM",
+            "బృహస్పతి: 09:28 AM - 10:26 AM",
+            "కుజుడు: 10:26 AM - 11:24 AM",
+            "సూర్యుడు: 11:24 AM - 12:23 PM",
+            "శుక్రుడు: 12:23 PM - 01:21 PM",
+            "బుధుడు: 01:21 PM - 02:19 PM",
+            "చంద్రుడు: 02:19 PM - 03:18 PM",
+            "శని: 03:18 PM - 04:16 PM",
+            "బృహస్పతి: 04:16 PM - 05:14 PM",
+            "కుజుడు: 05:14 PM - 06:13 PM"
+          ]
+        },
+        {
+          "label": "రాత్రి హోరాలు",
+          "value": [
+            "సూర్యుడు: 06:13 PM - 07:14 PM",
+            "శుక్రుడు: 07:14 PM - 08:16 PM",
+            "బుధుడు: 08:16 PM - 09:18 PM",
+            "చంద్రుడు: 09:18 PM - 10:19 PM",
+            "శని: 10:19 PM - 11:21 PM",
+            "బృహస్పతి: 11:21 PM - 12:23 AM",
+            "కుజుడు: 12:23 AM - 01:24 AM",
+            "సూర్యుడు: 01:24 AM - 02:26 AM",
+            "శుక్రుడు: 02:26 AM - 03:27 AM",
+            "బుధుడు: 03:27 AM - 04:29 AM",
+            "చంద్రుడు: 04:29 AM - 05:31 AM",
+            "శని: 05:31 AM - 06:32 AM"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "పండుగలు",
+      "items": [
+        {
+          "label": "పండుగలు",
+          "value": "ఈ రోజు ముఖ్యమైన పండుగలు లేవు"
+        }
+      ]
+    }
+  ],
+  "festivals": [
+    {
+      "id": 28,
+      "festival_name": "Vaisakha Amavasya",
+      "slug": "vaisakha-amavasya",
+      "type": "Hindu",
+      "importance": "Major",
+      "description": "Regional festival observed in West Bengal",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Vaisakha",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Karnataka"
+      ],
+      "created_at": "2025-11-08T16:10:03.458218",
+      "updated_at": "2025-11-08T16:10:03.458218"
+    },
+    {
+      "id": 62,
+      "festival_name": "Jyaistha Kalyanam 3",
+      "slug": "jyaistha-kalyanam-3",
+      "type": "Religious",
+      "importance": "Moderate",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Jyaistha",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Andhra Pradesh"
+      ],
+      "created_at": "2025-11-08T16:10:03.619904",
+      "updated_at": "2025-11-08T16:10:03.619904"
+    },
+    {
+      "id": 64,
+      "festival_name": "Jyaistha Kumbhabhishekam 5",
+      "slug": "jyaistha-kumbhabhishekam-5",
+      "type": "Religious",
+      "importance": "Moderate",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Jyaistha",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Maharashtra"
+      ],
+      "created_at": "2025-11-08T16:10:03.629913",
+      "updated_at": "2025-11-08T16:10:03.629913"
+    },
+    {
+      "id": 66,
+      "festival_name": "Jyaistha Kumbhabhishekam 7",
+      "slug": "jyaistha-kumbhabhishekam-7",
+      "type": "Religious",
+      "importance": "Moderate",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Jyaistha",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "West Bengal"
+      ],
+      "created_at": "2025-11-08T16:10:03.640917",
+      "updated_at": "2025-11-08T16:10:03.640917"
+    },
+    {
+      "id": 61,
+      "festival_name": "Jyaistha Local Utsav 2",
+      "slug": "jyaistha-local-utsav-2",
+      "type": "Religious",
+      "importance": "Moderate",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Jyaistha",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Karnataka"
+      ],
+      "created_at": "2025-11-08T16:10:03.615482",
+      "updated_at": "2025-11-08T16:10:03.615482"
+    },
+    {
+      "id": 60,
+      "festival_name": "Jyaistha Mandala Utsav 1",
+      "slug": "jyaistha-mandala-utsav-1",
+      "type": "Religious",
+      "importance": "Moderate",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Jyaistha",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "West Bengal"
+      ],
+      "created_at": "2025-11-08T16:10:03.610481",
+      "updated_at": "2025-11-08T16:10:03.610481"
+    },
+    {
+      "id": 65,
+      "festival_name": "Jyaistha Mandala Utsav 6",
+      "slug": "jyaistha-mandala-utsav-6",
+      "type": "Religious",
+      "importance": "Moderate",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Jyaistha",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Gujarat"
+      ],
+      "created_at": "2025-11-08T16:10:03.634914",
+      "updated_at": "2025-11-08T16:10:03.634914"
+    },
+    {
+      "id": 63,
+      "festival_name": "Jyaistha Rathotsavam 4",
+      "slug": "jyaistha-rathotsavam-4",
+      "type": "Religious",
+      "importance": "Moderate",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Jyaistha",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Andhra Pradesh"
+      ],
+      "created_at": "2025-11-08T16:10:03.624913",
+      "updated_at": "2025-11-08T16:10:03.624913"
+    },
+    {
+      "id": 68,
+      "festival_name": "Jyaistha Rathotsavam 9",
+      "slug": "jyaistha-rathotsavam-9",
+      "type": "Religious",
+      "importance": "Moderate",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Jyaistha",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "All India"
+      ],
+      "created_at": "2025-11-08T16:10:03.649912",
+      "updated_at": "2025-11-08T16:10:03.649912"
+    },
+    {
+      "id": 38,
+      "festival_name": "Vaisakha Annual Utsav 2",
+      "slug": "vaisakha-annual-utsav-2",
+      "type": "Religious",
+      "importance": "Moderate",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Vaisakha",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "All India"
+      ],
+      "created_at": "2025-11-08T16:10:03.504198",
+      "updated_at": "2025-11-08T16:10:03.504198"
+    },
+    {
+      "id": 39,
+      "festival_name": "Vaisakha Kalyanam 3",
+      "slug": "vaisakha-kalyanam-3",
+      "type": "Religious",
+      "importance": "Moderate",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Vaisakha",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Gujarat"
+      ],
+      "created_at": "2025-11-08T16:10:03.509196",
+      "updated_at": "2025-11-08T16:10:03.509196"
+    },
+    {
+      "id": 43,
+      "festival_name": "Vaisakha Kumbhabhishekam 7",
+      "slug": "vaisakha-kumbhabhishekam-7",
+      "type": "Religious",
+      "importance": "Moderate",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Vaisakha",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Karnataka"
+      ],
+      "created_at": "2025-11-08T16:10:03.528647",
+      "updated_at": "2025-11-08T16:10:03.528647"
+    },
+    {
+      "id": 44,
+      "festival_name": "Vaisakha Mandala Utsav 8",
+      "slug": "vaisakha-mandala-utsav-8",
+      "type": "Religious",
+      "importance": "Moderate",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Vaisakha",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Kerala"
+      ],
+      "created_at": "2025-11-08T16:10:03.532411",
+      "updated_at": "2025-11-08T16:10:03.532411"
+    },
+    {
+      "id": 45,
+      "festival_name": "Vaisakha Mandala Utsav 9",
+      "slug": "vaisakha-mandala-utsav-9",
+      "type": "Religious",
+      "importance": "Moderate",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Vaisakha",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Tamil Nadu"
+      ],
+      "created_at": "2025-11-08T16:10:03.537388",
+      "updated_at": "2025-11-08T16:10:03.537388"
+    },
+    {
+      "id": 46,
+      "festival_name": "Vaisakha Temple Utsav 10",
+      "slug": "vaisakha-temple-utsav-10",
+      "type": "Religious",
+      "importance": "Moderate",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Vaisakha",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "West Bengal"
+      ],
+      "created_at": "2025-11-08T16:10:03.542386",
+      "updated_at": "2025-11-08T16:10:03.542386"
+    },
+    {
+      "id": 69,
+      "festival_name": "Jyaistha Annual Utsav 10",
+      "slug": "jyaistha-annual-utsav-10",
+      "type": "Religious",
+      "importance": "Minor",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Jyaistha",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Karnataka"
+      ],
+      "created_at": "2025-11-08T16:10:03.655843",
+      "updated_at": "2025-11-08T16:10:03.655843"
+    },
+    {
+      "id": 67,
+      "festival_name": "Jyaistha Annual Utsav 8",
+      "slug": "jyaistha-annual-utsav-8",
+      "type": "Religious",
+      "importance": "Minor",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Jyaistha",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Karnataka"
+      ],
+      "created_at": "2025-11-08T16:10:03.645913",
+      "updated_at": "2025-11-08T16:10:03.645913"
+    },
+    {
+      "id": 42,
+      "festival_name": "Vaisakha Kumbhabhishekam 6",
+      "slug": "vaisakha-kumbhabhishekam-6",
+      "type": "Religious",
+      "importance": "Minor",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Vaisakha",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Kerala"
+      ],
+      "created_at": "2025-11-08T16:10:03.523757",
+      "updated_at": "2025-11-08T16:10:03.523757"
+    },
+    {
+      "id": 41,
+      "festival_name": "Vaisakha Mandala Utsav 5",
+      "slug": "vaisakha-mandala-utsav-5",
+      "type": "Religious",
+      "importance": "Minor",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Vaisakha",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "All India"
+      ],
+      "created_at": "2025-11-08T16:10:03.518755",
+      "updated_at": "2025-11-08T16:10:03.518755"
+    },
+    {
+      "id": 37,
+      "festival_name": "Vaisakha Temple Utsav 1",
+      "slug": "vaisakha-temple-utsav-1",
+      "type": "Religious",
+      "importance": "Minor",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Vaisakha",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "North India"
+      ],
+      "created_at": "2025-11-08T16:10:03.499221",
+      "updated_at": "2025-11-08T16:10:03.499221"
+    },
+    {
+      "id": 40,
+      "festival_name": "Vaisakha Temple Utsav 4",
+      "slug": "vaisakha-temple-utsav-4",
+      "type": "Religious",
+      "importance": "Minor",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Vaisakha",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Odisha"
+      ],
+      "created_at": "2025-11-08T16:10:03.513783",
+      "updated_at": "2025-11-08T16:10:03.513783"
+    },
+    {
+      "id": 11,
+      "sequence_id": 11,
+      "date": "11 February",
+      "day_name": "International Day of Women and Girls in Science",
+      "slug": "international-day-of-women-and-girls-in-science-11-february",
+      "type_of": "Awareness Day",
+      "importance": "Moderate",
+      "description": "Encourages women and girls in science.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "is_holiday": "observance_only",
+      "regions": [
+        "All India"
+      ],
+      "calendar_type": "gregorian",
+      "created_at": "2025-11-08T16:10:10.407628",
+      "updated_at": "2025-11-08T16:10:10.407628"
+    }
+  ]
+}

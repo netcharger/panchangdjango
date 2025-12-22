@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bulk Upload Wallpapers</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/min/dropzone.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        .dropzone {
+            border: 2px dashed #0087F7;
+            border-radius: 5px;
+            background: #fafafa;
+            min-height: 300px;
+            padding: 20px;
+        }
+        .dropzone.dz-started {
+            min-height: 200px;
+        }
+        .dz-message {
+            text-align: center;
+            margin: 2em 0;
+            color: #666;
+        }
+        .upload-status {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 4px;
+            display: none;
+        }
+        .upload-status.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .upload-status.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .uploaded-files {
+            margin-top: 20px;
+        }
+        .uploaded-files {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .uploaded-file {
+            position: relative;
+            display: inline-block;
+            margin: 10px;
+            text-align: center;
+        }
+        .uploaded-file img {
+            max-width: 150px;
+            max-height: 150px;
+            border-radius: 4px;
+            border: 2px solid #28a745;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .upload-success-icon {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: #28a745;
+            color: white;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        .upload-success-icon::before {
+            content: "✓";
+        }
+        .file-info {
+            margin-top: 5px;
+            font-size: 12px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bulk Upload Wallpapers</h1>
+        
+        <form id="bulk-upload-form">
+            <div class="form-group">
+                <label for="category">Main Category *</label>
+                <select id="category" name="category_id" required>
+                    <option value="">Select a main category</option>
+                    {% for category in categories %}
+                    <option value="{{ category.id }}">{{ category.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="subcategory">Sub Category *</label>
+                <select id="subcategory" name="subcategory_id" required>
+                    <option value="">Select a sub category</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>Upload Images</label>
+                <div id="dropzone" class="dropzone">
+                    <div class="dz-message">
+                        <p>Drop images here or click to upload</p>
+                        <p class="dz-message-text">(Multiple files supported - up to 200 images)</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="upload-status" class="upload-status"></div>
+            
+            <div id="upload-progress" class="upload-progress"></div>
+            
+            <div id="uploaded-files" class="uploaded-files"></div>
+            
+            <div id="error-files" class="error-files" style="display: none;">
+                <h3 style="margin-top: 0; color: #856404;">⚠️ Upload Errors:</h3>
+                <div id="error-list"></div>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/min/dropzone.min.js"></script>
+    <script>
+        // Initialize Dropzone
+        Dropzone.autoDiscover = false;
+        
+        const dropzone = new Dropzone("#dropzone", {
+            url: "/api/wallpapers/bulk-upload/api/",
+            paramName: "file",
+            maxFilesize: 10, // MB
+            maxFiles: 200, // Maximum 200 images (optional limit)
+            acceptedFiles: "image/*",
+            addRemoveLinks: true,
+            parallelUploads: 10, // Upload 10 files in parallel for faster uploads
+            autoProcessQueue: false,
+            dictDefaultMessage: "Drop images here or click to upload",
+            dictRemoveFile: "Remove",
+            dictCancelUpload: "Cancel",
+            dictUploadCanceled: "Upload canceled",
+            dictInvalidFileType: "Invalid file type. Only images are allowed.",
+            dictFileTooBig: "File is too big ({{filesize}}MB). Max filesize: {{maxFilesize}}MB.",
+            dictMaxFilesExceeded: "You can upload up to 200 images at once. Please remove some files if you need to add more.",
+        });
+
+        // Get category and subcategory elements
+        const categorySelect = document.getElementById('category');
+        const subcategorySelect = document.getElementById('subcategory');
+        const uploadStatus = document.getElementById('upload-status');
+        const uploadedFilesDiv = document.getElementById('uploaded-files');
+
+        // Load subcategories when main category changes
+        categorySelect.addEventListener('change', function() {
+            const mainCategoryId = this.value;
+            subcategorySelect.innerHTML = '<option value="">Select a sub category</option>';
+            
+            if (mainCategoryId) {
+                // Get subcategories by main category using the wallpapers endpoint
+                fetch(`/api/wallpapers/wallpapers/?main_category_id=${mainCategoryId}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        // Data is an array of subcategories
+                        if (Array.isArray(data)) {
+                            data.forEach(subcat => {
+                                const option = document.createElement('option');
+                                option.value = subcat.id;
+                                option.textContent = subcat.name;
+                                subcategorySelect.appendChild(option);
+                            });
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error loading subcategories:', error);
+                    });
+            }
+        });
+
+        // Update Dropzone URL and params before upload
+        dropzone.on('sending', function(file, xhr, formData) {
+            const subcategoryId = subcategorySelect.value;
+            
+            if (!subcategoryId) {
+                dropzone.removeFile(file);
+                alert('Please select a subcategory first');
+                return;
+            }
+            
+            // Only send subcategory_id (which is a category with parent)
+            formData.append('subcategory_id', subcategoryId);
+        });
+
+        // Track uploaded count and errors
+        let uploadedCount = 0;
+        let errorCount = 0;
+        let totalFiles = 0;
+        const errorList = document.getElementById('error-list');
+        const errorFilesDiv = document.getElementById('error-files');
+        const uploadProgressDiv = document.getElementById('upload-progress');
+        
+        // Handle successful upload
+        dropzone.on('success', function(file, response) {
+            // Parse response if it's a string
+            if (typeof response === 'string') {
+                try {
+                    response = JSON.parse(response);
+                } catch (e) {
+                    console.error('Failed to parse response:', e);
+                    handleUploadError(file, { error: 'Invalid response format', error_detail: 'Failed to parse server response' });
+                    return;
+                }
+            }
+            
+            if (response && response.success) {
+                uploadedCount++;
+                uploadStatus.className = 'upload-status success';
+                uploadStatus.style.display = 'block';
+                uploadStatus.textContent = `Successfully uploaded ${uploadedCount} file(s)`;
+                
+                // Display uploaded files with success indicator
+                if (response.uploaded_files && response.uploaded_files.length > 0) {
+                    response.uploaded_files.forEach(uploaded => {
+                        const fileDiv = document.createElement('div');
+                        fileDiv.className = 'uploaded-file';
+                        fileDiv.innerHTML = `
+                            <div class="upload-success-icon"></div>
+                            <img src="${uploaded.image_url}" alt="${uploaded.title}">
+                            <div class="file-info">${uploaded.title || uploaded.filename || 'Uploaded'}</div>
+                        `;
+                        uploadedFilesDiv.appendChild(fileDiv);
+                    });
+                }
+                
+                // Update progress
+                updateProgress();
+                
+                // Mark file as accepted but don't remove immediately - let queue continue
+                // Remove file after a short delay to allow queue to continue processing
+                setTimeout(function() {
+                    dropzone.removeFile(file);
+                }, 100);
+            } else {
+                // Handle error response
+                handleUploadError(file, response);
+            }
+        });
+        
+        // Handle max files exceeded
+        dropzone.on('maxfilesexceeded', function(file) {
+            alert('You can upload up to 200 images at once. Please remove some files if you need to add more.');
+            dropzone.removeFile(file);
+        });
+
+        // Function to handle upload errors
+        function handleUploadError(file, response) {
+            errorCount++;
+            const errorMsg = response?.error || response?.error_detail || 'Unknown error occurred';
+            const filename = response?.filename || file.name;
+            
+            // Add error to error list
+            const errorItem = document.createElement('div');
+            errorItem.className = 'error-file-item';
+            errorItem.innerHTML = `
+                <span class="error-icon">✗</span>
+                <strong>${filename}:</strong> ${errorMsg}
+            `;
+            errorList.appendChild(errorItem);
+            
+            // Show error section
+            errorFilesDiv.style.display = 'block';
+            
+            // Update status (don't say completed if there are remaining files)
+            const processed = uploadedCount + errorCount;
+            if (processed < totalFiles) {
+                uploadStatus.className = 'upload-status';
+                uploadStatus.style.display = 'block';
+                uploadStatus.textContent = `Processing: ${uploadedCount} successful, ${errorCount} failed`;
+            } else {
+                uploadStatus.className = 'upload-status error';
+                uploadStatus.style.display = 'block';
+                uploadStatus.textContent = `Upload completed: ${uploadedCount} successful, ${errorCount} failed`;
+            }
+            
+            // Update progress
+            updateProgress();
+            
+            // Remove file from dropzone after a short delay to allow queue to continue
+            setTimeout(function() {
+                dropzone.removeFile(file);
+            }, 100);
+        }
+        
+        // Function to update progress
+        function updateProgress() {
+            const processed = uploadedCount + errorCount;
+            const remaining = totalFiles - processed;
+            if (remaining > 0) {
+                uploadProgressDiv.textContent = `Processing: ${processed}/${totalFiles} files (${uploadedCount} successful, ${errorCount} failed, ${remaining} remaining)`;
+            } else {
+                uploadProgressDiv.textContent = `Completed: ${uploadedCount} successful, ${errorCount} failed out of ${totalFiles} files`;
+            }
+        }
+        
+        // Handle upload errors
+        dropzone.on('error', function(file, errorMessage, xhr) {
+            let response = {};
+            if (xhr && xhr.responseText) {
+                try {
+                    response = JSON.parse(xhr.responseText);
+                } catch (e) {
+                    response = { 
+                        error: errorMessage || 'Unknown error', 
+                        error_detail: xhr.responseText || errorMessage,
+                        filename: file.name
+                    };
+                }
+            } else {
+                response = { 
+                    error: errorMessage || 'Unknown error', 
+                    error_detail: errorMessage,
+                    filename: file.name
+                };
+            }
+            handleUploadError(file, response);
+        });
+
+        // Handle queue completion
+        dropzone.on('queuecomplete', function() {
+            const processed = uploadedCount + errorCount;
+            if (processed === totalFiles) {
+                uploadProgressDiv.textContent = `Completed: ${uploadedCount} successful, ${errorCount} failed out of ${totalFiles} files`;
+                uploadStatus.className = 'upload-status ' + (errorCount > 0 ? 'error' : 'success');
+                uploadStatus.style.display = 'block';
+                uploadStatus.textContent = `Upload completed: ${uploadedCount} successful, ${errorCount} failed`;
+            }
+        });
+
+        // Handle when a file is removed from queue
+        dropzone.on('removedfile', function(file) {
+            // Continue processing queue if there are more files
+            const queuedFiles = dropzone.getQueuedFiles();
+            const uploadingFiles = dropzone.getUploadingFiles();
+            
+            // If there are queued files but nothing is uploading, continue processing
+            if (queuedFiles.length > 0 && uploadingFiles.length === 0) {
+                setTimeout(function() {
+                    // Double check before processing
+                    if (dropzone.getQueuedFiles().length > 0 && dropzone.getUploadingFiles().length === 0) {
+                        dropzone.processQueue();
+                    }
+                }, 300);
+            }
+        });
+
+        // Monitor queue to ensure it continues processing
+        let queueMonitorInterval = null;
+        function startQueueMonitor() {
+            if (queueMonitorInterval) {
+                clearInterval(queueMonitorInterval);
+            }
+            queueMonitorInterval = setInterval(function() {
+                const queuedFiles = dropzone.getQueuedFiles();
+                const uploadingFiles = dropzone.getUploadingFiles();
+                const processed = uploadedCount + errorCount;
+                
+                // If there are queued files but nothing is uploading and not all files are processed
+                if (queuedFiles.length > 0 && uploadingFiles.length === 0 && processed < totalFiles) {
+                    console.log('Queue stalled, resuming...', { queued: queuedFiles.length, uploading: uploadingFiles.length, processed: processed, total: totalFiles });
+                    dropzone.processQueue();
+                } else if (processed >= totalFiles) {
+                    // All files processed, stop monitoring
+                    clearInterval(queueMonitorInterval);
+                    queueMonitorInterval = null;
+                }
+            }, 2000); // Check every 2 seconds
+        }
+        
+        // Start monitoring when files are added
+        dropzone.on('addedfiles', function(files) {
+            if (files.length > 0) {
+                startQueueMonitor();
+            }
+        });
+        
+        // Stop monitoring when queue is complete
+        dropzone.on('queuecomplete', function() {
+            if (queueMonitorInterval) {
+                clearInterval(queueMonitorInterval);
+                queueMonitorInterval = null;
+            }
+        });
+
+        // Process queue when files are added
+        dropzone.on('addedfiles', function(files) {
+            totalFiles = dropzone.files.length;
+            uploadedCount = 0;
+            errorCount = 0;
+            errorList.innerHTML = '';
+            errorFilesDiv.style.display = 'none';
+            uploadProgressDiv.textContent = `Processing ${totalFiles} file(s)...`;
+            
+            if (categorySelect.value && subcategorySelect.value) {
+                // Start queue monitoring
+                startQueueMonitor();
+                // Small delay to ensure files are properly added to queue
+                setTimeout(function() {
+                    dropzone.processQueue();
+                }, 100);
+            } else {
+                if (!categorySelect.value) {
+                    alert('Please select a main category first');
+                } else if (!subcategorySelect.value) {
+                    alert('Please select a subcategory first');
+                }
+                files.forEach(file => dropzone.removeFile(file));
+            }
+        });
+    </script>
+</body>
+</html>
+

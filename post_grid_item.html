@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Grid Item - Modern Design</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        /* Design 1: Modern Card with Overlay */
+        .post-card-overlay {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            height: 400px;
+        }
+
+        .post-card-overlay:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .post-card-overlay .image-container {
+            position: relative;
+            width: 100%;
+            height: 240px;
+            overflow: hidden;
+        }
+
+        .post-card-overlay .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .post-card-overlay:hover .image-container img {
+            transform: scale(1.1);
+        }
+
+        .post-card-overlay .overlay-gradient {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+        }
+
+        .post-card-overlay .category-badge {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #667eea;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .post-card-overlay .category-badge::before {
+            content: '📁';
+            font-size: 0.9rem;
+        }
+
+        .post-card-overlay .content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 24px;
+            color: white;
+        }
+
+        .post-card-overlay .title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            line-height: 1.4;
+            margin-bottom: 8px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Design 2: Minimalist Card */
+        .post-card-minimal {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .post-card-minimal:hover {
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+        }
+
+        .post-card-minimal .image-wrapper {
+            position: relative;
+            width: 100%;
+            padding-top: 75%; /* 4:3 aspect ratio */
+            overflow: hidden;
+        }
+
+        .post-card-minimal .image-wrapper img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .post-card-minimal:hover .image-wrapper img {
+            transform: scale(1.05);
+        }
+
+        .post-card-minimal .content-wrapper {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .post-card-minimal .category-tag {
+            display: inline-block;
+            background: #f3f4f6;
+            color: #6b7280;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin-bottom: 12px;
+            width: fit-content;
+        }
+
+        .post-card-minimal .title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1f2937;
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+
+        .post-card-minimal .read-more {
+            margin-top: auto;
+            color: #667eea;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: gap 0.2s ease;
+        }
+
+        .post-card-minimal:hover .read-more {
+            gap: 10px;
+        }
+
+        .post-card-minimal .read-more::after {
+            content: '→';
+            transition: transform 0.2s ease;
+        }
+
+        .post-card-minimal:hover .read-more::after {
+            transform: translateX(4px);
+        }
+
+        /* Design 3: Glassmorphism Card */
+        .post-card-glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .post-card-glass:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .post-card-glass .image-section {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .post-card-glass .image-section img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .post-card-glass .category-label {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 6px 12px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .post-card-glass .text-section {
+            padding: 20px;
+            color: white;
+        }
+
+        .post-card-glass .title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Design 4: Magazine Style */
+        .post-card-magazine {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border-top: 4px solid #667eea;
+        }
+
+        .post-card-magazine:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            border-top-color: #764ba2;
+        }
+
+        .post-card-magazine .thumbnail {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .post-card-magazine .info {
+            padding: 18px;
+        }
+
+        .post-card-magazine .category {
+            font-size: 0.7rem;
+            color: #667eea;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .post-card-magazine .category::before {
+            content: '●';
+            font-size: 0.5rem;
+        }
+
+        .post-card-magazine .title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #111827;
+            line-height: 1.5;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Post Grid Item Designs</h1>
+
+        <div class="grid">
+            <!-- Design 1: Modern Card with Overlay -->
+            <div class="post-card-overlay">
+                <div class="image-container">
+                    <img src="https://picsum.photos/400/240?random=1" alt="Post Image">
+                    <div class="overlay-gradient"></div>
+                </div>
+                <div class="category-badge">Destinations</div>
+                <div class="content">
+                    <h3 class="title">Destinations - Article 1</h3>
+                </div>
+            </div>
+
+            <!-- Design 2: Minimalist Card -->
+            <div class="post-card-minimal">
+                <div class="image-wrapper">
+                    <img src="https://picsum.photos/400/300?random=2" alt="Post Image">
+                </div>
+                <div class="content-wrapper">
+                    <span class="category-tag">📁 Destinations</span>
+                    <h3 class="title">Destinations - Article 1</h3>
+                    <a href="#" class="read-more">Read More</a>
+                </div>
+            </div>
+
+            <!-- Design 3: Glassmorphism Card -->
+            <div class="post-card-glass">
+                <div class="image-section">
+                    <img src="https://picsum.photos/400/200?random=3" alt="Post Image">
+                    <div class="category-label">Destinations</div>
+                </div>
+                <div class="text-section">
+                    <h3 class="title">Destinations - Article 1</h3>
+                </div>
+            </div>
+
+            <!-- Design 4: Magazine Style -->
+            <div class="post-card-magazine">
+                <img src="https://picsum.photos/400/180?random=4" alt="Post Image" class="thumbnail">
+                <div class="info">
+                    <div class="category">Destinations</div>
+                    <h3 class="title">Destinations - Article 1</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add click handlers for demo
+        document.querySelectorAll('.post-card-overlay, .post-card-minimal, .post-card-glass, .post-card-magazine').forEach(card => {
+            card.addEventListener('click', function() {
+                const title = this.querySelector('.title').textContent;
+                console.log('Clicked:', title);
+                // In your app, navigate to post detail page
+                // window.location.href = `/posts/${slug}/`;
+            });
+        });
+    </script>
+</body>
+</html>
+

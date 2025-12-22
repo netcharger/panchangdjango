@@ -1,0 +1,492 @@
+{
+  "profile": {
+    "code": "te",
+    "language": "Telugu",
+    "script": "Telugu"
+  },
+  "date": "2026-05-27",
+  "sections": [
+    {
+      "title": "భారత జాతీయ క్యాలెండర్",
+      "items": [
+        {
+          "label": "సంవత్సరం",
+          "value": 1948
+        },
+        {
+          "label": "మాసం",
+          "value": "జ్యేష్ఠ"
+        },
+        {
+          "label": "తేది",
+          "value": 6
+        }
+      ]
+    },
+    {
+      "title": "చంద్ర మాస సమాచారం",
+      "items": [
+        {
+          "label": "అమాంత మాసం",
+          "value": "శ్రావణం"
+        },
+        {
+          "label": "పౌర్ణిమాంత మాసం",
+          "value": "శ్రావణం"
+        },
+        {
+          "label": "పక్షం",
+          "value": "శుక్ల పక్షం"
+        }
+      ]
+    },
+    {
+      "title": "సూర్య చంద్రోదయాలు",
+      "items": [
+        {
+          "label": "సూర్యోదయం",
+          "value": "05:41 AM"
+        },
+        {
+          "label": "సూర్యాస్తమయం",
+          "value": "06:30 PM"
+        },
+        {
+          "label": "చంద్రోదయం",
+          "value": "03:18 PM"
+        },
+        {
+          "label": "చంద్రాస్తమయం",
+          "value": "02:35 AM"
+        }
+      ]
+    },
+    {
+      "title": "మూల పంచాంగం",
+      "items": [
+        {
+          "label": "తిథులు",
+          "type": "event_list",
+          "events": [
+            {
+              "name": "ఏకాదశి",
+              "start": "May 27 12:00 AM",
+              "end": "May 27 06:22 AM",
+              "ordinal": 11
+            },
+            {
+              "name": "ద్వాదశి",
+              "start": "May 27 06:22 AM",
+              "end": "May 28 12:00 AM",
+              "ordinal": 12
+            }
+          ],
+          "event_labels": {
+            "name": "పేరు",
+            "start": "ప్రారంభం",
+            "end": "ముగింపు"
+          }
+        },
+        {
+          "label": "నక్షత్రాలు",
+          "type": "event_list",
+          "events": [
+            {
+              "name": "హస్త",
+              "start": "May 27 12:00 AM",
+              "end": "May 27 07:40 AM",
+              "ordinal": 13
+            },
+            {
+              "name": "చిత్ర",
+              "start": "May 27 07:40 AM",
+              "end": "May 28 12:00 AM",
+              "ordinal": 14
+            }
+          ],
+          "event_labels": {
+            "name": "పేరు",
+            "start": "ప్రారంభం",
+            "end": "ముగింపు"
+          }
+        },
+        {
+          "label": "కరణాలు",
+          "type": "event_list",
+          "events": [
+            {
+              "name": "బవ",
+              "start": "May 27 12:00 AM",
+              "end": "May 27 06:22 AM",
+              "ordinal": 1
+            },
+            {
+              "name": "బాలవ",
+              "start": "May 27 06:22 AM",
+              "end": "May 27 07:07 PM",
+              "ordinal": 2
+            },
+            {
+              "name": "కౌలవ",
+              "start": "May 27 07:07 PM",
+              "end": "May 28 12:00 AM",
+              "ordinal": 3
+            }
+          ],
+          "event_labels": {
+            "name": "పేరు",
+            "start": "ప్రారంభం",
+            "end": "ముగింపు"
+          }
+        },
+        {
+          "label": "యోగాలు",
+          "type": "event_list",
+          "events": [
+            {
+              "name": "సిద్ధి",
+              "start": "May 27 12:00 AM",
+              "end": "May 27 06:22 AM",
+              "ordinal": 16
+            },
+            {
+              "name": "వ్యతిపాత",
+              "start": "May 27 06:22 AM",
+              "end": "May 28 12:00 AM",
+              "ordinal": 17
+            }
+          ],
+          "event_labels": {
+            "name": "పేరు",
+            "start": "ప్రారంభం",
+            "end": "ముగింపు"
+          }
+        }
+      ]
+    },
+    {
+      "title": "శుభ సమయాలు",
+      "items": [
+        {
+          "label": "అభిజిత్ ముహూర్తం",
+          "value": "11:42 AM - 12:30 PM"
+        },
+        {
+          "label": "అమృత కాలం",
+          "value": "10:15 PM - 11:40 PM"
+        },
+        {
+          "label": "బ్రహ్మ ముహూర్తం",
+          "value": "04:05 AM - 04:53 AM"
+        },
+        {
+          "label": "ప్రాతః సాంధ్య",
+          "value": "05:26 AM - 06:41 AM"
+        },
+        {
+          "label": "విజయ ముహూర్తం",
+          "value": "04:06 PM - 04:54 PM"
+        },
+        {
+          "label": "గోదూలి ముహూర్తం",
+          "value": "06:15 PM - 06:45 PM"
+        },
+        {
+          "label": "సాయంసాంధ్య",
+          "value": "06:30 PM - 07:45 PM"
+        },
+        {
+          "label": "నిశీత ముహూర్తం",
+          "value": "11:42 PM - 12:30 AM"
+        }
+      ]
+    },
+    {
+      "title": "అశుభ సమయాలు",
+      "items": [
+        {
+          "label": "రాహు కాలం",
+          "value": "12:06 PM - 01:42 PM"
+        },
+        {
+          "label": "యమగండం",
+          "value": "07:17 AM - 08:53 AM"
+        },
+        {
+          "label": "గులిక కాలం",
+          "value": "10:30 AM - 12:06 PM"
+        }
+      ]
+    },
+    {
+      "title": "హోరాలు",
+      "items": [
+        {
+          "label": "పగటి హోరాలు",
+          "value": [
+            "బుధుడు: 05:41 AM - 06:45 AM",
+            "చంద్రుడు: 06:45 AM - 07:49 AM",
+            "శని: 07:49 AM - 08:53 AM",
+            "బృహస్పతి: 08:53 AM - 09:58 AM",
+            "కుజుడు: 09:58 AM - 11:02 AM",
+            "సూర్యుడు: 11:02 AM - 12:06 PM",
+            "శుక్రుడు: 12:06 PM - 01:10 PM",
+            "బుధుడు: 01:10 PM - 02:14 PM",
+            "చంద్రుడు: 02:14 PM - 03:18 PM",
+            "శని: 03:18 PM - 04:22 PM",
+            "బృహస్పతి: 04:22 PM - 05:26 PM",
+            "కుజుడు: 05:26 PM - 06:30 PM"
+          ]
+        },
+        {
+          "label": "రాత్రి హోరాలు",
+          "value": [
+            "సూర్యుడు: 06:30 PM - 07:26 PM",
+            "శుక్రుడు: 07:26 PM - 08:22 PM",
+            "బుధుడు: 08:22 PM - 09:18 PM",
+            "చంద్రుడు: 09:18 PM - 10:14 PM",
+            "శని: 10:14 PM - 11:10 PM",
+            "బృహస్పతి: 11:10 PM - 12:06 AM",
+            "కుజుడు: 12:06 AM - 01:02 AM",
+            "సూర్యుడు: 01:02 AM - 01:57 AM",
+            "శుక్రుడు: 01:57 AM - 02:53 AM",
+            "బుధుడు: 02:53 AM - 03:49 AM",
+            "చంద్రుడు: 03:49 AM - 04:45 AM",
+            "శని: 04:45 AM - 05:41 AM"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "పండుగలు",
+      "items": [
+        {
+          "label": "పండుగలు",
+          "value": "ఈ రోజు ముఖ్యమైన పండుగలు లేవు"
+        }
+      ]
+    }
+  ],
+  "festivals": [
+    {
+      "id": 108,
+      "festival_name": "Sravana Mandala Utsav 4",
+      "slug": "sravana-mandala-utsav-4",
+      "type": "Religious",
+      "importance": "Moderate",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Sravana",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "West Bengal"
+      ],
+      "created_at": "2025-11-08T16:10:03.858241",
+      "updated_at": "2025-11-08T16:10:03.858241"
+    },
+    {
+      "id": 112,
+      "festival_name": "Sravana Mandala Utsav 8",
+      "slug": "sravana-mandala-utsav-8",
+      "type": "Religious",
+      "importance": "Moderate",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Sravana",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Andhra Pradesh"
+      ],
+      "created_at": "2025-11-08T16:10:03.879613",
+      "updated_at": "2025-11-08T16:10:03.879613"
+    },
+    {
+      "id": 114,
+      "festival_name": "Sravana Rathotsavam 10",
+      "slug": "sravana-rathotsavam-10",
+      "type": "Religious",
+      "importance": "Moderate",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Sravana",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Andhra Pradesh"
+      ],
+      "created_at": "2025-11-08T16:10:03.887447",
+      "updated_at": "2025-11-08T16:10:03.887447"
+    },
+    {
+      "id": 107,
+      "festival_name": "Sravana Temple Utsav 3",
+      "slug": "sravana-temple-utsav-3",
+      "type": "Religious",
+      "importance": "Moderate",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Sravana",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Telangana"
+      ],
+      "created_at": "2025-11-08T16:10:03.851144",
+      "updated_at": "2025-11-08T16:10:03.851144"
+    },
+    {
+      "id": 111,
+      "festival_name": "Sravana Annual Utsav 7",
+      "slug": "sravana-annual-utsav-7",
+      "type": "Religious",
+      "importance": "Minor",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Sravana",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Maharashtra"
+      ],
+      "created_at": "2025-11-08T16:10:03.874622",
+      "updated_at": "2025-11-08T16:10:03.874622"
+    },
+    {
+      "id": 110,
+      "festival_name": "Sravana Brahmotsavam 6",
+      "slug": "sravana-brahmotsavam-6",
+      "type": "Religious",
+      "importance": "Minor",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Sravana",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Gujarat"
+      ],
+      "created_at": "2025-11-08T16:10:03.868249",
+      "updated_at": "2025-11-08T16:10:03.868249"
+    },
+    {
+      "id": 113,
+      "festival_name": "Sravana Kalyanam 9",
+      "slug": "sravana-kalyanam-9",
+      "type": "Religious",
+      "importance": "Minor",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Sravana",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Maharashtra"
+      ],
+      "created_at": "2025-11-08T16:10:03.883612",
+      "updated_at": "2025-11-08T16:10:03.883612"
+    },
+    {
+      "id": 106,
+      "festival_name": "Sravana Local Utsav 2",
+      "slug": "sravana-local-utsav-2",
+      "type": "Religious",
+      "importance": "Minor",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Sravana",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Maharashtra"
+      ],
+      "created_at": "2025-11-08T16:10:03.845144",
+      "updated_at": "2025-11-08T16:10:03.845144"
+    },
+    {
+      "id": 109,
+      "festival_name": "Sravana Local Utsav 5",
+      "slug": "sravana-local-utsav-5",
+      "type": "Religious",
+      "importance": "Minor",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Sravana",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Maharashtra"
+      ],
+      "created_at": "2025-11-08T16:10:03.863239",
+      "updated_at": "2025-11-08T16:10:03.863239"
+    },
+    {
+      "id": 105,
+      "festival_name": "Sravana Rathotsavam 1",
+      "slug": "sravana-rathotsavam-1",
+      "type": "Religious",
+      "importance": "Minor",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Sravana",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Tamil Nadu"
+      ],
+      "created_at": "2025-11-08T16:10:03.839145",
+      "updated_at": "2025-11-08T16:10:03.839145"
+    }
+  ]
+}

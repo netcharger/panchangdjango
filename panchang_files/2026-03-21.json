@@ -1,0 +1,570 @@
+{
+  "profile": {
+    "code": "te",
+    "language": "Telugu",
+    "script": "Telugu"
+  },
+  "date": "2026-03-21",
+  "sections": [
+    {
+      "title": "భారత జాతీయ క్యాలెండర్",
+      "items": [
+        {
+          "label": "సంవత్సరం",
+          "value": 1947
+        },
+        {
+          "label": "మాసం",
+          "value": "ఫాల్గున"
+        },
+        {
+          "label": "తేది",
+          "value": 30
+        }
+      ]
+    },
+    {
+      "title": "చంద్ర మాస సమాచారం",
+      "items": [
+        {
+          "label": "అమాంత మాసం",
+          "value": "జ్యేష్ఠం"
+        },
+        {
+          "label": "పౌర్ణిమాంత మాసం",
+          "value": "జ్యేష్ఠం"
+        },
+        {
+          "label": "పక్షం",
+          "value": "శుక్ల పక్షం"
+        }
+      ]
+    },
+    {
+      "title": "సూర్య చంద్రోదయాలు",
+      "items": [
+        {
+          "label": "సూర్యోదయం",
+          "value": "06:12 AM"
+        },
+        {
+          "label": "సూర్యాస్తమయం",
+          "value": "06:19 PM"
+        },
+        {
+          "label": "చంద్రోదయం",
+          "value": "07:37 AM"
+        },
+        {
+          "label": "చంద్రాస్తమయం",
+          "value": "08:33 PM"
+        }
+      ]
+    },
+    {
+      "title": "మూల పంచాంగం",
+      "items": [
+        {
+          "label": "తిథులు",
+          "type": "event_list",
+          "events": [
+            {
+              "name": "విదియ",
+              "start": "Mar 21 12:00 AM",
+              "end": "Mar 21 02:31 AM",
+              "ordinal": 2
+            },
+            {
+              "name": "తదియ",
+              "start": "Mar 21 02:31 AM",
+              "end": "Mar 21 11:56 PM",
+              "ordinal": 3
+            },
+            {
+              "name": "చవితి",
+              "start": "Mar 21 11:56 PM",
+              "end": "Mar 22 12:00 AM",
+              "ordinal": 4
+            }
+          ],
+          "event_labels": {
+            "name": "పేరు",
+            "start": "ప్రారంభం",
+            "end": "ముగింపు"
+          }
+        },
+        {
+          "label": "నక్షత్రాలు",
+          "type": "event_list",
+          "events": [
+            {
+              "name": "రేవతి",
+              "start": "Mar 21 12:00 AM",
+              "end": "Mar 21 03:56 AM",
+              "ordinal": 27
+            },
+            {
+              "name": "అశ్విని",
+              "start": "Mar 21 03:56 AM",
+              "end": "Mar 22 12:00 AM",
+              "ordinal": 1
+            }
+          ],
+          "event_labels": {
+            "name": "పేరు",
+            "start": "ప్రారంభం",
+            "end": "ముగింపు"
+          }
+        },
+        {
+          "label": "కరణాలు",
+          "type": "event_list",
+          "events": [
+            {
+              "name": "తైతిల",
+              "start": "Mar 21 12:00 AM",
+              "end": "Mar 21 02:31 AM",
+              "ordinal": 4
+            },
+            {
+              "name": "గరజ",
+              "start": "Mar 21 02:31 AM",
+              "end": "Mar 21 01:15 PM",
+              "ordinal": 5
+            },
+            {
+              "name": "వణిజ",
+              "start": "Mar 21 01:15 PM",
+              "end": "Mar 21 11:56 PM",
+              "ordinal": 6
+            },
+            {
+              "name": "విష్టి",
+              "start": "Mar 21 11:56 PM",
+              "end": "Mar 22 12:00 AM",
+              "ordinal": 7
+            }
+          ],
+          "event_labels": {
+            "name": "పేరు",
+            "start": "ప్రారంభం",
+            "end": "ముగింపు"
+          }
+        },
+        {
+          "label": "యోగాలు",
+          "type": "event_list",
+          "events": [
+            {
+              "name": "బ్రహ్మ",
+              "start": "Mar 21 12:00 AM",
+              "end": "Mar 21 01:00 AM",
+              "ordinal": 25
+            },
+            {
+              "name": "ఇంద్ర",
+              "start": "Mar 21 01:00 AM",
+              "end": "Mar 21 09:45 PM",
+              "ordinal": 26
+            },
+            {
+              "name": "వైదృతి",
+              "start": "Mar 21 09:45 PM",
+              "end": "Mar 22 12:00 AM",
+              "ordinal": 27
+            }
+          ],
+          "event_labels": {
+            "name": "పేరు",
+            "start": "ప్రారంభం",
+            "end": "ముగింపు"
+          }
+        }
+      ]
+    },
+    {
+      "title": "శుభ సమయాలు",
+      "items": [
+        {
+          "label": "అభిజిత్ ముహూర్తం",
+          "value": "11:52 AM - 12:40 PM"
+        },
+        {
+          "label": "అమృత కాలం",
+          "value": "10:04 PM - 11:29 PM"
+        },
+        {
+          "label": "బ్రహ్మ ముహూర్తం",
+          "value": "04:36 AM - 05:24 AM"
+        },
+        {
+          "label": "ప్రాతః సాంధ్య",
+          "value": "05:57 AM - 07:12 AM"
+        },
+        {
+          "label": "విజయ ముహూర్తం",
+          "value": "03:55 PM - 04:43 PM"
+        },
+        {
+          "label": "గోదూలి ముహూర్తం",
+          "value": "06:04 PM - 06:34 PM"
+        },
+        {
+          "label": "సాయంసాంధ్య",
+          "value": "06:19 PM - 07:34 PM"
+        },
+        {
+          "label": "నిశీత ముహూర్తం",
+          "value": "11:51 PM - 12:39 AM"
+        }
+      ]
+    },
+    {
+      "title": "అశుభ సమయాలు",
+      "items": [
+        {
+          "label": "రాహు కాలం",
+          "value": "09:14 AM - 10:45 AM"
+        },
+        {
+          "label": "యమగండం",
+          "value": "01:47 PM - 03:17 PM"
+        },
+        {
+          "label": "గులిక కాలం",
+          "value": "06:12 AM - 07:43 AM"
+        }
+      ]
+    },
+    {
+      "title": "హోరాలు",
+      "items": [
+        {
+          "label": "పగటి హోరాలు",
+          "value": [
+            "శని: 06:12 AM - 07:13 AM",
+            "బృహస్పతి: 07:13 AM - 08:13 AM",
+            "కుజుడు: 08:13 AM - 09:14 AM",
+            "సూర్యుడు: 09:14 AM - 10:15 AM",
+            "శుక్రుడు: 10:15 AM - 11:15 AM",
+            "బుధుడు: 11:15 AM - 12:16 PM",
+            "చంద్రుడు: 12:16 PM - 01:16 PM",
+            "శని: 01:16 PM - 02:17 PM",
+            "బృహస్పతి: 02:17 PM - 03:17 PM",
+            "కుజుడు: 03:17 PM - 04:18 PM",
+            "సూర్యుడు: 04:18 PM - 05:19 PM",
+            "శుక్రుడు: 05:19 PM - 06:19 PM"
+          ]
+        },
+        {
+          "label": "రాత్రి హోరాలు",
+          "value": [
+            "బుధుడు: 06:19 PM - 07:18 PM",
+            "చంద్రుడు: 07:18 PM - 08:18 PM",
+            "శని: 08:18 PM - 09:17 PM",
+            "బృహస్పతి: 09:17 PM - 10:17 PM",
+            "కుజుడు: 10:17 PM - 11:16 PM",
+            "సూర్యుడు: 11:16 PM - 12:15 AM",
+            "శుక్రుడు: 12:15 AM - 01:15 AM",
+            "బుధుడు: 01:15 AM - 02:14 AM",
+            "చంద్రుడు: 02:14 AM - 03:14 AM",
+            "శని: 03:14 AM - 04:13 AM",
+            "బృహస్పతి: 04:13 AM - 05:12 AM",
+            "కుజుడు: 05:12 AM - 06:12 AM"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "పండుగలు",
+      "items": [
+        {
+          "label": "పండుగలు",
+          "value": "ఈ రోజు ముఖ్యమైన పండుగలు లేవు"
+        }
+      ]
+    }
+  ],
+  "festivals": [
+    {
+      "id": 62,
+      "festival_name": "Jyaistha Kalyanam 3",
+      "slug": "jyaistha-kalyanam-3",
+      "type": "Religious",
+      "importance": "Moderate",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Jyaistha",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Andhra Pradesh"
+      ],
+      "created_at": "2025-11-08T16:10:03.619904",
+      "updated_at": "2025-11-08T16:10:03.619904"
+    },
+    {
+      "id": 64,
+      "festival_name": "Jyaistha Kumbhabhishekam 5",
+      "slug": "jyaistha-kumbhabhishekam-5",
+      "type": "Religious",
+      "importance": "Moderate",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Jyaistha",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Maharashtra"
+      ],
+      "created_at": "2025-11-08T16:10:03.629913",
+      "updated_at": "2025-11-08T16:10:03.629913"
+    },
+    {
+      "id": 66,
+      "festival_name": "Jyaistha Kumbhabhishekam 7",
+      "slug": "jyaistha-kumbhabhishekam-7",
+      "type": "Religious",
+      "importance": "Moderate",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Jyaistha",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "West Bengal"
+      ],
+      "created_at": "2025-11-08T16:10:03.640917",
+      "updated_at": "2025-11-08T16:10:03.640917"
+    },
+    {
+      "id": 61,
+      "festival_name": "Jyaistha Local Utsav 2",
+      "slug": "jyaistha-local-utsav-2",
+      "type": "Religious",
+      "importance": "Moderate",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Jyaistha",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Karnataka"
+      ],
+      "created_at": "2025-11-08T16:10:03.615482",
+      "updated_at": "2025-11-08T16:10:03.615482"
+    },
+    {
+      "id": 60,
+      "festival_name": "Jyaistha Mandala Utsav 1",
+      "slug": "jyaistha-mandala-utsav-1",
+      "type": "Religious",
+      "importance": "Moderate",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Jyaistha",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "West Bengal"
+      ],
+      "created_at": "2025-11-08T16:10:03.610481",
+      "updated_at": "2025-11-08T16:10:03.610481"
+    },
+    {
+      "id": 65,
+      "festival_name": "Jyaistha Mandala Utsav 6",
+      "slug": "jyaistha-mandala-utsav-6",
+      "type": "Religious",
+      "importance": "Moderate",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Jyaistha",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Gujarat"
+      ],
+      "created_at": "2025-11-08T16:10:03.634914",
+      "updated_at": "2025-11-08T16:10:03.634914"
+    },
+    {
+      "id": 63,
+      "festival_name": "Jyaistha Rathotsavam 4",
+      "slug": "jyaistha-rathotsavam-4",
+      "type": "Religious",
+      "importance": "Moderate",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Jyaistha",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Andhra Pradesh"
+      ],
+      "created_at": "2025-11-08T16:10:03.624913",
+      "updated_at": "2025-11-08T16:10:03.624913"
+    },
+    {
+      "id": 68,
+      "festival_name": "Jyaistha Rathotsavam 9",
+      "slug": "jyaistha-rathotsavam-9",
+      "type": "Religious",
+      "importance": "Moderate",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Jyaistha",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "All India"
+      ],
+      "created_at": "2025-11-08T16:10:03.649912",
+      "updated_at": "2025-11-08T16:10:03.649912"
+    },
+    {
+      "id": 69,
+      "festival_name": "Jyaistha Annual Utsav 10",
+      "slug": "jyaistha-annual-utsav-10",
+      "type": "Religious",
+      "importance": "Minor",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Jyaistha",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Karnataka"
+      ],
+      "created_at": "2025-11-08T16:10:03.655843",
+      "updated_at": "2025-11-08T16:10:03.655843"
+    },
+    {
+      "id": 67,
+      "festival_name": "Jyaistha Annual Utsav 8",
+      "slug": "jyaistha-annual-utsav-8",
+      "type": "Religious",
+      "importance": "Minor",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Jyaistha",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Karnataka"
+      ],
+      "created_at": "2025-11-08T16:10:03.645913",
+      "updated_at": "2025-11-08T16:10:03.645913"
+    },
+    {
+      "id": 19,
+      "sequence_id": 20,
+      "date": "21 March",
+      "day_name": "World Poetry Day",
+      "slug": "world-poetry-day-21-march",
+      "type_of": "Cultural Observance",
+      "importance": "Minor",
+      "description": "Celebrates poetry worldwide.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "is_holiday": "observance_only",
+      "regions": [
+        "All India"
+      ],
+      "calendar_type": "gregorian",
+      "created_at": "2025-11-08T16:10:10.453021",
+      "updated_at": "2025-11-08T16:10:10.453021"
+    },
+    {
+      "id": 20,
+      "sequence_id": 21,
+      "date": "21 March",
+      "day_name": "World Down Syndrome Day",
+      "slug": "world-down-syndrome-day-21-march",
+      "type_of": "Health Awareness",
+      "importance": "Minor",
+      "description": "Promotes inclusion and awareness.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "is_holiday": "observance_only",
+      "regions": [
+        "All India"
+      ],
+      "calendar_type": "gregorian",
+      "created_at": "2025-11-08T16:10:10.458054",
+      "updated_at": "2025-11-08T16:10:10.458054"
+    },
+    {
+      "id": 21,
+      "sequence_id": 22,
+      "date": "21 March",
+      "day_name": "International Day of Forests",
+      "slug": "international-day-of-forests-21-march",
+      "type_of": "Environmental Observance",
+      "importance": "Minor",
+      "description": "Highlights forests' importance.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "is_holiday": "observance_only",
+      "regions": [
+        "All India"
+      ],
+      "calendar_type": "gregorian",
+      "created_at": "2025-11-08T16:10:10.463030",
+      "updated_at": "2025-11-08T16:10:10.463030"
+    }
+  ]
+}

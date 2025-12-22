@@ -1,0 +1,492 @@
+{
+  "profile": {
+    "code": "te",
+    "language": "Telugu",
+    "script": "Telugu"
+  },
+  "date": "2025-11-28",
+  "sections": [
+    {
+      "title": "భారత జాతీయ క్యాలెండర్",
+      "items": [
+        {
+          "label": "సంవత్సరం",
+          "value": 1947
+        },
+        {
+          "label": "మాసం",
+          "value": "ఆగాహన"
+        },
+        {
+          "label": "తేది",
+          "value": 7
+        }
+      ]
+    },
+    {
+      "title": "చంద్ర మాస సమాచారం",
+      "items": [
+        {
+          "label": "అమాంత మాసం",
+          "value": "మాఘం"
+        },
+        {
+          "label": "పౌర్ణిమాంత మాసం",
+          "value": "మాఘం"
+        },
+        {
+          "label": "పక్షం",
+          "value": "శుక్ల పక్షం"
+        }
+      ]
+    },
+    {
+      "title": "సూర్య చంద్రోదయాలు",
+      "items": [
+        {
+          "label": "సూర్యోదయం",
+          "value": "06:14 AM"
+        },
+        {
+          "label": "సూర్యాస్తమయం",
+          "value": "05:39 PM"
+        },
+        {
+          "label": "చంద్రోదయం",
+          "value": "12:22 PM"
+        },
+        {
+          "label": "చంద్రాస్తమయం",
+          "value": "N/A"
+        }
+      ]
+    },
+    {
+      "title": "మూల పంచాంగం",
+      "items": [
+        {
+          "label": "తిథులు",
+          "type": "event_list",
+          "events": [
+            {
+              "name": "సప్తమి",
+              "start": "Nov 28 12:00 AM",
+              "end": "Nov 28 12:30 AM",
+              "ordinal": 7
+            },
+            {
+              "name": "అష్టమి",
+              "start": "Nov 28 12:30 AM",
+              "end": "Nov 29 12:00 AM",
+              "ordinal": 8
+            }
+          ],
+          "event_labels": {
+            "name": "పేరు",
+            "start": "ప్రారంభం",
+            "end": "ముగింపు"
+          }
+        },
+        {
+          "label": "నక్షత్రాలు",
+          "type": "event_list",
+          "events": [
+            {
+              "name": "ధనిష్ఠ",
+              "start": "Nov 28 12:00 AM",
+              "end": "Nov 28 04:10 AM",
+              "ordinal": 23
+            },
+            {
+              "name": "శతభిషం",
+              "start": "Nov 28 04:10 AM",
+              "end": "Nov 29 12:00 AM",
+              "ordinal": 24
+            }
+          ],
+          "event_labels": {
+            "name": "పేరు",
+            "start": "ప్రారంభం",
+            "end": "ముగింపు"
+          }
+        },
+        {
+          "label": "కరణాలు",
+          "type": "event_list",
+          "events": [
+            {
+              "name": "విష్టి",
+              "start": "Nov 28 12:00 AM",
+              "end": "Nov 28 12:30 AM",
+              "ordinal": 7
+            },
+            {
+              "name": "బవ",
+              "start": "Nov 28 12:30 AM",
+              "end": "Nov 28 12:28 PM",
+              "ordinal": 1
+            },
+            {
+              "name": "బాలవ",
+              "start": "Nov 28 12:28 PM",
+              "end": "Nov 29 12:00 AM",
+              "ordinal": 2
+            }
+          ],
+          "event_labels": {
+            "name": "పేరు",
+            "start": "ప్రారంభం",
+            "end": "ముగింపు"
+          }
+        },
+        {
+          "label": "యోగాలు",
+          "type": "event_list",
+          "events": [
+            {
+              "name": "వ్యాఘాత",
+              "start": "Nov 28 12:00 AM",
+              "end": "Nov 28 02:05 PM",
+              "ordinal": 13
+            },
+            {
+              "name": "హర్షణ",
+              "start": "Nov 28 02:05 PM",
+              "end": "Nov 29 12:00 AM",
+              "ordinal": 14
+            }
+          ],
+          "event_labels": {
+            "name": "పేరు",
+            "start": "ప్రారంభం",
+            "end": "ముగింపు"
+          }
+        }
+      ]
+    },
+    {
+      "title": "శుభ సమయాలు",
+      "items": [
+        {
+          "label": "అభిజిత్ ముహూర్తం",
+          "value": "11:32 AM - 12:20 PM"
+        },
+        {
+          "label": "అమృత కాలం",
+          "value": "09:24 PM - 10:49 PM"
+        },
+        {
+          "label": "బ్రహ్మ ముహూర్తం",
+          "value": "04:38 AM - 05:26 AM"
+        },
+        {
+          "label": "ప్రాతః సాంధ్య",
+          "value": "05:59 AM - 07:14 AM"
+        },
+        {
+          "label": "విజయ ముహూర్తం",
+          "value": "03:15 PM - 04:03 PM"
+        },
+        {
+          "label": "గోదూలి ముహూర్తం",
+          "value": "05:24 PM - 05:54 PM"
+        },
+        {
+          "label": "సాయంసాంధ్య",
+          "value": "05:39 PM - 06:54 PM"
+        },
+        {
+          "label": "నిశీత ముహూర్తం",
+          "value": "11:33 PM - 12:21 AM"
+        }
+      ]
+    },
+    {
+      "title": "అశుభ సమయాలు",
+      "items": [
+        {
+          "label": "రాహు కాలం",
+          "value": "10:31 AM - 11:56 AM"
+        },
+        {
+          "label": "యమగండం",
+          "value": "02:48 PM - 04:13 PM"
+        },
+        {
+          "label": "గులిక కాలం",
+          "value": "07:39 AM - 09:05 AM"
+        }
+      ]
+    },
+    {
+      "title": "హోరాలు",
+      "items": [
+        {
+          "label": "పగటి హోరాలు",
+          "value": [
+            "శుక్రుడు: 06:14 AM - 07:11 AM",
+            "బుధుడు: 07:11 AM - 08:08 AM",
+            "చంద్రుడు: 08:08 AM - 09:05 AM",
+            "శని: 09:05 AM - 10:02 AM",
+            "బృహస్పతి: 10:02 AM - 10:59 AM",
+            "కుజుడు: 10:59 AM - 11:56 AM",
+            "సూర్యుడు: 11:56 AM - 12:53 PM",
+            "శుక్రుడు: 12:53 PM - 01:51 PM",
+            "బుధుడు: 01:51 PM - 02:48 PM",
+            "చంద్రుడు: 02:48 PM - 03:45 PM",
+            "శని: 03:45 PM - 04:42 PM",
+            "బృహస్పతి: 04:42 PM - 05:39 PM"
+          ]
+        },
+        {
+          "label": "రాత్రి హోరాలు",
+          "value": [
+            "కుజుడు: 05:39 PM - 06:42 PM",
+            "సూర్యుడు: 06:42 PM - 07:45 PM",
+            "శుక్రుడు: 07:45 PM - 08:48 PM",
+            "బుధుడు: 08:48 PM - 09:51 PM",
+            "చంద్రుడు: 09:51 PM - 10:54 PM",
+            "శని: 10:54 PM - 11:57 PM",
+            "బృహస్పతి: 11:57 PM - 01:00 AM",
+            "కుజుడు: 01:00 AM - 02:02 AM",
+            "సూర్యుడు: 02:02 AM - 03:05 AM",
+            "శుక్రుడు: 03:05 AM - 04:08 AM",
+            "బుధుడు: 04:08 AM - 05:11 AM",
+            "చంద్రుడు: 05:11 AM - 06:14 AM"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "పండుగలు",
+      "items": [
+        {
+          "label": "పండుగలు",
+          "value": "ఈ రోజు ముఖ్యమైన పండుగలు లేవు"
+        }
+      ]
+    }
+  ],
+  "festivals": [
+    {
+      "id": 239,
+      "festival_name": "Magha Annual Utsav 6",
+      "slug": "magha-annual-utsav-6",
+      "type": "Religious",
+      "importance": "Moderate",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Magha",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Kerala"
+      ],
+      "created_at": "2025-11-08T16:10:04.504882",
+      "updated_at": "2025-11-08T16:10:04.504882"
+    },
+    {
+      "id": 236,
+      "festival_name": "Magha Local Utsav 3",
+      "slug": "magha-local-utsav-3",
+      "type": "Religious",
+      "importance": "Moderate",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Magha",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Andhra Pradesh"
+      ],
+      "created_at": "2025-11-08T16:10:04.489259",
+      "updated_at": "2025-11-08T16:10:04.489259"
+    },
+    {
+      "id": 235,
+      "festival_name": "Magha Mandala Utsav 2",
+      "slug": "magha-mandala-utsav-2",
+      "type": "Religious",
+      "importance": "Moderate",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Magha",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Karnataka"
+      ],
+      "created_at": "2025-11-08T16:10:04.485303",
+      "updated_at": "2025-11-08T16:10:04.485303"
+    },
+    {
+      "id": 241,
+      "festival_name": "Magha Mandala Utsav 8",
+      "slug": "magha-mandala-utsav-8",
+      "type": "Religious",
+      "importance": "Moderate",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Magha",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "All India"
+      ],
+      "created_at": "2025-11-08T16:10:04.514835",
+      "updated_at": "2025-11-08T16:10:04.514835"
+    },
+    {
+      "id": 238,
+      "festival_name": "Magha Annual Utsav 5",
+      "slug": "magha-annual-utsav-5",
+      "type": "Religious",
+      "importance": "Minor",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Magha",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "West Bengal"
+      ],
+      "created_at": "2025-11-08T16:10:04.500261",
+      "updated_at": "2025-11-08T16:10:04.500261"
+    },
+    {
+      "id": 240,
+      "festival_name": "Magha Annual Utsav 7",
+      "slug": "magha-annual-utsav-7",
+      "type": "Religious",
+      "importance": "Minor",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Magha",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "North India"
+      ],
+      "created_at": "2025-11-08T16:10:04.509861",
+      "updated_at": "2025-11-08T16:10:04.509861"
+    },
+    {
+      "id": 242,
+      "festival_name": "Magha Annual Utsav 9",
+      "slug": "magha-annual-utsav-9",
+      "type": "Religious",
+      "importance": "Minor",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Magha",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "West Bengal"
+      ],
+      "created_at": "2025-11-08T16:10:04.519859",
+      "updated_at": "2025-11-08T16:10:04.519859"
+    },
+    {
+      "id": 237,
+      "festival_name": "Magha Brahmotsavam 4",
+      "slug": "magha-brahmotsavam-4",
+      "type": "Religious",
+      "importance": "Minor",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Magha",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "West Bengal"
+      ],
+      "created_at": "2025-11-08T16:10:04.495261",
+      "updated_at": "2025-11-08T16:10:04.495261"
+    },
+    {
+      "id": 234,
+      "festival_name": "Magha Kumbhabhishekam 1",
+      "slug": "magha-kumbhabhishekam-1",
+      "type": "Religious",
+      "importance": "Minor",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Magha",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Odisha"
+      ],
+      "created_at": "2025-11-08T16:10:04.480304",
+      "updated_at": "2025-11-08T16:10:04.480304"
+    },
+    {
+      "id": 243,
+      "festival_name": "Magha Rathotsavam 10",
+      "slug": "magha-rathotsavam-10",
+      "type": "Religious",
+      "importance": "Minor",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Magha",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Telangana"
+      ],
+      "created_at": "2025-11-08T16:10:04.524838",
+      "updated_at": "2025-11-08T16:10:04.524838"
+    }
+  ]
+}

@@ -1,0 +1,578 @@
+{
+  "profile": {
+    "code": "te",
+    "language": "Telugu",
+    "script": "Telugu"
+  },
+  "date": "2025-10-31",
+  "sections": [
+    {
+      "title": "భారత జాతీయ క్యాలెండర్",
+      "items": [
+        {
+          "label": "సంవత్సరం",
+          "value": 1947
+        },
+        {
+          "label": "మాసం",
+          "value": "కార్తిక"
+        },
+        {
+          "label": "తేది",
+          "value": 9
+        }
+      ]
+    },
+    {
+      "title": "చంద్ర మాస సమాచారం",
+      "items": [
+        {
+          "label": "అమాంత మాసం",
+          "value": "పౌష్యం"
+        },
+        {
+          "label": "పౌర్ణిమాంత మాసం",
+          "value": "పౌష్యం"
+        },
+        {
+          "label": "పక్షం",
+          "value": "శుక్ల పక్షం"
+        }
+      ]
+    },
+    {
+      "title": "సూర్య చంద్రోదయాలు",
+      "items": [
+        {
+          "label": "సూర్యోదయం",
+          "value": "06:02 AM"
+        },
+        {
+          "label": "సూర్యాస్తమయం",
+          "value": "05:42 PM"
+        },
+        {
+          "label": "చంద్రోదయం",
+          "value": "01:46 PM"
+        },
+        {
+          "label": "చంద్రాస్తమయం",
+          "value": "12:51 AM"
+        }
+      ]
+    },
+    {
+      "title": "మూల పంచాంగం",
+      "items": [
+        {
+          "label": "తిథులు",
+          "type": "event_list",
+          "events": [
+            {
+              "name": "నవమి",
+              "start": "Oct 31 12:00 AM",
+              "end": "Oct 31 10:04 AM",
+              "ordinal": 9
+            },
+            {
+              "name": "దశమి",
+              "start": "Oct 31 10:04 AM",
+              "end": "Nov 01 12:00 AM",
+              "ordinal": 10
+            }
+          ],
+          "event_labels": {
+            "name": "పేరు",
+            "start": "ప్రారంభం",
+            "end": "ముగింపు"
+          }
+        },
+        {
+          "label": "నక్షత్రాలు",
+          "type": "event_list",
+          "events": [
+            {
+              "name": "ధనిష్ఠ",
+              "start": "Oct 31 12:00 AM",
+              "end": "Oct 31 08:26 PM",
+              "ordinal": 23
+            },
+            {
+              "name": "శతభిషం",
+              "start": "Oct 31 08:26 PM",
+              "end": "Nov 01 12:00 AM",
+              "ordinal": 24
+            }
+          ],
+          "event_labels": {
+            "name": "పేరు",
+            "start": "ప్రారంభం",
+            "end": "ముగింపు"
+          }
+        },
+        {
+          "label": "కరణాలు",
+          "type": "event_list",
+          "events": [
+            {
+              "name": "తైతిల",
+              "start": "Oct 31 12:00 AM",
+              "end": "Oct 31 10:04 AM",
+              "ordinal": 4
+            },
+            {
+              "name": "గరజ",
+              "start": "Oct 31 10:04 AM",
+              "end": "Oct 31 09:44 PM",
+              "ordinal": 5
+            },
+            {
+              "name": "వణిజ",
+              "start": "Oct 31 09:44 PM",
+              "end": "Nov 01 12:00 AM",
+              "ordinal": 6
+            }
+          ],
+          "event_labels": {
+            "name": "పేరు",
+            "start": "ప్రారంభం",
+            "end": "ముగింపు"
+          }
+        },
+        {
+          "label": "యోగాలు",
+          "type": "event_list",
+          "events": [
+            {
+              "name": "గండ",
+              "start": "Oct 31 12:00 AM",
+              "end": "Oct 31 09:14 AM",
+              "ordinal": 10
+            },
+            {
+              "name": "వృద్ధి",
+              "start": "Oct 31 09:14 AM",
+              "end": "Nov 01 12:00 AM",
+              "ordinal": 11
+            }
+          ],
+          "event_labels": {
+            "name": "పేరు",
+            "start": "ప్రారంభం",
+            "end": "ముగింపు"
+          }
+        }
+      ]
+    },
+    {
+      "title": "శుభ సమయాలు",
+      "items": [
+        {
+          "label": "అభిజిత్ ముహూర్తం",
+          "value": "11:28 AM - 12:16 PM"
+        },
+        {
+          "label": "అమృత కాలం",
+          "value": "09:27 PM - 10:52 PM"
+        },
+        {
+          "label": "బ్రహ్మ ముహూర్తం",
+          "value": "04:26 AM - 05:14 AM"
+        },
+        {
+          "label": "ప్రాతః సాంధ్య",
+          "value": "05:47 AM - 07:02 AM"
+        },
+        {
+          "label": "విజయ ముహూర్తం",
+          "value": "03:18 PM - 04:06 PM"
+        },
+        {
+          "label": "గోదూలి ముహూర్తం",
+          "value": "05:27 PM - 05:57 PM"
+        },
+        {
+          "label": "సాయంసాంధ్య",
+          "value": "05:42 PM - 06:57 PM"
+        },
+        {
+          "label": "నిశీత ముహూర్తం",
+          "value": "11:28 PM - 12:16 AM"
+        }
+      ]
+    },
+    {
+      "title": "అశుభ సమయాలు",
+      "items": [
+        {
+          "label": "రాహు కాలం",
+          "value": "10:24 AM - 11:52 AM"
+        },
+        {
+          "label": "యమగండం",
+          "value": "02:47 PM - 04:14 PM"
+        },
+        {
+          "label": "గులిక కాలం",
+          "value": "07:30 AM - 08:57 AM"
+        }
+      ]
+    },
+    {
+      "title": "హోరాలు",
+      "items": [
+        {
+          "label": "పగటి హోరాలు",
+          "value": [
+            "శుక్రుడు: 06:02 AM - 07:00 AM",
+            "బుధుడు: 07:00 AM - 07:59 AM",
+            "చంద్రుడు: 07:59 AM - 08:57 AM",
+            "శని: 08:57 AM - 09:55 AM",
+            "బృహస్పతి: 09:55 AM - 10:54 AM",
+            "కుజుడు: 10:54 AM - 11:52 AM",
+            "సూర్యుడు: 11:52 AM - 12:50 PM",
+            "శుక్రుడు: 12:50 PM - 01:49 PM",
+            "బుధుడు: 01:49 PM - 02:47 PM",
+            "చంద్రుడు: 02:47 PM - 03:45 PM",
+            "శని: 03:45 PM - 04:43 PM",
+            "బృహస్పతి: 04:43 PM - 05:42 PM"
+          ]
+        },
+        {
+          "label": "రాత్రి హోరాలు",
+          "value": [
+            "కుజుడు: 05:42 PM - 06:43 PM",
+            "సూర్యుడు: 06:43 PM - 07:45 PM",
+            "శుక్రుడు: 07:45 PM - 08:47 PM",
+            "బుధుడు: 08:47 PM - 09:49 PM",
+            "చంద్రుడు: 09:49 PM - 10:50 PM",
+            "శని: 10:50 PM - 11:52 PM",
+            "బృహస్పతి: 11:52 PM - 12:54 AM",
+            "కుజుడు: 12:54 AM - 01:55 AM",
+            "సూర్యుడు: 01:55 AM - 02:57 AM",
+            "శుక్రుడు: 02:57 AM - 03:59 AM",
+            "బుధుడు: 03:59 AM - 05:01 AM",
+            "చంద్రుడు: 05:01 AM - 06:02 AM"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "పండుగలు",
+      "items": [
+        {
+          "label": "పండుగలు",
+          "value": "ఈ రోజు ముఖ్యమైన పండుగలు లేవు"
+        }
+      ]
+    }
+  ],
+  "festivals": [
+    {
+      "id": 204,
+      "festival_name": "Pausa Amavasya",
+      "slug": "pausa-amavasya",
+      "type": "Hindu",
+      "importance": "Major",
+      "description": "New moon observed for ancestral rites.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Pausa",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "All India"
+      ],
+      "created_at": "2025-11-08T16:10:04.332513",
+      "updated_at": "2025-11-08T16:10:04.332513"
+    },
+    {
+      "id": 203,
+      "festival_name": "Pausa Purnima",
+      "slug": "pausa-purnima",
+      "type": "Hindu",
+      "importance": "Major",
+      "description": "Full moon day with river baths and rituals.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Pausa",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Kerala"
+      ],
+      "created_at": "2025-11-08T16:10:04.327485",
+      "updated_at": "2025-11-08T16:10:04.327485"
+    },
+    {
+      "id": 205,
+      "festival_name": "Somvati Amavasya",
+      "slug": "somvati-amavasya",
+      "type": "Hindu",
+      "importance": "Major",
+      "description": "New moon on Monday observed for special rituals.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Pausa",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Maharashtra"
+      ],
+      "created_at": "2025-11-08T16:10:04.336647",
+      "updated_at": "2025-11-08T16:10:04.336647"
+    },
+    {
+      "id": 219,
+      "festival_name": "Pausa Brahmotsavam 7",
+      "slug": "pausa-brahmotsavam-7",
+      "type": "Religious",
+      "importance": "Moderate",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Pausa",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "North India"
+      ],
+      "created_at": "2025-11-08T16:10:04.407949",
+      "updated_at": "2025-11-08T16:10:04.407949"
+    },
+    {
+      "id": 217,
+      "festival_name": "Pausa Kumbhabhishekam 5",
+      "slug": "pausa-kumbhabhishekam-5",
+      "type": "Religious",
+      "importance": "Moderate",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Pausa",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Odisha"
+      ],
+      "created_at": "2025-11-08T16:10:04.398940",
+      "updated_at": "2025-11-08T16:10:04.398940"
+    },
+    {
+      "id": 218,
+      "festival_name": "Pausa Kumbhabhishekam 6",
+      "slug": "pausa-kumbhabhishekam-6",
+      "type": "Religious",
+      "importance": "Moderate",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Pausa",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "West Bengal"
+      ],
+      "created_at": "2025-11-08T16:10:04.402916",
+      "updated_at": "2025-11-08T16:10:04.402916"
+    },
+    {
+      "id": 220,
+      "festival_name": "Pausa Kumbhabhishekam 8",
+      "slug": "pausa-kumbhabhishekam-8",
+      "type": "Religious",
+      "importance": "Moderate",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Pausa",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Tamil Nadu"
+      ],
+      "created_at": "2025-11-08T16:10:04.413403",
+      "updated_at": "2025-11-08T16:10:04.413403"
+    },
+    {
+      "id": 213,
+      "festival_name": "Pausa Local Utsav 1",
+      "slug": "pausa-local-utsav-1",
+      "type": "Religious",
+      "importance": "Moderate",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Pausa",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Odisha"
+      ],
+      "created_at": "2025-11-08T16:10:04.377966",
+      "updated_at": "2025-11-08T16:10:04.379002"
+    },
+    {
+      "id": 214,
+      "festival_name": "Pausa Mandala Utsav 2",
+      "slug": "pausa-mandala-utsav-2",
+      "type": "Religious",
+      "importance": "Moderate",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Pausa",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Maharashtra"
+      ],
+      "created_at": "2025-11-08T16:10:04.382973",
+      "updated_at": "2025-11-08T16:10:04.382973"
+    },
+    {
+      "id": 216,
+      "festival_name": "Pausa Rathotsavam 4",
+      "slug": "pausa-rathotsavam-4",
+      "type": "Religious",
+      "importance": "Moderate",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Pausa",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Andhra Pradesh"
+      ],
+      "created_at": "2025-11-08T16:10:04.393976",
+      "updated_at": "2025-11-08T16:10:04.393976"
+    },
+    {
+      "id": 222,
+      "festival_name": "Pausa Annual Utsav 10",
+      "slug": "pausa-annual-utsav-10",
+      "type": "Religious",
+      "importance": "Minor",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Pausa",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Andhra Pradesh"
+      ],
+      "created_at": "2025-11-08T16:10:04.421411",
+      "updated_at": "2025-11-08T16:10:04.421411"
+    },
+    {
+      "id": 215,
+      "festival_name": "Pausa Kumbhabhishekam 3",
+      "slug": "pausa-kumbhabhishekam-3",
+      "type": "Religious",
+      "importance": "Minor",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Pausa",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Maharashtra"
+      ],
+      "created_at": "2025-11-08T16:10:04.386978",
+      "updated_at": "2025-11-08T16:10:04.386978"
+    },
+    {
+      "id": 221,
+      "festival_name": "Pausa Rathotsavam 9",
+      "slug": "pausa-rathotsavam-9",
+      "type": "Religious",
+      "importance": "Minor",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Pausa",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "North India"
+      ],
+      "created_at": "2025-11-08T16:10:04.417410",
+      "updated_at": "2025-11-08T16:10:04.417410"
+    },
+    {
+      "id": 70,
+      "sequence_id": 71,
+      "date": "31 October",
+      "day_name": "National Unity Day (Vigilance Awareness Week starts)",
+      "slug": "national-unity-day-vigilance-awareness-week-starts-31-october",
+      "type_of": "National Observance",
+      "importance": "Moderate",
+      "description": "Celebrates unity; linked to Sardar Vallabhbhai Patel's birth anniversary.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "is_holiday": "observance_only",
+      "regions": [
+        "All India"
+      ],
+      "calendar_type": "gregorian",
+      "created_at": "2025-11-08T16:10:10.700093",
+      "updated_at": "2025-11-08T16:10:10.700093"
+    }
+  ]
+}

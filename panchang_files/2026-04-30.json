@@ -1,0 +1,580 @@
+{
+  "profile": {
+    "code": "te",
+    "language": "Telugu",
+    "script": "Telugu"
+  },
+  "date": "2026-04-30",
+  "sections": [
+    {
+      "title": "భారత జాతీయ క్యాలెండర్",
+      "items": [
+        {
+          "label": "సంవత్సరం",
+          "value": 1948
+        },
+        {
+          "label": "మాసం",
+          "value": "వైశాఖ"
+        },
+        {
+          "label": "తేది",
+          "value": 10
+        }
+      ]
+    },
+    {
+      "title": "చంద్ర మాస సమాచారం",
+      "items": [
+        {
+          "label": "అమాంత మాసం",
+          "value": "ఆషాఢం"
+        },
+        {
+          "label": "పౌర్ణిమాంత మాసం",
+          "value": "ఆషాఢం"
+        },
+        {
+          "label": "పక్షం",
+          "value": "శుక్ల పక్షం"
+        }
+      ]
+    },
+    {
+      "title": "సూర్య చంద్రోదయాలు",
+      "items": [
+        {
+          "label": "సూర్యోదయం",
+          "value": "05:48 AM"
+        },
+        {
+          "label": "సూర్యాస్తమయం",
+          "value": "06:23 PM"
+        },
+        {
+          "label": "చంద్రోదయం",
+          "value": "05:21 PM"
+        },
+        {
+          "label": "చంద్రాస్తమయం",
+          "value": "04:34 AM"
+        }
+      ]
+    },
+    {
+      "title": "మూల పంచాంగం",
+      "items": [
+        {
+          "label": "తిథులు",
+          "type": "event_list",
+          "events": [
+            {
+              "name": "చతుర్దశి",
+              "start": "Apr 30 12:00 AM",
+              "end": "Apr 30 09:13 PM",
+              "ordinal": 14
+            },
+            {
+              "name": "పౌర్ణమి",
+              "start": "Apr 30 09:13 PM",
+              "end": "May 01 12:00 AM",
+              "ordinal": 15
+            }
+          ],
+          "event_labels": {
+            "name": "పేరు",
+            "start": "ప్రారంభం",
+            "end": "ముగింపు"
+          }
+        },
+        {
+          "label": "నక్షత్రాలు",
+          "type": "event_list",
+          "events": [
+            {
+              "name": "హస్త",
+              "start": "Apr 30 12:00 AM",
+              "end": "Apr 30 01:59 AM",
+              "ordinal": 13
+            },
+            {
+              "name": "చిత్ర",
+              "start": "Apr 30 01:59 AM",
+              "end": "May 01 12:00 AM",
+              "ordinal": 14
+            }
+          ],
+          "event_labels": {
+            "name": "పేరు",
+            "start": "ప్రారంభం",
+            "end": "ముగింపు"
+          }
+        },
+        {
+          "label": "కరణాలు",
+          "type": "event_list",
+          "events": [
+            {
+              "name": "వణిజ",
+              "start": "Apr 30 12:00 AM",
+              "end": "Apr 30 08:30 AM",
+              "ordinal": 6
+            },
+            {
+              "name": "విష్టి",
+              "start": "Apr 30 08:30 AM",
+              "end": "Apr 30 09:13 PM",
+              "ordinal": 7
+            },
+            {
+              "name": "బవ",
+              "start": "Apr 30 09:13 PM",
+              "end": "May 01 12:00 AM",
+              "ordinal": 1
+            }
+          ],
+          "event_labels": {
+            "name": "పేరు",
+            "start": "ప్రారంభం",
+            "end": "ముగింపు"
+          }
+        },
+        {
+          "label": "యోగాలు",
+          "type": "event_list",
+          "events": [
+            {
+              "name": "హర్షణ",
+              "start": "Apr 30 12:00 AM",
+              "end": "Apr 30 12:01 AM",
+              "ordinal": 14
+            },
+            {
+              "name": "వజ్ర",
+              "start": "Apr 30 12:01 AM",
+              "end": "May 01 12:00 AM",
+              "ordinal": 15
+            }
+          ],
+          "event_labels": {
+            "name": "పేరు",
+            "start": "ప్రారంభం",
+            "end": "ముగింపు"
+          }
+        }
+      ]
+    },
+    {
+      "title": "శుభ సమయాలు",
+      "items": [
+        {
+          "label": "అభిజిత్ ముహూర్తం",
+          "value": "11:42 AM - 12:30 PM"
+        },
+        {
+          "label": "అమృత కాలం",
+          "value": "10:08 PM - 11:33 PM"
+        },
+        {
+          "label": "బ్రహ్మ ముహూర్తం",
+          "value": "04:12 AM - 05:00 AM"
+        },
+        {
+          "label": "ప్రాతః సాంధ్య",
+          "value": "05:33 AM - 06:48 AM"
+        },
+        {
+          "label": "విజయ ముహూర్తం",
+          "value": "03:59 PM - 04:47 PM"
+        },
+        {
+          "label": "గోదూలి ముహూర్తం",
+          "value": "06:08 PM - 06:38 PM"
+        },
+        {
+          "label": "సాయంసాంధ్య",
+          "value": "06:23 PM - 07:38 PM"
+        },
+        {
+          "label": "నిశీత ముహూర్తం",
+          "value": "11:42 PM - 12:30 AM"
+        }
+      ]
+    },
+    {
+      "title": "అశుభ సమయాలు",
+      "items": [
+        {
+          "label": "రాహు కాలం",
+          "value": "01:40 PM - 03:14 PM"
+        },
+        {
+          "label": "యమగండం",
+          "value": "05:48 AM - 07:23 AM"
+        },
+        {
+          "label": "గులిక కాలం",
+          "value": "08:57 AM - 10:31 AM"
+        }
+      ]
+    },
+    {
+      "title": "హోరాలు",
+      "items": [
+        {
+          "label": "పగటి హోరాలు",
+          "value": [
+            "బృహస్పతి: 05:48 AM - 06:51 AM",
+            "కుజుడు: 06:51 AM - 07:54 AM",
+            "సూర్యుడు: 07:54 AM - 08:57 AM",
+            "శుక్రుడు: 08:57 AM - 10:00 AM",
+            "బుధుడు: 10:00 AM - 11:03 AM",
+            "చంద్రుడు: 11:03 AM - 12:06 PM",
+            "శని: 12:06 PM - 01:09 PM",
+            "బృహస్పతి: 01:09 PM - 02:12 PM",
+            "కుజుడు: 02:12 PM - 03:14 PM",
+            "సూర్యుడు: 03:14 PM - 04:17 PM",
+            "శుక్రుడు: 04:17 PM - 05:20 PM",
+            "బుధుడు: 05:20 PM - 06:23 PM"
+          ]
+        },
+        {
+          "label": "రాత్రి హోరాలు",
+          "value": [
+            "చంద్రుడు: 06:23 PM - 07:20 PM",
+            "శని: 07:20 PM - 08:17 PM",
+            "బృహస్పతి: 08:17 PM - 09:14 PM",
+            "కుజుడు: 09:14 PM - 10:11 PM",
+            "సూర్యుడు: 10:11 PM - 11:08 PM",
+            "శుక్రుడు: 11:08 PM - 12:06 AM",
+            "బుధుడు: 12:06 AM - 01:03 AM",
+            "చంద్రుడు: 01:03 AM - 02:00 AM",
+            "శని: 02:00 AM - 02:57 AM",
+            "బృహస్పతి: 02:57 AM - 03:54 AM",
+            "కుజుడు: 03:54 AM - 04:51 AM",
+            "సూర్యుడు: 04:51 AM - 05:48 AM"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "పండుగలు",
+      "items": [
+        {
+          "label": "పండుగలు",
+          "value": "ఈ రోజు ముఖ్యమైన పండుగలు లేవు"
+        }
+      ]
+    }
+  ],
+  "festivals": [
+    {
+      "id": 92,
+      "festival_name": "Bonalu",
+      "slug": "bonalu",
+      "type": "Cultural",
+      "importance": "Major",
+      "description": "Offering to Goddess Mahankali in Telangana.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Asadha",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Telangana"
+      ],
+      "created_at": "2025-11-08T16:10:03.765300",
+      "updated_at": "2025-11-08T16:10:03.765300"
+    },
+    {
+      "id": 71,
+      "festival_name": "Devshayani Ekadashi",
+      "slug": "devshayani-ekadashi",
+      "type": "Hindu",
+      "importance": "Major",
+      "description": "Marks the start of Chaturmas and Vishnu’s rest period.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Asadha",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Odisha"
+      ],
+      "created_at": "2025-11-08T16:10:03.665841",
+      "updated_at": "2025-11-08T16:10:03.665841"
+    },
+    {
+      "id": 70,
+      "festival_name": "Guru Purnima",
+      "slug": "guru-purnima",
+      "type": "Hindu",
+      "importance": "Major",
+      "description": "Day to honor spiritual teachers and express gratitude.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Ashadha",
+      "paksha": "Shukla",
+      "tithi": "Purnima",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "lunar",
+      "regions": [
+        "Maharashtra"
+      ],
+      "created_at": "2025-11-08T16:10:03.660867",
+      "updated_at": "2025-11-08T16:10:03.660867"
+    },
+    {
+      "id": 86,
+      "festival_name": "Asadha Annual Utsav 5",
+      "slug": "asadha-annual-utsav-5",
+      "type": "Religious",
+      "importance": "Moderate",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Asadha",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Maharashtra"
+      ],
+      "created_at": "2025-11-08T16:10:03.738565",
+      "updated_at": "2025-11-08T16:10:03.738565"
+    },
+    {
+      "id": 83,
+      "festival_name": "Asadha Brahmotsavam 2",
+      "slug": "asadha-brahmotsavam-2",
+      "type": "Religious",
+      "importance": "Moderate",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Asadha",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "North India"
+      ],
+      "created_at": "2025-11-08T16:10:03.723827",
+      "updated_at": "2025-11-08T16:10:03.723827"
+    },
+    {
+      "id": 85,
+      "festival_name": "Asadha Temple Utsav 4",
+      "slug": "asadha-temple-utsav-4",
+      "type": "Religious",
+      "importance": "Moderate",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Asadha",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Telangana"
+      ],
+      "created_at": "2025-11-08T16:10:03.732825",
+      "updated_at": "2025-11-08T16:10:03.732825"
+    },
+    {
+      "id": 84,
+      "festival_name": "Asadha Kalyanam 3",
+      "slug": "asadha-kalyanam-3",
+      "type": "Religious",
+      "importance": "Minor",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Asadha",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Kerala"
+      ],
+      "created_at": "2025-11-08T16:10:03.728851",
+      "updated_at": "2025-11-08T16:10:03.728851"
+    },
+    {
+      "id": 87,
+      "festival_name": "Asadha Kalyanam 6",
+      "slug": "asadha-kalyanam-6",
+      "type": "Religious",
+      "importance": "Minor",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Asadha",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Karnataka"
+      ],
+      "created_at": "2025-11-08T16:10:03.743582",
+      "updated_at": "2025-11-08T16:10:03.743582"
+    },
+    {
+      "id": 89,
+      "festival_name": "Asadha Kalyanam 8",
+      "slug": "asadha-kalyanam-8",
+      "type": "Religious",
+      "importance": "Minor",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Asadha",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Kerala"
+      ],
+      "created_at": "2025-11-08T16:10:03.751557",
+      "updated_at": "2025-11-08T16:10:03.751557"
+    },
+    {
+      "id": 82,
+      "festival_name": "Asadha Local Utsav 1",
+      "slug": "asadha-local-utsav-1",
+      "type": "Religious",
+      "importance": "Minor",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Asadha",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "North India"
+      ],
+      "created_at": "2025-11-08T16:10:03.718265",
+      "updated_at": "2025-11-08T16:10:03.718265"
+    },
+    {
+      "id": 76,
+      "festival_name": "Asadha Purnima",
+      "slug": "asadha-purnima",
+      "type": "Hindu",
+      "importance": "Minor",
+      "description": "Full moon day in Asadha",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Asadha",
+      "paksha": "Shukla",
+      "tithi": "Purnima",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "lunar",
+      "regions": [
+        "All India"
+      ],
+      "created_at": "2025-11-08T16:10:03.689517",
+      "updated_at": "2025-11-08T16:10:03.689517"
+    },
+    {
+      "id": 91,
+      "festival_name": "Asadha Rathotsavam 10",
+      "slug": "asadha-rathotsavam-10",
+      "type": "Religious",
+      "importance": "Minor",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Asadha",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "All India"
+      ],
+      "created_at": "2025-11-08T16:10:03.761299",
+      "updated_at": "2025-11-08T16:10:03.761299"
+    },
+    {
+      "id": 90,
+      "festival_name": "Asadha Rathotsavam 9",
+      "slug": "asadha-rathotsavam-9",
+      "type": "Religious",
+      "importance": "Minor",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Asadha",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Telangana"
+      ],
+      "created_at": "2025-11-08T16:10:03.757558",
+      "updated_at": "2025-11-08T16:10:03.757558"
+    },
+    {
+      "id": 88,
+      "festival_name": "Asadha Temple Utsav 7",
+      "slug": "asadha-temple-utsav-7",
+      "type": "Religious",
+      "importance": "Minor",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Asadha",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Andhra Pradesh"
+      ],
+      "created_at": "2025-11-08T16:10:03.747557",
+      "updated_at": "2025-11-08T16:10:03.747557"
+    }
+  ]
+}

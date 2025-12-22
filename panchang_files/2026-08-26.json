@@ -1,0 +1,536 @@
+{
+  "profile": {
+    "code": "te",
+    "language": "Telugu",
+    "script": "Telugu"
+  },
+  "date": "2026-08-26",
+  "sections": [
+    {
+      "title": "భారత జాతీయ క్యాలెండర్",
+      "items": [
+        {
+          "label": "సంవత్సరం",
+          "value": 1948
+        },
+        {
+          "label": "మాసం",
+          "value": "భాద్ర"
+        },
+        {
+          "label": "తేది",
+          "value": 4
+        }
+      ]
+    },
+    {
+      "title": "చంద్ర మాస సమాచారం",
+      "items": [
+        {
+          "label": "అమాంత మాసం",
+          "value": "కార్తీకం"
+        },
+        {
+          "label": "పౌర్ణిమాంత మాసం",
+          "value": "కార్తీకం"
+        },
+        {
+          "label": "పక్షం",
+          "value": "శుక్ల పక్షం"
+        }
+      ]
+    },
+    {
+      "title": "సూర్య చంద్రోదయాలు",
+      "items": [
+        {
+          "label": "సూర్యోదయం",
+          "value": "05:57 AM"
+        },
+        {
+          "label": "సూర్యాస్తమయం",
+          "value": "06:23 PM"
+        },
+        {
+          "label": "చంద్రోదయం",
+          "value": "05:14 PM"
+        },
+        {
+          "label": "చంద్రాస్తమయం",
+          "value": "04:11 AM"
+        }
+      ]
+    },
+    {
+      "title": "మూల పంచాంగం",
+      "items": [
+        {
+          "label": "తిథులు",
+          "type": "event_list",
+          "events": [
+            {
+              "name": "త్రయోదశి",
+              "start": "Aug 26 12:00 AM",
+              "end": "Aug 26 07:59 AM",
+              "ordinal": 13
+            },
+            {
+              "name": "చతుర్దశి",
+              "start": "Aug 26 07:59 AM",
+              "end": "Aug 27 12:00 AM",
+              "ordinal": 14
+            }
+          ],
+          "event_labels": {
+            "name": "పేరు",
+            "start": "ప్రారంభం",
+            "end": "ముగింపు"
+          }
+        },
+        {
+          "label": "నక్షత్రాలు",
+          "type": "event_list",
+          "events": [
+            {
+              "name": "ఉత్తర ఆశాఢ",
+              "start": "Aug 26 12:00 AM",
+              "end": "Aug 26 12:35 AM",
+              "ordinal": 21
+            },
+            {
+              "name": "శ్రవణ",
+              "start": "Aug 26 12:35 AM",
+              "end": "Aug 27 12:00 AM",
+              "ordinal": 22
+            }
+          ],
+          "event_labels": {
+            "name": "పేరు",
+            "start": "ప్రారంభం",
+            "end": "ముగింపు"
+          }
+        },
+        {
+          "label": "కరణాలు",
+          "type": "event_list",
+          "events": [
+            {
+              "name": "గరజ",
+              "start": "Aug 26 12:00 AM",
+              "end": "Aug 26 07:59 AM",
+              "ordinal": 5
+            },
+            {
+              "name": "వణిజ",
+              "start": "Aug 26 07:59 AM",
+              "end": "Aug 26 08:38 PM",
+              "ordinal": 6
+            },
+            {
+              "name": "విష్టి",
+              "start": "Aug 26 08:38 PM",
+              "end": "Aug 27 12:00 AM",
+              "ordinal": 7
+            }
+          ],
+          "event_labels": {
+            "name": "పేరు",
+            "start": "ప్రారంభం",
+            "end": "ముగింపు"
+          }
+        },
+        {
+          "label": "యోగాలు",
+          "type": "event_list",
+          "events": [
+            {
+              "name": "సౌభాగ్య",
+              "start": "Aug 26 12:00 AM",
+              "end": "Aug 26 11:11 AM",
+              "ordinal": 4
+            },
+            {
+              "name": "శోభన",
+              "start": "Aug 26 11:11 AM",
+              "end": "Aug 27 12:00 AM",
+              "ordinal": 5
+            }
+          ],
+          "event_labels": {
+            "name": "పేరు",
+            "start": "ప్రారంభం",
+            "end": "ముగింపు"
+          }
+        }
+      ]
+    },
+    {
+      "title": "శుభ సమయాలు",
+      "items": [
+        {
+          "label": "అభిజిత్ ముహూర్తం",
+          "value": "11:46 AM - 12:34 PM"
+        },
+        {
+          "label": "అమృత కాలం",
+          "value": "10:08 PM - 11:33 PM"
+        },
+        {
+          "label": "బ్రహ్మ ముహూర్తం",
+          "value": "04:21 AM - 05:09 AM"
+        },
+        {
+          "label": "ప్రాతః సాంధ్య",
+          "value": "05:42 AM - 06:57 AM"
+        },
+        {
+          "label": "విజయ ముహూర్తం",
+          "value": "03:59 PM - 04:47 PM"
+        },
+        {
+          "label": "గోదూలి ముహూర్తం",
+          "value": "06:08 PM - 06:38 PM"
+        },
+        {
+          "label": "సాయంసాంధ్య",
+          "value": "06:23 PM - 07:38 PM"
+        },
+        {
+          "label": "నిశీత ముహూర్తం",
+          "value": "11:46 PM - 12:34 AM"
+        }
+      ]
+    },
+    {
+      "title": "అశుభ సమయాలు",
+      "items": [
+        {
+          "label": "రాహు కాలం",
+          "value": "12:10 PM - 01:43 PM"
+        },
+        {
+          "label": "యమగండం",
+          "value": "07:30 AM - 09:04 AM"
+        },
+        {
+          "label": "గులిక కాలం",
+          "value": "10:37 AM - 12:10 PM"
+        }
+      ]
+    },
+    {
+      "title": "హోరాలు",
+      "items": [
+        {
+          "label": "పగటి హోరాలు",
+          "value": [
+            "బుధుడు: 05:57 AM - 06:59 AM",
+            "చంద్రుడు: 06:59 AM - 08:02 AM",
+            "శని: 08:02 AM - 09:04 AM",
+            "బృహస్పతి: 09:04 AM - 10:06 AM",
+            "కుజుడు: 10:06 AM - 11:08 AM",
+            "సూర్యుడు: 11:08 AM - 12:10 PM",
+            "శుక్రుడు: 12:10 PM - 01:12 PM",
+            "బుధుడు: 01:12 PM - 02:15 PM",
+            "చంద్రుడు: 02:15 PM - 03:17 PM",
+            "శని: 03:17 PM - 04:19 PM",
+            "బృహస్పతి: 04:19 PM - 05:21 PM",
+            "కుజుడు: 05:21 PM - 06:23 PM"
+          ]
+        },
+        {
+          "label": "రాత్రి హోరాలు",
+          "value": [
+            "సూర్యుడు: 06:23 PM - 07:21 PM",
+            "శుక్రుడు: 07:21 PM - 08:19 PM",
+            "బుధుడు: 08:19 PM - 09:17 PM",
+            "చంద్రుడు: 09:17 PM - 10:15 PM",
+            "శని: 10:15 PM - 11:12 PM",
+            "బృహస్పతి: 11:12 PM - 12:10 AM",
+            "కుజుడు: 12:10 AM - 01:08 AM",
+            "సూర్యుడు: 01:08 AM - 02:06 AM",
+            "శుక్రుడు: 02:06 AM - 03:04 AM",
+            "బుధుడు: 03:04 AM - 04:02 AM",
+            "చంద్రుడు: 04:02 AM - 04:59 AM",
+            "శని: 04:59 AM - 05:57 AM"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "పండుగలు",
+      "items": [
+        {
+          "label": "పండుగలు",
+          "value": "ఈ రోజు ముఖ్యమైన పండుగలు లేవు"
+        }
+      ]
+    }
+  ],
+  "festivals": [
+    {
+      "id": 161,
+      "festival_name": "Kartika Purnima",
+      "slug": "kartika-purnima",
+      "type": "Hindu",
+      "importance": "Major",
+      "description": "Full moon observed with lights and rituals in many regions.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Kartika",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Maharashtra"
+      ],
+      "created_at": "2025-11-08T16:10:04.115144",
+      "updated_at": "2025-11-08T16:10:04.115144"
+    },
+    {
+      "id": 173,
+      "festival_name": "Kartika Annual Utsav 4",
+      "slug": "kartika-annual-utsav-4",
+      "type": "Religious",
+      "importance": "Moderate",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Kartika",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Andhra Pradesh"
+      ],
+      "created_at": "2025-11-08T16:10:04.172481",
+      "updated_at": "2025-11-08T16:10:04.172481"
+    },
+    {
+      "id": 174,
+      "festival_name": "Kartika Annual Utsav 5",
+      "slug": "kartika-annual-utsav-5",
+      "type": "Religious",
+      "importance": "Moderate",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Kartika",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Andhra Pradesh"
+      ],
+      "created_at": "2025-11-08T16:10:04.177478",
+      "updated_at": "2025-11-08T16:10:04.177478"
+    },
+    {
+      "id": 176,
+      "festival_name": "Kartika Brahmotsavam 7",
+      "slug": "kartika-brahmotsavam-7",
+      "type": "Religious",
+      "importance": "Moderate",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Kartika",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Karnataka"
+      ],
+      "created_at": "2025-11-08T16:10:04.186479",
+      "updated_at": "2025-11-08T16:10:04.186479"
+    },
+    {
+      "id": 175,
+      "festival_name": "Kartika Kumbhabhishekam 6",
+      "slug": "kartika-kumbhabhishekam-6",
+      "type": "Religious",
+      "importance": "Moderate",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Kartika",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Odisha"
+      ],
+      "created_at": "2025-11-08T16:10:04.182504",
+      "updated_at": "2025-11-08T16:10:04.182504"
+    },
+    {
+      "id": 171,
+      "festival_name": "Kartika Annual Utsav 2",
+      "slug": "kartika-annual-utsav-2",
+      "type": "Religious",
+      "importance": "Minor",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Kartika",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "All India"
+      ],
+      "created_at": "2025-11-08T16:10:04.164140",
+      "updated_at": "2025-11-08T16:10:04.164140"
+    },
+    {
+      "id": 170,
+      "festival_name": "Kartika Kalyanam 1",
+      "slug": "kartika-kalyanam-1",
+      "type": "Religious",
+      "importance": "Minor",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Kartika",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Karnataka"
+      ],
+      "created_at": "2025-11-08T16:10:04.159141",
+      "updated_at": "2025-11-08T16:10:04.159141"
+    },
+    {
+      "id": 172,
+      "festival_name": "Kartika Kalyanam 3",
+      "slug": "kartika-kalyanam-3",
+      "type": "Religious",
+      "importance": "Minor",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Kartika",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Andhra Pradesh"
+      ],
+      "created_at": "2025-11-08T16:10:04.168214",
+      "updated_at": "2025-11-08T16:10:04.168214"
+    },
+    {
+      "id": 179,
+      "festival_name": "Kartika Mandala Utsav 10",
+      "slug": "kartika-mandala-utsav-10",
+      "type": "Religious",
+      "importance": "Minor",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Kartika",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Gujarat"
+      ],
+      "created_at": "2025-11-08T16:10:04.202483",
+      "updated_at": "2025-11-08T16:10:04.202483"
+    },
+    {
+      "id": 177,
+      "festival_name": "Kartika Mandala Utsav 8",
+      "slug": "kartika-mandala-utsav-8",
+      "type": "Religious",
+      "importance": "Minor",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Kartika",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "Karnataka"
+      ],
+      "created_at": "2025-11-08T16:10:04.193483",
+      "updated_at": "2025-11-08T16:10:04.193483"
+    },
+    {
+      "id": 178,
+      "festival_name": "Kartika Mandala Utsav 9",
+      "slug": "kartika-mandala-utsav-9",
+      "type": "Religious",
+      "importance": "Minor",
+      "description": "Local temple festival observed annually.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Kartika",
+      "paksha": "",
+      "tithi": "",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "unspecified",
+      "regions": [
+        "North India"
+      ],
+      "created_at": "2025-11-08T16:10:04.197479",
+      "updated_at": "2025-11-08T16:10:04.197479"
+    },
+    {
+      "id": 168,
+      "festival_name": "Kartika Shukla Pradosha",
+      "slug": "kartika-shukla-pradosha",
+      "type": "Hindu",
+      "importance": "Minor",
+      "description": "Evening vrata for Shiva on Shukla Trayodashi.",
+      "content": null,
+      "image": null,
+      "image_url": null,
+      "month": "Kartika",
+      "paksha": "Shukla",
+      "tithi": "Trayodashi",
+      "nakshatra": "",
+      "solar_event": "",
+      "calculation_type": "lunar",
+      "regions": [
+        "All India"
+      ],
+      "created_at": "2025-11-08T16:10:04.148162",
+      "updated_at": "2025-11-08T16:10:04.148162"
+    }
+  ]
+}
