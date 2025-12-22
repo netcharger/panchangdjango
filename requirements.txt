@@ -22,9 +22,9 @@ Pillow>=10.0.0
 pandas>=2.0.0
 
 # Panchang calculation
-pyswisseph>=2.10.3.2
-astral>=3.2
-pyephem>=4.1.5
+#yswisseph>=2.10.3.2
+#stral>=3.2
+#yephem>=4.1.5
 
 # Background tasks
 celery
