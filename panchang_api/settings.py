@@ -4,6 +4,9 @@ Django settings for panchang_api project.
 
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+load_dotenv()
+
 
 # Use PyMySQL instead of mysqlclient (easier on Windows)
 try:
@@ -16,8 +19,10 @@ except ImportError:
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-change-this-in-production-12345'
+SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
 
+
+print(SECRET_KEY)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
