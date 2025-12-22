@@ -85,34 +85,14 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'panchang_api.wsgi.application'
 
-# Database
-# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-# Default database configuration - can be overridden with environment variables or local_settings.py
-
-# Try to load local_settings.py for database configuration
-try:
-    from local_settings import DATABASE_CONFIG
-    DB_NAME = DATABASE_CONFIG.get('NAME', 'panchang_db')
-    DB_USER = DATABASE_CONFIG.get('USER', 'root')
-    DB_PASSWORD = DATABASE_CONFIG.get('PASSWORD', '')
-    DB_HOST = DATABASE_CONFIG.get('HOST', 'localhost')
-    DB_PORT = DATABASE_CONFIG.get('PORT', '3306')
-except ImportError:
-    # Use environment variables or defaults
-    DB_NAME = os.environ.get('DB_NAME', 'panchang_db')
-    DB_USER = os.environ.get('DB_USER', 'root')
-    DB_PASSWORD = os.environ.get('DB_PASSWORD', '')
-    DB_HOST = os.environ.get('DB_HOST', 'localhost')
-    DB_PORT = os.environ.get('DB_PORT', '3306')
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': DB_NAME,
-        'USER': DB_USER,
-        'PASSWORD': DB_PASSWORD,
-        'HOST': DB_HOST,
-        'PORT': DB_PORT,
+        'NAME': os.environ.get('MYSQL_DATABASE') or os.environ.get('DB_NAME'),
+        'USER': os.environ.get('MYSQL_USER') or os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('MYSQL_PASSWORD') or os.environ.get('DB_PASSWORD'),
+        'HOST': os.environ.get('MYSQL_HOST') or os.environ.get('DB_HOST', 'localhost'),
+        'PORT': os.environ.get('MYSQL_PORT') or os.environ.get('DB_PORT', '3306'),
         'OPTIONS': {
             'charset': 'utf8mb4',
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
@@ -120,27 +100,6 @@ DATABASES = {
     }
 }
 
-# Configuration Options:
-# 1. Create local_settings.py (copy from local_settings.example.py) and set DATABASE_CONFIG
-# 2. Set environment variables:
-#    Windows PowerShell:
-#      $env:DB_NAME="panchang_db"
-#      $env:DB_USER="root"
-#      $env:DB_PASSWORD="your_password"
-#      $env:DB_HOST="localhost"
-#      $env:DB_PORT="3306"
-#    Linux/Mac:
-#      export DB_NAME=panchang_db
-#      export DB_USER=root
-#      export DB_PASSWORD=your_password
-#      export DB_HOST=localhost
-#      export DB_PORT=3306
-# 3. Default values (if nothing is set):
-#    NAME: panchang_db
-#    USER: root
-#    PASSWORD: (empty)
-#    HOST: localhost
-#    PORT: 3306
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
