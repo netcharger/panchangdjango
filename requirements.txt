@@ -14,6 +14,8 @@ django-admin-sortable2
 django-debug-toolbar
 django-silk
 
+cryptography
+
 # Utilities
 python-dotenv
 pytz>=2023.3
