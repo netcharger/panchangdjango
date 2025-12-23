@@ -85,21 +85,30 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'panchang_api.wsgi.application'
 
+
+
+import os
+from urllib.parse import urlparse
+
+db_url = os.environ.get("DATABASE_URL")
+if not db_url:
+    raise RuntimeError("DATABASE_URL is not set")
+
+u = urlparse(db_url)
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get('MYSQL_DATABASE') or os.environ.get('DB_NAME'),
-        'USER': os.environ.get('MYSQL_USER') or os.environ.get('DB_USER'),
-        'PASSWORD': os.environ.get('MYSQL_PASSWORD') or os.environ.get('DB_PASSWORD'),
-        'HOST': os.environ.get('MYSQL_HOST') or os.environ.get('DB_HOST', 'localhost'),
-        'PORT': os.environ.get('MYSQL_PORT') or os.environ.get('DB_PORT', '3306'),
-        'OPTIONS': {
-            'charset': 'utf8mb4',
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+    "default": {
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": u.path.lstrip("/"),
+        "USER": u.username,
+        "PASSWORD": u.password,
+        "HOST": u.hostname,
+        "PORT": u.port or 3306,
+        "OPTIONS": {
+            "charset": "utf8mb4",
         },
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators

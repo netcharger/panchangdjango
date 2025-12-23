@@ -3,13 +3,15 @@ set -e
 
 echo "Waiting for MySQL..."
 
-python - <<EOF
-import socket, time, os
+python - <<'EOF'
+import os, time, socket
+from urllib.parse import urlparse
 
-host = os.environ.get("MYSQL_HOST")
-port = int(os.environ.get("MYSQL_PORT", 3306))
+u = urlparse(os.environ["DATABASE_URL"])
+host = u.hostname
+port = u.port or 3306
 
-print(f"Using MySQL host: {host}:{port}")
+print(f"Using MySQL at {host}:{port}")
 
 while True:
     try:
@@ -21,8 +23,5 @@ while True:
         time.sleep(2)
 EOF
 
-echo "MySQL is ready. Running migrations..."
 python manage.py migrate
-
-echo "Starting Gunicorn..."
 exec gunicorn panchang_api.wsgi:application --bind 0.0.0.0:8000
