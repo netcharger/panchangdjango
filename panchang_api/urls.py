@@ -7,7 +7,6 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('silk/', include('silk.urls')),
     path('admin/', admin.site.urls),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('api/', include('panchang.urls')),
@@ -17,9 +16,16 @@ urlpatterns = [
     path('api/wallpapers/', include('wallpaper_manager.urls')),
 ]
 
+# Add debugging tool URLs only on localhost
+if getattr(settings, 'IS_LOCALHOST', False):
+    urlpatterns.insert(0, path('silk/', include('silk.urls')))
+
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.PANCHANG_FILES_URL, document_root=settings.PANCHANG_FILES_ROOT)
-    urlpatterns += [path('__debug__/', include('debug_toolbar.urls'))]
+    
+    # Debug Toolbar URLs (only on localhost)
+    if getattr(settings, 'IS_LOCALHOST', False):
+        urlpatterns += [path('__debug__/', include('debug_toolbar.urls'))]
 

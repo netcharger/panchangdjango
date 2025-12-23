@@ -4,31 +4,44 @@ Django settings for panchang_api project.
 
 from pathlib import Path
 import os
+from urllib.parse import urlparse
 from dotenv import load_dotenv
-load_dotenv()
-
 
 import pymysql
+
+load_dotenv()
 pymysql.install_as_MySQLdb()
-
-
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
-
-print(SECRET_KEY)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = ["*", "192.168.1.2"]
 
-# Application definition
+# Check if running on localhost
+# Option 1: Check environment variable (set IS_LOCALHOST=true in .env for localhost)
+IS_LOCALHOST = os.environ.get("IS_LOCALHOST", "").lower() in ("true", "1", "yes")
+
+# Option 2: Auto-detect localhost based on hostname or if DEBUG is True
+# (You can also manually set IS_LOCALHOST=true in your .env file for more control)
+if not IS_LOCALHOST:
+    try:
+        import socket
+        hostname = socket.gethostname()
+        localhost_indicators = ['localhost', '127.0.0.1', 'local', 'DESKTOP', 'LAPTOP']
+        # Check if hostname contains localhost indicators or if it's a typical dev machine name
+        IS_LOCALHOST = any(indicator.lower() in hostname.lower() for indicator in localhost_indicators)
+    except Exception:
+        # If detection fails, default to False (safer for production)
+        IS_LOCALHOST = False
+
+# Base installed apps
 INSTALLED_APPS = [
-    'silk',
     'adminsortable2',
     'taggit',
     'corsheaders',
@@ -45,18 +58,22 @@ INSTALLED_APPS = [
     'panchang',
     'posts',
     # 'audio_manager',
-    'debug_toolbar',
     'audio_manager',
     'mobileapp_settings',
     'wallpaper_manager',
     'chanting',
 ]
 
+# Add debugging tools only on localhost
+if IS_LOCALHOST:
+    INSTALLED_APPS.insert(0, 'silk')
+    INSTALLED_APPS.append('debug_toolbar')
+
+# Base middleware
 MIDDLEWARE = [
-    'silk.middleware.SilkyMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -64,6 +81,11 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+# Add debugging middleware only on localhost
+if IS_LOCALHOST:
+    MIDDLEWARE.append('debug_toolbar.middleware.DebugToolbarMiddleware')
+    MIDDLEWARE.append('silk.middleware.SilkyMiddleware')
 
 ROOT_URLCONF = 'panchang_api.urls'
 
@@ -85,11 +107,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'panchang_api.wsgi.application'
 
-
-
-import os
-from urllib.parse import urlparse
-
+# Database configuration
 db_url = os.environ.get("DATABASE_URL")
 if not db_url:
     raise RuntimeError("DATABASE_URL is not set")
@@ -148,14 +166,19 @@ PANCHANG_FILES_URL = '/panchang_files/'
 PANCHANG_FILES_ROOT = os.path.join(BASE_DIR, 'panchang_files')
 
 # Autoreloader settings to mitigate WinError 123
-import os
 os.environ.setdefault('DJANGO_AUTORELOAD_MAX_RETRIES', '10')
 os.environ.setdefault('DJANGO_AUTORELOAD_RETRY_DELAY', '0.1')
 
-# Django Debug Toolbar configuration
-INTERNAL_IPS = [
-    "127.0.0.1",
-]
+# Django Debug Toolbar configuration (only on localhost)
+if IS_LOCALHOST:
+    INTERNAL_IPS = [
+        "127.0.0.1",
+        "localhost",
+    ]
+    # Additional configuration for Debug Toolbar
+    DEBUG_TOOLBAR_CONFIG = {
+        'SHOW_TOOLBAR_CALLBACK': lambda request: IS_LOCALHOST,
+    }
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -219,7 +242,7 @@ CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = TIME_ZONE
 CELERY_TASK_ALWAYS_EAGER = DEBUG  # Run tasks synchronously in DEBUG mode
-CELERY_TASK_EAGER_PROPAGATES = DEBUG # Propagate exceptions in DEBUG mode
+CELERY_TASK_EAGER_PROPAGATES = DEBUG  # Propagate exceptions in DEBUG mode
 
 CORS_ALLOW_ALL_ORIGINS = True
 
@@ -231,12 +254,8 @@ IMAGE_SIZES = {
     'large': 800,   # 800px width
     # Add more sizes below as needed:
     # 'xlarge': 1200,  # 1200px width
-    # 'xxlarge': 1600, # 1600px width
-
+    # 'xxlarge': 1600,  # 1600px width
 }
 
-#
-
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "panchang_files"),  # Add this line
-]
+# WhiteNoise static files storage
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
