@@ -1,8 +1,79 @@
 # Generated manually to add new fields to existing tables
 
-from django.db import migrations, models
+git afrom django.db import migrations, models, connection
 import django.db.models.deletion
 import panchang.utils
+
+
+
+
+
+def check_column_exists(table_name, column_name):
+    """Check if a column exists in a table"""
+    with connection.cursor() as cursor:
+        cursor.execute("""
+            SELECT COUNT(*)
+            FROM information_schema.COLUMNS
+            WHERE TABLE_SCHEMA = DATABASE()
+            AND TABLE_NAME = %s
+            AND COLUMN_NAME = %s
+        """, [table_name, column_name])
+        return cursor.fetchone()[0] > 0
+
+
+def add_field_if_not_exists(apps, schema_editor):
+    """Add fields only if they don't already exist"""
+    db_alias = schema_editor.connection.alias
+
+    # Check and add Festival fields
+    if not check_column_exists('festivals', 'image_thumb'):
+        with connection.cursor() as cursor:
+            cursor.execute("""
+                ALTER TABLE festivals
+                ADD COLUMN image_thumb VARCHAR(500) NULL
+            """)
+
+    if not check_column_exists('festivals', 'image_medium'):
+        with connection.cursor() as cursor:
+            cursor.execute("""
+                ALTER TABLE festivals
+                ADD COLUMN image_medium VARCHAR(500) NULL
+            """)
+
+    if not check_column_exists('festivals', 'image_large'):
+        with connection.cursor() as cursor:
+            cursor.execute("""
+                ALTER TABLE festivals
+                ADD COLUMN image_large VARCHAR(500) NULL
+            """)
+
+    # Check and add ImportantDay fields
+    if not check_column_exists('important_days', 'image_thumb'):
+        with connection.cursor() as cursor:
+            cursor.execute("""
+                ALTER TABLE important_days
+                ADD COLUMN image_thumb VARCHAR(500) NULL
+            """)
+
+    if not check_column_exists('important_days', 'image_medium'):
+        with connection.cursor() as cursor:
+            cursor.execute("""
+                ALTER TABLE important_days
+                ADD COLUMN image_medium VARCHAR(500) NULL
+            """)
+
+    if not check_column_exists('important_days', 'image_large'):
+        with connection.cursor() as cursor:
+            cursor.execute("""
+                ALTER TABLE important_days
+                ADD COLUMN image_large VARCHAR(500) NULL
+            """)
+
+
+def reverse_add_field_if_not_exists(apps, schema_editor):
+    """Reverse migration - remove fields if they exist"""
+    # This is handled by migration 0006, so we don't need to do anything here
+    pass
 
 
 class Migration(migrations.Migration):
@@ -12,37 +83,10 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        # Add thumbnail fields to Festival
-        migrations.AddField(
-            model_name='festival',
-            name='image_thumb',
-            field=models.CharField(blank=True, help_text='Path to thumbnail (300x200)', max_length=500, null=True),
-        ),
-        migrations.AddField(
-            model_name='festival',
-            name='image_medium',
-            field=models.CharField(blank=True, help_text='Path to medium size (800x600)', max_length=500, null=True),
-        ),
-        migrations.AddField(
-            model_name='festival',
-            name='image_large',
-            field=models.CharField(blank=True, help_text='Path to large size (1600x900)', max_length=500, null=True),
-        ),
-        # Add thumbnail fields to ImportantDay
-        migrations.AddField(
-            model_name='importantday',
-            name='image_thumb',
-            field=models.CharField(blank=True, help_text='Path to thumbnail (300x200)', max_length=500, null=True),
-        ),
-        migrations.AddField(
-            model_name='importantday',
-            name='image_medium',
-            field=models.CharField(blank=True, help_text='Path to medium size (800x600)', max_length=500, null=True),
-        ),
-        migrations.AddField(
-            model_name='importantday',
-            name='image_large',
-            field=models.CharField(blank=True, help_text='Path to large size (1600x900)', max_length=500, null=True),
+        # Add thumbnail fields to Festival and ImportantDay (with existence check)
+        migrations.RunPython(
+            add_field_if_not_exists,
+            reverse_add_field_if_not_exists,
         ),
         # Create FestivalGallery table if it doesn't exist
         migrations.CreateModel(
