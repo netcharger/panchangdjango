@@ -1,6 +1,6 @@
 # Generated manually to add new fields to existing tables
 
-git afrom django.db import migrations, models, connection
+from django.db import migrations, models, connection
 import django.db.models.deletion
 import panchang.utils
 
