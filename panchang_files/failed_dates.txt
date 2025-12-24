@@ -1,2 +1,0 @@
-2026-04-23 - 500 Server Error: Internal Server Error
-2026-04-22 - 500 Server Error: Internal Server Error

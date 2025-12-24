@@ -159,11 +159,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Media files (User uploaded files)
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = BASE_DIR / 'media'
 
-# Panchang files (JSON files)
-PANCHANG_FILES_URL = '/panchang_files/'
-PANCHANG_FILES_ROOT = os.path.join(BASE_DIR, 'panchang_files')
+PANCHANG_FILES_URL = '/media/panchang_files/'
+PANCHANG_FILES_ROOT = MEDIA_ROOT / 'panchang_files'
+
 
 # Autoreloader settings to mitigate WinError 123
 os.environ.setdefault('DJANGO_AUTORELOAD_MAX_RETRIES', '10')

@@ -33,3 +33,5 @@ celery
 redis
 
 whitenoise
+
+requests

@@ -22,13 +22,18 @@ class TagAdmin(admin.ModelAdmin):
 class CategoryAdmin(SortableAdminMixin, admin.ModelAdmin):
     list_display = ('order', 'name', 'parent', 'is_active', 'slug')
     list_display_links = ('name',)
-    list_editable = ('order', 'is_active')
+    # Note: 'order' should NOT be in list_editable when using SortableAdminMixin with drag-and-drop
+    # The drag-and-drop handles ordering automatically
+    list_editable = ('is_active',)
     parent_field = 'parent'  # Keep this for hierarchical sorting
     list_select_related = ('parent',)
     prepopulated_fields = {'slug': ('name',)}
     list_filter = ('is_active', 'parent')
     search_fields = ('name', 'description')
     ordering = ['order', 'name']
+    
+    class Media:
+        js = ('admin/js/category_colors.js',)
 
 
 class ChantAdminForm(forms.ModelForm):

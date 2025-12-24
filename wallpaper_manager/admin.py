@@ -16,7 +16,9 @@ from admin_api_helper import get_api_endpoint_display
 class CategoryAdmin(SortableAdminMixin, admin.ModelAdmin):
     list_display = ['id', 'order', 'name', 'parent', 'is_active', 'slug', 'image_preview', 'wallpaper_count', 'api_url']
     list_display_links = ['name']
-    list_editable = ['order', 'is_active']
+    # Note: 'order' should NOT be in list_editable when using SortableAdminMixin with drag-and-drop
+    # The drag-and-drop handles ordering automatically
+    list_editable = ['is_active']
     parent_field = 'parent'  # For hierarchical sorting
     list_select_related = ['parent']
     prepopulated_fields = {'slug': ('name',)}
@@ -24,6 +26,9 @@ class CategoryAdmin(SortableAdminMixin, admin.ModelAdmin):
     search_fields = ['name', 'slug', 'description']
     ordering = ['order', 'name']
     readonly_fields = ['api_endpoint']
+    
+    class Media:
+        js = ('admin/js/category_colors.js',)
     
     def api_endpoint(self, obj):
         """Display API endpoint link and URL"""

@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.db.models import Prefetch
-from rest_framework import viewsets, status
+from rest_framework import viewsets, status, filters
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from .models import Category, Tag, Post
@@ -17,14 +17,25 @@ from django.contrib.admin.views.decorators import staff_member_required
 
 
 class CategoryViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = Category.objects.filter(
-        is_active=True,
-        parent__isnull=True
-    ).order_by('order', 'name').prefetch_related(
-        Prefetch('children', queryset=Category.objects.filter(is_active=True).order_by('order', 'name'))
-    )
+    queryset = Category.objects.filter(is_active=True, parent__isnull=True)
     serializer_class = CategorySerializer
     lookup_field = 'slug'
+    filter_backends = [filters.OrderingFilter]
+    ordering_fields = ['order', 'name']
+    ordering = ['order', 'name']
+    
+    def get_queryset(self):
+        """
+        Return categories ordered by 'order' field first, then by 'name'.
+        This ensures the order set in the admin panel is respected.
+        """
+        queryset = Category.objects.filter(
+            is_active=True,
+            parent__isnull=True
+        ).order_by('order', 'name').prefetch_related(
+            Prefetch('children', queryset=Category.objects.filter(is_active=True).order_by('order', 'name'))
+        )
+        return queryset
 
 
 @staff_member_required

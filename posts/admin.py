@@ -65,7 +65,8 @@ class CustomPostAdminForm(forms.ModelForm):
 class CategoryAdmin(SortableAdminMixin, admin.ModelAdmin):
     list_display = ('order', 'name', 'parent', 'is_active', 'slug', 'category_image_display', 'api_url') # Changed category_thumbnail to category_image_display
     list_display_links = ('name',)
-    list_editable = ('order',)
+    # Note: 'order' should NOT be in list_editable when using SortableAdminMixin with drag-and-drop
+    # The drag-and-drop handles ordering automatically
     parent_field = 'parent' # Keep this for hierarchical sorting
     list_select_related = ('parent',)
     prepopulated_fields = {'slug': ('name',)}
@@ -134,6 +135,9 @@ class CategoryAdmin(SortableAdminMixin, admin.ModelAdmin):
         request = getattr(self, '_request', None)
         return get_api_endpoint_display(obj, request=request, for_list=True)
     api_url.short_description = "API URL"
+    
+    class Media:
+        js = ('admin/js/category_colors.js',)
     
     def changelist_view(self, request, *args, **kwargs):
         """Store request for list view"""
