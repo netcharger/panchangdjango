@@ -14,8 +14,8 @@ from admin_api_helper import get_api_endpoint_display
 
 @admin.register(Category)
 class CategoryAdmin(SortableAdminMixin, admin.ModelAdmin):
-    list_display = ['id', 'order', 'name', 'parent', 'is_active', 'slug', 'image_preview', 'wallpaper_count', 'api_url']
-    list_display_links = ['name']
+    list_display = ['id', 'order', 'name_with_parent', 'parent', 'is_active', 'slug', 'image_preview', 'wallpaper_count', 'api_url']
+    list_display_links = ['name_with_parent']
     # Note: 'order' should NOT be in list_editable when using SortableAdminMixin with drag-and-drop
     # The drag-and-drop handles ordering automatically
     list_editable = ['is_active']
@@ -29,6 +29,13 @@ class CategoryAdmin(SortableAdminMixin, admin.ModelAdmin):
     
     class Media:
         js = ('admin/js/category_colors.js',)
+    
+    def name_with_parent(self, obj):
+        """Display name as 'Parent > Child' format"""
+        # wallpaper_manager uses '-->' separator, convert to '>'
+        full_path = obj.get_full_path()
+        return full_path.replace(' --> ', ' > ')
+    name_with_parent.short_description = 'Name'
     
     def api_endpoint(self, obj):
         """Display API endpoint link and URL"""
@@ -130,8 +137,12 @@ class WallpaperAdminForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         # Display full hierarchical path for categories
         # Only show subcategories (categories with parent) since wallpapers must use subcategories
-        self.fields['category'].queryset = Category.objects.filter(parent__isnull=False, is_active=True).order_by('parent__name', 'name')
-        self.fields['category'].label_from_instance = lambda obj: obj.get_full_path()
+        # Order by parent order, then parent name, then child order, then child name
+        self.fields['category'].queryset = Category.objects.filter(
+            parent__isnull=False, 
+            is_active=True
+        ).select_related('parent').order_by('parent__order', 'parent__name', 'order', 'name')
+        self.fields['category'].label_from_instance = lambda obj: obj.get_full_path().replace(' --> ', ' > ')
 
     class Meta:
         model = Wallpaper

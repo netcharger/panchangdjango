@@ -33,6 +33,9 @@ class CustomPostAdminForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        # Display category with parent > child format in dropdown
+        self.fields['category'].queryset = Category.objects.select_related('parent').order_by('parent__order', 'parent__name', 'order', 'name')
+        self.fields['category'].label_from_instance = lambda obj: obj.get_full_path()
         if self.instance and self.instance.pk:
             # Populate tags_input with existing tags
             self.fields['tags_input'].initial = ", ".join(
@@ -63,8 +66,8 @@ class CustomPostAdminForm(forms.ModelForm):
 
 
 class CategoryAdmin(SortableAdminMixin, admin.ModelAdmin):
-    list_display = ('order', 'name', 'parent', 'is_active', 'slug', 'category_image_display', 'api_url') # Changed category_thumbnail to category_image_display
-    list_display_links = ('name',)
+    list_display = ('order', 'name_with_parent', 'parent', 'is_active', 'slug', 'category_image_display', 'api_url')
+    list_display_links = ('name_with_parent',)
     # Note: 'order' should NOT be in list_editable when using SortableAdminMixin with drag-and-drop
     # The drag-and-drop handles ordering automatically
     parent_field = 'parent' # Keep this for hierarchical sorting
@@ -74,6 +77,11 @@ class CategoryAdmin(SortableAdminMixin, admin.ModelAdmin):
     search_fields = ('name', 'description')
     readonly_fields = ('category_image_display', 'api_endpoint')
     ordering = ['order'] # Re-add explicit ordering
+    
+    def name_with_parent(self, obj):
+        """Display name as 'Parent > Child' format"""
+        return obj.get_full_path()
+    name_with_parent.short_description = 'Name'
 
     def get_urls(self):
         urls = super().get_urls()

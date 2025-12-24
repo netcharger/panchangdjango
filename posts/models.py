@@ -102,6 +102,12 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+    def get_full_path(self):
+        """Get full hierarchical path like 'Parent > Child'"""
+        if self.parent:
+            return f"{self.parent.name} > {self.name}"
+        return self.name
+
     def get_absolute_url(self):
         return reverse('posts:category-detail', kwargs={'slug': self.slug})
 
