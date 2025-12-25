@@ -44,7 +44,8 @@ class CategoryAdmin(SortableAdminMixin, admin.ModelAdmin):
         qs = qs.select_related('parent')
         # Order by: use parent's order for grouping (for parents, use their own order; for children, use parent's order)
         # Then by whether it's a parent (0) or child (1), then by the item's own order, then name
-        from django.db.models import Case, When, IntegerField, F, Value, Coalesce
+        from django.db.models import Case, When, IntegerField, F, Value
+        from django.db.models.functions import Coalesce
         return qs.annotate(
             parent_order_value=Case(
                 When(parent__isnull=True, then=Coalesce(F('order'), Value(999999))),
