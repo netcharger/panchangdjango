@@ -44,6 +44,27 @@ class CategoryAdmin(SortableAdminMixin, admin.ModelAdmin):
         return full_path.replace(' --> ', ' > ')
     name_with_parent.short_description = 'Name'
     
+    def get_queryset(self, request):
+        """Order queryset to show parents first, then their children directly below"""
+        qs = super().get_queryset(request)
+        # Ensure parent is selected for proper ordering
+        qs = qs.select_related('parent')
+        # Order by: use parent's order for grouping (for parents, use their own order; for children, use parent's order)
+        # Then by whether it's a parent (0) or child (1), then by the item's own order, then name
+        from django.db.models import Case, When, IntegerField, F, Value, Coalesce
+        return qs.annotate(
+            parent_order_value=Case(
+                When(parent__isnull=True, then=Coalesce(F('order'), Value(999999))),
+                default=Coalesce(F('parent__order'), Value(999999)),
+                output_field=IntegerField()
+            ),
+            is_parent=Case(
+                When(parent__isnull=True, then=Value(0)),
+                default=Value(1),
+                output_field=IntegerField()
+            )
+        ).order_by('parent_order_value', 'is_parent', 'order', 'name')
+    
     def api_endpoint(self, obj):
         """Display API endpoint link and URL"""
         request = getattr(self, '_request', None)
