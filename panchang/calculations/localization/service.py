@@ -187,6 +187,20 @@ def format_panchang_for_profile(raw: Dict[str, Any], profile_code: str) -> Dict[
         )
     sections.append({"title": profile.section_titles["core_panchang"], "items": core_items})
 
+    traditional = data.get("traditional", {})
+    if traditional:
+        sections.append(
+            {
+                "title": profile.section_titles["traditional"],
+                "items": [
+                    {
+                        "label": profile.field_labels["traditional_summary"],
+                        "value": traditional.get("summary", ""),
+                    }
+                ],
+            }
+        )
+
     auspicious = data.get("auspicious_timings", {})
     sections.append(
         {

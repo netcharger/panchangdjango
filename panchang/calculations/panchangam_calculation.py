@@ -57,6 +57,37 @@ from .localization.constants import (
     WEEKDAY_NAMES,
     YOGA_NAMES,
 )
+
+# Traditional Panchang constants
+SAMVATSARA_NAMES = [
+    "ప్రభవ", "విభవ", "శుక్ల", "ప్రమోదూత", "ప్రజోత్తమ", "ఆంగీరస",
+    "శ్రీముఖ", "భావ", "యువ", "ధాత", "ఈశ్వర", "బహుధాన్య",
+    "ప్రమాథి", "విక్రమ", "వృష", "చిత్రభాను", "సుభాను", "తారణ",
+    "పార్థివ", "వ్యయ", "సర్వజిత్", "సర్వధారి", "విరోధి", "వికృతి",
+    "ఖర", "నందన", "విజయ", "జయ", "మన్మథ", "దుర్ముఖి",
+    "హేమలంబి", "విలంబి", "వికారి", "శార్వరి", "ప్లవ",
+    "శుభకృత్", "శోభకృత్", "క్రోధి", "విశ్వావసు", "పరాభవ",
+    "ప్లవంగ", "కీలక", "సౌమ్య", "సాధారణ", "విరోధికృత్",
+    "పరిధావి", "ప్రమాదీచ", "ఆనంద", "రాక్షస",
+    "నల", "పింగళ", "కాళయుక్తి", "సిద్ధార్థి",
+    "రౌద్రి", "దుర్మతి", "దుందుభి", "రుధిరోద్గారి",
+    "రక్తాక్షి", "క్రోధన", "అక్షయ"
+]
+
+RITU_MAP = {
+    "చైత్రం": "వసంత ఋతువు",
+    "వైశాఖం": "వసంత ఋతువు",
+    "జ్యేష్ఠం": "గ్రీష్మ ఋతువు",
+    "ఆషాఢం": "గ్రీష్మ ఋతువు",
+    "శ్రావణం": "వర్ష ఋతువు",
+    "భాద్రపదం": "వర్ష ఋతువు",
+    "ఆశ్వయుజం": "శరద్ ఋతువు",
+    "కార్తీకం": "శరద్ ఋతువు",
+    "మార్గశిరం": "హేమంత ఋతువు",
+    "పుష్య": "హేమంత ఋతువు",
+    "మాఘం": "శిశిర ఋతువు",
+    "ఫాల్గుణం": "శిశిర ఋతువు",
+}
 from .localization.service import format_panchang_for_profile
 
 LUNAR_MONTH_NAMES = AMANTA_MONTH_NAMES  # For simplicity, using Amanta names as default
@@ -127,36 +158,47 @@ def convert_gregorian_to_saka(greg_date):
     return saka_year, SAKA_MONTH_NAMES[saka_month], saka_day
 
 def get_lunar_month_names(greg_date, tithi_no):
-    # Simplified logic to determine lunar month names based on Gregorian month and Tithi.
-    # This is an approximation and might not be perfectly accurate for all edge cases,
-    # as true lunar months are determined by new moon/full moon cycles.
+    """
+    Calculate lunar month names based on Sun's position in the zodiac (sidereal).
+    This is the proper astronomical way to determine lunar months.
+    """
+    # Calculate Sun's longitude at the given date
+    from datetime import datetime
+    import pytz
 
-    # Amanta month starts after Amavasya (new moon)
-    # Purnimanta month starts after Purnima (full moon)
+    # Get sun's position at noon on the given date
+    tz = pytz.timezone(LOCATION["tz"])
+    local_midnight = tz.localize(datetime(greg_date.year, greg_date.month, greg_date.day, 12, 0, 0))
+    jd_ref = dt_to_jd_utc(local_midnight.astimezone(pytz.utc).replace(tzinfo=None))
 
-    # Approximate mapping of Gregorian month to Amanta/Purnimanta lunar month
-    # This needs refinement for exact calculations across lunar cycles
-    # For 2025-11-02 (our test date), it's Kartika (Amanta) and Agrahayana (Purnimanta)
+    sun_data = swe.calc_ut(jd_ref, swe.SUN, swe.FLG_SWIEPH | swe.FLG_SIDEREAL)
+    sun_lon = sun_data[0][0]  # Sun's ecliptic longitude in degrees
 
-    # The following is a rough heuristic and needs to be replaced with proper lunar month calculation
-    # based on actual New Moon and Full Moon dates for accuracy.
+    # Lunar months based on Sun's position (sidereal zodiac)
+    # Each lunar month corresponds to 30° of Sun's travel
+    month_index = int(sun_lon // 30) % 12
 
-    # Placeholder logic based on common month correspondences and tithi
-    # A more robust solution would involve finding the last Amavasya/Purnima
-    # before the greg_date and then determining the month from that.
+    # Lunar month names (Amanta system - starts with Chaitra at 0°)
+    lunar_months = [
+        "Chaitra",     # 0° - 30° (Aries)
+        "Vaisakha",    # 30° - 60° (Taurus)
+        "Jyaistha",    # 60° - 90° (Gemini)
+        "Asadha",      # 90° - 120° (Cancer)
+        "Sravana",     # 120° - 150° (Leo)
+        "Bhadra",      # 150° - 180° (Virgo)
+        "Asvina",      # 180° - 210° (Libra)
+        "Kartika",     # 210° - 240° (Scorpio)
+        "Agrahayana",  # 240° - 270° (Sagittarius)
+        "Pausa",       # 270° - 300° (Capricorn) - Also called Pushya
+        "Magha",       # 300° - 330° (Aquarius)
+        "Phalguna"     # 330° - 360° (Pisces)
+    ]
 
-    amanta_month_idx = (greg_date.month - 1) % 12  # Rough start
-    purnimanta_month_idx = amanta_month_idx
+    amanta_name = lunar_months[month_index]
 
-    # Adjust based on tithi if near month boundary
-    if tithi_no > 15: # Krishna Paksha
-        purnimanta_month_idx = (purnimanta_month_idx + 1) % 12
-
-    # Further adjustment might be needed for Amanta, depending on Amavasya date
-    # For simplicity, we'll keep it aligned for now and refine if necessary.
-
-    amanta_name = LUNAR_MONTH_NAMES[amanta_month_idx]
-    purnimanta_name = LUNAR_MONTH_NAMES[purnimanta_month_idx]
+    # Purnimanta system is offset by 1 month from Amanta
+    purnimanta_month_idx = (month_index + 1) % 12
+    purnimanta_name = lunar_months[purnimanta_month_idx]
 
     return amanta_name, purnimanta_name
 
@@ -620,7 +662,7 @@ def compute_panchang_for_date(
     except (ValueError, Exception) as e:
         # Moon doesn't rise on this date (can happen at certain locations/dates)
         moonrise_time = None
-    
+
     try:
         ms = moonset(locinfo.observer, date=date_local, tzinfo=tz)
         moonset_time = ms if isinstance(ms, datetime.datetime) else None
@@ -760,6 +802,9 @@ def compute_panchang_for_date(
     # Amanta and Purnimanta Months
     amanta_month_name, purnimanta_month_name = get_lunar_month_names(date_local, initial_t_no)
 
+    # Traditional Panchang summary line (always in Telugu)
+    traditional_summary = get_traditional_panchang_line(date_local, sun_lon_at_midnight, purnimanta_month_name, "te")
+
     # All auspicious timings
     auspicious_timings_calculated = compute_auspicious_timings(date_local, location)
 
@@ -803,6 +848,9 @@ def compute_panchang_for_date(
         "Amanta Month": { "name": amanta_month_name },
         "Purnimanta Month": { "name": purnimanta_month_name },
         "Paksha": { "name": paksha_name },
+        "traditional": {
+            "summary": traditional_summary
+        },
         "sunrise_moonrise": {
             "Sunrise": {"value": sunrise.strftime("%I:%M %p")},
             "Sunset": {"value": sunset.strftime("%I:%M %p")},
@@ -1029,6 +1077,45 @@ def _check_amavasya_on_date(date: datetime.date, jd_ref: float, tithi_no: int, t
                 amavasya_time = transition_time
 
     return amavasya_time
+
+# ------------------ Traditional Panchang Helpers ------------------
+def get_samvatsara(greg_year: int) -> str:
+    """
+    Calculate the Samvatsara (Jovian year) for a given Gregorian year.
+    Prabhava year started in 1987-88, cycle repeats every 60 years.
+    """
+    base_year = 1987  # Prabhava
+    index = (greg_year - base_year) % 60
+    return SAMVATSARA_NAMES[index]
+
+def get_ayana(sun_lon: float) -> str:
+    """
+    Determine Ayana (Solstice period) based on Sun's longitude.
+    Uttarayana: 0°-180° (Northern solstice)
+    Dakshinayana: 180°-360° (Southern solstice)
+    """
+    return "ఉత్తరాయనం" if sun_lon < 180 else "దక్షిణాయనం"
+
+def get_traditional_panchang_line(date_local, sun_lon: float, amanta_month: str, profile_code: str = "te") -> str:
+    """
+    Generate the traditional Panchang summary line in Telugu format.
+    Format: "శ్రీ [Samvatsara] నామ సంవత్సరం; [Ayana]; [Ritu]; [Masa]"
+    """
+    from .localization.service import _map_name
+    from .localization.profiles import get_profile_assets
+
+    # Get Telugu profile for proper localization
+    profile = get_profile_assets(profile_code)
+
+    # Map English month name to Telugu
+    telugu_month = _map_name(amanta_month, AMANTA_MONTH_NAMES, profile.amanta_month)
+
+    samvatsara = get_samvatsara(date_local.year)
+    ayana = get_ayana(sun_lon)
+    ritu = RITU_MAP.get(telugu_month, "")
+    masa = f"{telugu_month} మాసం"
+
+    return f"శ్రీ {samvatsara} నామ సంవత్సరం; {ayana}; {ritu}; {masa}"
 
 # ------------------ Run Example ------------------
 if __name__ == "__main__":
