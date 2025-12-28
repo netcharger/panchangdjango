@@ -15,32 +15,81 @@ pymysql.install_as_MySQLdb()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/4.2/howto/static-files/
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# =========================================================================
+# CORE ENVIRONMENT FLAGS & STORAGE DECISION (For Localhost & Coolify)
+# =========================================================================
+# IMPORTANT: These environment variables are crucial for project stability.
+#            Without them, or with incorrect values, the project will break.
+#
+# Use in future for quick reference and management of deployment settings.
+# -------------------------------------------------------------------------
+
+IS_LOCALHOST = os.getenv('IS_LOCALHOST') == 'True'
+USE_MINIO = os.getenv('USE_MINIO') == 'True'
+
+# DEBUG mode is derived from IS_LOCALHOST for consistency
+DEBUG = IS_LOCALHOST
+
+MEDIA_URL = '/media/'
+
+# --------------------
+# STORAGE DECISION
+# --------------------
+
+if USE_MINIO:
+    # MinIO / S3 Object Storage configuration
+    # Requires 'storages' library to be installed
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+    AWS_ACCESS_KEY_ID = os.getenv('MINIO_ACCESS_KEY')
+    AWS_SECRET_ACCESS_KEY = os.getenv('MINIO_SECRET_KEY')
+    AWS_STORAGE_BUCKET_NAME = os.getenv('MINIO_BUCKET_NAME')
+    AWS_S3_ENDPOINT_URL = os.getenv('MINIO_ENDPOINT')
+
+    # These are common settings for MinIO with S3Boto3Storage
+    AWS_S3_USE_SSL = False  # Set to True if MinIO is served over HTTPS
+    AWS_QUERYSTRING_AUTH = False
+    AWS_DEFAULT_ACL = None # No default ACL
+
+    # Update MEDIA_URL to point to MinIO bucket
+    MEDIA_URL = f"{AWS_S3_ENDPOINT_URL}/{AWS_STORAGE_BUCKET_NAME}/"
+
+else:
+    # Local filesystem storage configuration (default for development)
+    if IS_LOCALHOST:
+        # Local development: media folder inside the project base directory
+        MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+    else:
+        # Production (e.g., Coolify without MinIO): MEDIA_ROOT must be explicitly defined
+        # This path should correspond to a persistent volume mount point in your deployment environment.
+        MEDIA_ROOT = os.getenv('MEDIA_ROOT')
+        if not MEDIA_ROOT:
+            raise RuntimeError("MEDIA_ROOT environment variable is required when not using MinIO in production")
+
+# --------------------
+# PANCHANG FILES (Derived from MEDIA settings)
+# --------------------
+
+PANCHANG_FILES_URL = f'{MEDIA_URL}panchang_files/'
+# PANCHANG_FILES_ROOT is only relevant for local storage, not MinIO
+if not USE_MINIO:
+    PANCHANG_FILES_ROOT = os.path.join(MEDIA_ROOT, 'panchang_files')
+else:
+    PANCHANG_FILES_ROOT = None # Not applicable for MinIO, files are in the bucket
+
+# =========================================================================
+# END CORE ENVIRONMENT FLAGS & STORAGE DECISION
+# =========================================================================
+
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
-# SECURITY WARNING: don't run with debug turned on in production!
-
-
-
-
 ALLOWED_HOSTS = ["*", "192.168.1.2"]
-
-# Check if running on localhost
-# Option 1: Check environment variable (set IS_LOCALHOST=true in .env for localhost)
-IS_LOCALHOST = os.environ.get("IS_LOCALHOST", "").lower() in ("true", "1", "yes")
-
-# Option 2: Auto-detect localhost based on hostname or if DEBUG is True
-# (You can also manually set IS_LOCALHOST=true in your .env file for more control)
-if not IS_LOCALHOST:
-    try:
-        import socket
-        hostname = socket.gethostname()
-        localhost_indicators = ['localhost', '127.0.0.1', 'local', 'DESKTOP', 'LAPTOP']
-        # Check if hostname contains localhost indicators or if it's a typical dev machine name
-        IS_LOCALHOST = any(indicator.lower() in hostname.lower() for indicator in localhost_indicators)
-    except Exception:
-        # If detection fails, default to False (safer for production)
-        IS_LOCALHOST = False
 
 # Base installed apps
 INSTALLED_APPS = [
@@ -59,7 +108,6 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'panchang',
     'posts',
-    # 'audio_manager',
     'audio_manager',
     'mobileapp_settings',
     'wallpaper_manager',
@@ -70,6 +118,7 @@ INSTALLED_APPS = [
 if IS_LOCALHOST:
     INSTALLED_APPS.insert(0, 'silk')
     INSTALLED_APPS.append('debug_toolbar')
+    INSTALLED_APPS.append('storages') # Required for MinIO development with local storage
 
 # Base middleware
 MIDDLEWARE = [
@@ -153,64 +202,6 @@ LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'Asia/Kolkata'
 USE_I18N = True
 USE_TZ = False # Temporarily set to False to bypass MySQL timezone issues on Windows
-import os
-from pathlib import Path
-
-BASE_DIR = Path(__file__).resolve().parent.parent
-
-# --------------------
-# ENV FLAGS
-# --------------------
-
-IS_LOCALHOST_ENV = os.getenv('IS_LOCALHOST')
-
-if IS_LOCALHOST_ENV is None:
-    raise RuntimeError(
-        "IS_LOCALHOST environment variable is required. "
-        "Set IS_LOCALHOST=True or IS_LOCALHOST=False"
-    )
-
-if IS_LOCALHOST_ENV == 'True':
-    IS_LOCALHOST = True
-elif IS_LOCALHOST_ENV == 'False':
-    IS_LOCALHOST = False
-else:
-    raise RuntimeError(
-        "Invalid IS_LOCALHOST value. Use only 'True' or 'False'"
-    )
-
-# --------------------
-# DEBUG (DERIVED, NOT GUESSED)
-# --------------------
-
-DEBUG = IS_LOCALHOST
-
-# --------------------
-# MEDIA FILES
-# --------------------
-
-MEDIA_URL = '/media/'
-
-MEDIA_ROOT_ENV = os.getenv('MEDIA_ROOT')
-
-if IS_LOCALHOST:
-    # Local development: always use project media folder
-    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-else:
-    # Production: MEDIA_ROOT must be explicitly defined
-    if not MEDIA_ROOT_ENV:
-        raise RuntimeError(
-            "MEDIA_ROOT environment variable is required in production"
-        )
-    MEDIA_ROOT = MEDIA_ROOT_ENV
-
-# --------------------
-# PANCHANG FILES
-# --------------------
-
-PANCHANG_FILES_URL = f'{MEDIA_URL}panchang_files/'
-PANCHANG_FILES_ROOT = os.path.join(MEDIA_ROOT, 'panchang_files')
-
 
 # Autoreloader settings to mitigate WinError 123
 os.environ.setdefault('DJANGO_AUTORELOAD_MAX_RETRIES', '10')
