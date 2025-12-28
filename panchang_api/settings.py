@@ -19,7 +19,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+
+
+
 
 ALLOWED_HOSTS = ["*", "192.168.1.2"]
 
@@ -151,35 +153,63 @@ LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'Asia/Kolkata'
 USE_I18N = True
 USE_TZ = False # Temporarily set to False to bypass MySQL timezone issues on Windows
+import os
+from pathlib import Path
 
-
-
-# --------------------
-# STATIC FILES
-# --------------------
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 # --------------------
-# MEDIA FILES (WORKS ON LOCAL + COOLIFY)
+# ENV FLAGS
+# --------------------
+
+IS_LOCALHOST_ENV = os.getenv('IS_LOCALHOST')
+
+if IS_LOCALHOST_ENV is None:
+    raise RuntimeError(
+        "IS_LOCALHOST environment variable is required. "
+        "Set IS_LOCALHOST=True or IS_LOCALHOST=False"
+    )
+
+if IS_LOCALHOST_ENV == 'True':
+    IS_LOCALHOST = True
+elif IS_LOCALHOST_ENV == 'False':
+    IS_LOCALHOST = False
+else:
+    raise RuntimeError(
+        "Invalid IS_LOCALHOST value. Use only 'True' or 'False'"
+    )
+
+# --------------------
+# DEBUG (DERIVED, NOT GUESSED)
+# --------------------
+
+DEBUG = IS_LOCALHOST
+
+# --------------------
+# MEDIA FILES
 # --------------------
 
 MEDIA_URL = '/media/'
 
-# If MEDIA_ROOT is set in environment (Coolify), use it
-# Else fallback to local project media folder
-MEDIA_ROOT = os.getenv(
-    'MEDIA_ROOT',
-    os.path.join(BASE_DIR, 'media')
-)
+MEDIA_ROOT_ENV = os.getenv('MEDIA_ROOT')
+
+if IS_LOCALHOST:
+    # Local development: always use project media folder
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+else:
+    # Production: MEDIA_ROOT must be explicitly defined
+    if not MEDIA_ROOT_ENV:
+        raise RuntimeError(
+            "MEDIA_ROOT environment variable is required in production"
+        )
+    MEDIA_ROOT = MEDIA_ROOT_ENV
 
 # --------------------
-# PANCHANG FILES (SUB-FOLDER INSIDE MEDIA)
+# PANCHANG FILES
 # --------------------
+
 PANCHANG_FILES_URL = f'{MEDIA_URL}panchang_files/'
 PANCHANG_FILES_ROOT = os.path.join(MEDIA_ROOT, 'panchang_files')
-
-
 
 
 # Autoreloader settings to mitigate WinError 123
