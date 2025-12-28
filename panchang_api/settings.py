@@ -89,7 +89,7 @@ else:
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
-ALLOWED_HOSTS = ["*", "192.168.1.2"]
+ALLOWED_HOSTS = ["*", "192.168.1.2", "djangoadim.65.108.213.103.sslip.io"]
 
 # Base installed apps
 INSTALLED_APPS = [
