@@ -151,15 +151,32 @@ LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'Asia/Kolkata'
 USE_I18N = True
 USE_TZ = False # Temporarily set to False to bypass MySQL timezone issues on Windows
-# Static files
-STATIC_URL = 'static/'
+
+
+
+# --------------------
+# STATIC FILES
+# --------------------
+STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-# Media files (User uploaded files)
-MEDIA_URL = '/media/'
-MEDIA_ROOT = "/data/media"
+# --------------------
+# MEDIA FILES (WORKS ON LOCAL + COOLIFY)
+# --------------------
 
-PANCHANG_FILES_URL = '/media/panchang_files/'
+MEDIA_URL = '/media/'
+
+# If MEDIA_ROOT is set in environment (Coolify), use it
+# Else fallback to local project media folder
+MEDIA_ROOT = os.getenv(
+    'MEDIA_ROOT',
+    os.path.join(BASE_DIR, 'media')
+)
+
+# --------------------
+# PANCHANG FILES (SUB-FOLDER INSIDE MEDIA)
+# --------------------
+PANCHANG_FILES_URL = f'{MEDIA_URL}panchang_files/'
 PANCHANG_FILES_ROOT = os.path.join(MEDIA_ROOT, 'panchang_files')
 
 

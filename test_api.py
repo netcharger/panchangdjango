@@ -23,3 +23,4 @@ except Exception as e:
     print(f'Error: {e}')
     print('API server may not be running. Please start the Django server first.')
 
+
