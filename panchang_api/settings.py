@@ -151,18 +151,18 @@ LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'Asia/Kolkata'
 USE_I18N = True
 USE_TZ = False # Temporarily set to False to bypass MySQL timezone issues on Windows
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.2/howto/static-files/
+# Static files
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Media files (User uploaded files)
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT = "/data/media"
 
 PANCHANG_FILES_URL = '/media/panchang_files/'
-PANCHANG_FILES_ROOT = MEDIA_ROOT / 'panchang_files'
+PANCHANG_FILES_ROOT = os.path.join(MEDIA_ROOT, 'panchang_files')
+
+
 
 
 # Autoreloader settings to mitigate WinError 123
