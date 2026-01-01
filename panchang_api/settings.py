@@ -89,7 +89,27 @@ else:
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
-ALLOWED_HOSTS = ["*", "192.168.1.2", "djangoadim.65.108.213.103.sslip.io"]
+
+
+
+
+ALLOWED_HOSTS = os.getenv(
+    "ALLOWED_HOSTS",
+    "api.dailypanchangam.com","192.168.1.2", "djangoadim.65.108.213.103.sslip.io"
+).split(",")
+
+CSRF_TRUSTED_ORIGINS = os.getenv(
+    "CSRF_TRUSTED_ORIGINS",
+    "https://api.dailypanchangam.com"
+).split(",")
+
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+USE_X_FORWARDED_HOST = True
+
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+SECURE_SSL_REDIRECT = True
+
 
 # Base installed apps
 INSTALLED_APPS = [
