@@ -223,7 +223,7 @@ AUTH_PASSWORD_VALIDATORS = [
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'Asia/Kolkata'
 USE_I18N = True
-USE_TZ = False # Temporarily set to False to bypass MySQL timezone issues on Windows
+USE_TZ = True # Temporarily set to False to bypass MySQL timezone issues on Windows
 
 # Autoreloader settings to mitigate WinError 123
 os.environ.setdefault('DJANGO_AUTORELOAD_MAX_RETRIES', '10')
