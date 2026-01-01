@@ -31,17 +31,17 @@ class CategoryAdmin(SortableAdminMixin, admin.ModelAdmin):
     list_filter = ('is_active', 'parent')
     search_fields = ('name', 'description')
     ordering = ['order', 'name']
-    
+
     class Media:
         js = ('admin/js/category_colors.js',)
-    
+
     def name_with_parent(self, obj):
         """Display name as 'Parent > Child' format"""
         # chanting uses '→' separator, convert to '>'
         full_path = obj.get_full_path()
         return full_path.replace(' → ', ' > ')
     name_with_parent.short_description = 'Name'
-    
+
     def get_queryset(self, request):
         """Order queryset to show parents first, then their children directly below"""
         qs = super().get_queryset(request)
@@ -49,7 +49,8 @@ class CategoryAdmin(SortableAdminMixin, admin.ModelAdmin):
         qs = qs.select_related('parent')
         # Order by: use parent's order for grouping (for parents, use their own order; for children, use parent's order)
         # Then by whether it's a parent (0) or child (1), then by the item's own order, then name
-        from django.db.models import Case, When, IntegerField, F, Value, Coalesce
+        from django.db.models import Case, When, IntegerField, F, Value
+        from django.db.models.functions import Coalesce
         return qs.annotate(
             parent_order_value=Case(
                 When(parent__isnull=True, then=Coalesce(F('order'), Value(999999))),
@@ -77,16 +78,16 @@ class ChantAdminForm(forms.ModelForm):
     class Meta:
         model = Chant
         fields = '__all__'
-    
+
     def clean(self):
         cleaned_data = super().clean()
         is_published = cleaned_data.get('is_published')
         published_date = cleaned_data.get('published_date')
-        
+
         # If is_published is True and published_date is not set, set it to now
         if is_published and not published_date:
             cleaned_data['published_date'] = timezone.now()
-        
+
         return cleaned_data
 
 
@@ -103,7 +104,7 @@ class ChantAdmin(SortableAdminMixin, admin.ModelAdmin):
     ordering = ['order', '-published_date']
     filter_horizontal = ('tags',)
     readonly_fields = ('image_display', 'audio_player_display', 'publish_button')
-    
+
     fieldsets = (
         (None, {
             'fields': ('title', 'slug', 'category', 'mp3_file', 'audio_player_display', 'image', 'image_display', 'description', 'tags')
@@ -139,7 +140,7 @@ class ChantAdmin(SortableAdminMixin, admin.ModelAdmin):
             elif not chant.is_published:
                 pass
             chant.save()
-            
+
             # If it's an AJAX request, return JSON
             if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
                 return JsonResponse({
@@ -148,7 +149,7 @@ class ChantAdmin(SortableAdminMixin, admin.ModelAdmin):
                     'published_date': chant.published_date.isoformat() if chant.published_date else None,
                     'message': f'Chant "{chant.title}" has been {"published" if chant.is_published else "unpublished"}.'
                 })
-            
+
             self.message_user(request, f'Chant "{chant.title}" has been {"published" if chant.is_published else "unpublished"}.')
         return HttpResponseRedirect(reverse('admin:chanting_chant_change', args=[object_id]))
 
@@ -163,7 +164,7 @@ class ChantAdmin(SortableAdminMixin, admin.ModelAdmin):
                 button_text = "Publish"
                 button_class = "default publish-btn"
                 status_text = format_html('<span style="color: red;">Currently Unpublished</span>')
-            
+
             toggle_url = reverse('admin:chanting_chant_toggle_publish', args=[obj.pk])
             return format_html(
                 '<div class="publish-button-container">'
@@ -188,7 +189,7 @@ class ChantAdmin(SortableAdminMixin, admin.ModelAdmin):
             status = format_html('<span class="publish-status" style="color: red; font-weight: bold;">✗ Unpublished</span>')
             button_text = "Publish"
             button_class = "default publish-btn"
-        
+
         toggle_url = reverse('admin:chanting_chant_toggle_publish', args=[obj.pk])
         return format_html(
             '{}<br><a href="{}" class="button {} publish-toggle-list-btn" style="margin-top: 5px; font-size: 11px;">{}</a>',

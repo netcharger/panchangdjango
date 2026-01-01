@@ -77,12 +77,12 @@ class CategoryAdmin(SortableAdminMixin, admin.ModelAdmin):
     search_fields = ('name', 'description')
     readonly_fields = ('category_image_display', 'api_endpoint')
     ordering = ['order'] # Re-add explicit ordering
-    
+
     def name_with_parent(self, obj):
         """Display name as 'Parent > Child' format"""
         return obj.get_full_path()
     name_with_parent.short_description = 'Name'
-    
+
     def get_queryset(self, request):
         """Order queryset to show parents first, then their children directly below"""
         qs = super().get_queryset(request)
@@ -90,7 +90,9 @@ class CategoryAdmin(SortableAdminMixin, admin.ModelAdmin):
         qs = qs.select_related('parent')
         # Order by: use parent's order for grouping (for parents, use their own order; for children, use parent's order)
         # Then by whether it's a parent (0) or child (1), then by the item's own order, then name
-        from django.db.models import Case, When, IntegerField, F, Value, Coalesce
+
+        from django.db.models import Case, When, IntegerField, F, Value
+        from django.db.models.functions import Coalesce
         return qs.annotate(
             parent_order_value=Case(
                 When(parent__isnull=True, then=Coalesce(F('order'), Value(999999))),
@@ -103,7 +105,7 @@ class CategoryAdmin(SortableAdminMixin, admin.ModelAdmin):
                 output_field=IntegerField()
             )
         ).order_by('parent_order_value', 'is_parent', 'order', 'name')
-    
+
     def get_urls(self):
         urls = super().get_urls()
         custom_urls = [
@@ -123,33 +125,33 @@ class CategoryAdmin(SortableAdminMixin, admin.ModelAdmin):
             html += "No Image"
         return mark_safe(html)
     category_image_display.short_description = "Image"
-    
+
     def api_endpoint(self, obj):
         """Display API endpoint link"""
         if not obj or not hasattr(obj, 'pk') or not obj.pk:
             return format_html('<span style="color: #888;">API available after saving.</span>')
-        
+
         request = getattr(self, '_request', None)
         api_url = get_api_endpoint_url(obj, request=request)
-        
+
         if not api_url:
             return format_html('<span style="color: #888;">No API endpoint configured for this model.</span>')
-        
+
         if not api_url.startswith('http'):
             if not api_url.startswith('/'):
                 api_url = '/' + api_url
-        
+
         return format_html(
             '<a href="{}" target="_blank" style="font-weight: bold; color: #417690;">📌 View API</a>',
             api_url
         )
     api_endpoint.short_description = "API Endpoint"
-    
+
     def changeform_view(self, request, *args, **kwargs):
         """Store request in instance for use in api_endpoint method"""
         self._request = request
         return super().changeform_view(request, *args, **kwargs)
-    
+
     def get_fieldsets(self, request, obj=None):
         """Add API endpoint fieldset"""
         fieldsets = list(super().get_fieldsets(request, obj) or [])
@@ -158,16 +160,16 @@ class CategoryAdmin(SortableAdminMixin, admin.ModelAdmin):
             'description': 'View this category in the API'
         }))
         return fieldsets
-    
+
     def api_url(self, obj):
         """Display API URL in list view"""
         request = getattr(self, '_request', None)
         return get_api_endpoint_display(obj, request=request, for_list=True)
     api_url.short_description = "API URL"
-    
+
     class Media:
         js = ('admin/js/category_colors.js',)
-    
+
     def changelist_view(self, request, *args, **kwargs):
         """Store request for list view"""
         self._request = request
@@ -237,24 +239,24 @@ class PostAdmin(SortableAdminMixin, admin.ModelAdmin):
             return format_html('<img src="{}" width="50" height="50" />', obj.featured_image.url)
         return ""
     post_thumbnail.short_description = "Featured Image"
-    
+
     def api_endpoint(self, obj):
         """Display API endpoint link and URL"""
         request = getattr(self, '_request', None)
         return get_api_endpoint_display(obj, request=request, for_list=False)
     api_endpoint.short_description = "API Endpoint"
-    
+
     def api_url(self, obj):
         """Display API URL in list view"""
         request = getattr(self, '_request', None)
         return get_api_endpoint_display(obj, request=request, for_list=True)
     api_url.short_description = "API URL"
-    
+
     def changeform_view(self, request, *args, **kwargs):
         """Store request in instance for use in api_endpoint method"""
         self._request = request
         return super().changeform_view(request, *args, **kwargs)
-    
+
     def changelist_view(self, request, *args, **kwargs):
         """Store request for list view"""
         self._request = request
@@ -266,29 +268,29 @@ class TagAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}
     search_fields = ('name',)
     readonly_fields = ('api_endpoint',)
-    
+
     def api_endpoint(self, obj):
         """Display API endpoint link and URL"""
         request = getattr(self, '_request', None)
         return get_api_endpoint_display(obj, request=request, for_list=False)
     api_endpoint.short_description = "API Endpoint"
-    
+
     def api_url(self, obj):
         """Display API URL in list view"""
         request = getattr(self, '_request', None)
         return get_api_endpoint_display(obj, request=request, for_list=True)
     api_url.short_description = "API URL"
-    
+
     def changeform_view(self, request, *args, **kwargs):
         """Store request in instance for use in api_endpoint method"""
         self._request = request
         return super().changeform_view(request, *args, **kwargs)
-    
+
     def changelist_view(self, request, *args, **kwargs):
         """Store request for list view"""
         self._request = request
         return super().changelist_view(request, *args, **kwargs)
-    
+
     def get_fieldsets(self, request, obj=None):
         """Add API endpoint fieldset"""
         fieldsets = list(super().get_fieldsets(request, obj) or [])
