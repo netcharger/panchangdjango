@@ -95,7 +95,7 @@ import os
 
 ALLOWED_HOSTS = os.getenv(
     "ALLOWED_HOSTS",
-    "api.dailypanchangam.com,.dailypanchangam.com","192.168.1.2", "djangoadim.65.108.213.103.sslip.io"
+    "api.dailypanchangam.com,.dailypanchangam.com,192.168.1.2,djangoadim.65.108.213.103.sslip.io"
 ).split(",")
 
 CSRF_TRUSTED_ORIGINS = os.getenv(
