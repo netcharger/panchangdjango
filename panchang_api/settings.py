@@ -89,13 +89,13 @@ else:
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
+# ALLOWED_HOSTS = ["*", "192.168.1.2", "djangoadim.65.108.213.103.sslip.io"]
 
-
-
+import os
 
 ALLOWED_HOSTS = os.getenv(
     "ALLOWED_HOSTS",
-    "api.dailypanchangam.com","192.168.1.2", "djangoadim.65.108.213.103.sslip.io"
+    "api.dailypanchangam.com,.dailypanchangam.com","192.168.1.2", "djangoadim.65.108.213.103.sslip.io"
 ).split(",")
 
 CSRF_TRUSTED_ORIGINS = os.getenv(
@@ -109,6 +109,8 @@ USE_X_FORWARDED_HOST = True
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
 SECURE_SSL_REDIRECT = True
+
+
 
 
 # Base installed apps
