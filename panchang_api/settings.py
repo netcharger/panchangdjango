@@ -33,7 +33,7 @@ IS_LOCALHOST = os.getenv('IS_LOCALHOST') == 'True'
 USE_MINIO = os.getenv('USE_MINIO') == 'True'
 
 # DEBUG mode is derived from IS_LOCALHOST for consistency
-DEBUG = IS_LOCALHOST
+DEBUG = os.getenv("DEBUG", "False") == "True"
 
 MEDIA_URL = '/media/'
 
