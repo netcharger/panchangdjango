@@ -33,17 +33,17 @@ class CategoryAdmin(SortableAdminMixin, admin.ModelAdmin):
     search_fields = ('name', 'description')
     ordering = ['order', 'name']
     readonly_fields = ('api_endpoint',)
-    
+
     class Media:
         js = ('admin/js/category_colors.js',)
-    
+
     def name_with_parent(self, obj):
         """Display name as 'Parent > Child' format"""
         # audio_manager uses '-->' separator, convert to '>'
         full_path = obj.get_full_path()
         return full_path.replace(' --> ', ' > ')
     name_with_parent.short_description = 'Name'
-    
+
     def get_queryset(self, request):
         """Order queryset to show parents first, then their children directly below"""
         qs = super().get_queryset(request)
@@ -51,7 +51,9 @@ class CategoryAdmin(SortableAdminMixin, admin.ModelAdmin):
         qs = qs.select_related('parent')
         # Order by: use parent's order for grouping (for parents, use their own order; for children, use parent's order)
         # Then by whether it's a parent (0) or child (1), then by the item's own order, then name
-        from django.db.models import Case, When, IntegerField, F, Value, Coalesce
+
+        from django.db.models import Case, When, IntegerField, F, Value
+        from django.db.models.functions import Coalesce
         return qs.annotate(
             parent_order_value=Case(
                 When(parent__isnull=True, then=Coalesce(F('order'), Value(999999))),
@@ -64,29 +66,29 @@ class CategoryAdmin(SortableAdminMixin, admin.ModelAdmin):
                 output_field=IntegerField()
             )
         ).order_by('parent_order_value', 'is_parent', 'order', 'name')
-    
+
     def api_endpoint(self, obj):
         """Display API endpoint link and URL"""
         request = getattr(self, '_request', None)
         return get_api_endpoint_display(obj, request=request, for_list=False)
     api_endpoint.short_description = "API Endpoint"
-    
+
     def api_url(self, obj):
         """Display API URL in list view"""
         request = getattr(self, '_request', None)
         return get_api_endpoint_display(obj, request=request, for_list=True)
     api_url.short_description = "API URL"
-    
+
     def changeform_view(self, request, *args, **kwargs):
         """Store request in instance for use in api_endpoint method"""
         self._request = request
         return super().changeform_view(request, *args, **kwargs)
-    
+
     def changelist_view(self, request, *args, **kwargs):
         """Store request for list view"""
         self._request = request
         return super().changelist_view(request, *args, **kwargs)
-    
+
     def get_fieldsets(self, request, obj=None):
         """Add API endpoint fieldset at top"""
         fieldsets = list(super().get_fieldsets(request, obj) or [])
@@ -109,16 +111,16 @@ class AudioFileAdminForm(forms.ModelForm):
     class Meta:
         model = AudioFile
         fields = '__all__'
-    
+
     def clean(self):
         cleaned_data = super().clean()
         is_published = cleaned_data.get('is_published')
         published_date = cleaned_data.get('published_date')
-        
+
         # If is_published is True and published_date is not set, set it to now
         if is_published and not published_date:
             cleaned_data['published_date'] = timezone.now()
-        
+
         return cleaned_data
 
 @admin.register(AudioFile)
@@ -134,7 +136,7 @@ class AudioFileAdmin(SortableAdminMixin, admin.ModelAdmin):
     ordering = ['order', '-published_date']
     filter_horizontal = ('tags',)
     readonly_fields = ('image_display', 'audio_player_display', 'publish_button', 'api_endpoint')
-    
+
     class Media:
         js = ('admin/js/audio_file_publish.js',)
 
@@ -176,7 +178,7 @@ class AudioFileAdmin(SortableAdminMixin, admin.ModelAdmin):
                 # audio_file.published_date = None
                 pass
             audio_file.save()
-            
+
             # If it's an AJAX request, return JSON
             if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
                 return JsonResponse({
@@ -185,7 +187,7 @@ class AudioFileAdmin(SortableAdminMixin, admin.ModelAdmin):
                     'published_date': audio_file.published_date.isoformat() if audio_file.published_date else None,
                     'message': f'Audio file "{audio_file.title}" has been {"published" if audio_file.is_published else "unpublished"}.'
                 })
-            
+
             self.message_user(request, f'Audio file "{audio_file.title}" has been {"published" if audio_file.is_published else "unpublished"}.')
         return HttpResponseRedirect(reverse('admin:audio_manager_audiofile_change', args=[object_id]))
 
@@ -200,7 +202,7 @@ class AudioFileAdmin(SortableAdminMixin, admin.ModelAdmin):
                 button_text = "Publish"
                 button_class = "default publish-btn"
                 status_text = format_html('<span style="color: red;">Currently Unpublished</span>')
-            
+
             toggle_url = reverse('admin:audio_manager_audiofile_toggle_publish', args=[obj.pk])
             return format_html(
                 '<div class="publish-button-container">'
@@ -225,7 +227,7 @@ class AudioFileAdmin(SortableAdminMixin, admin.ModelAdmin):
             status = format_html('<span class="publish-status" style="color: red; font-weight: bold;">✗ Unpublished</span>')
             button_text = "Publish"
             button_class = "default publish-btn"
-        
+
         toggle_url = reverse('admin:audio_manager_audiofile_toggle_publish', args=[obj.pk])
         return format_html(
             '{}<br><a href="{}" class="button {} publish-toggle-list-btn" style="margin-top: 5px; font-size: 11px;">{}</a>',
@@ -257,24 +259,24 @@ class AudioFileAdmin(SortableAdminMixin, admin.ModelAdmin):
             return format_html('<audio controls src="{}">Your browser does not support the audio element.</audio>', obj.mp3_file.url)
         return "No Audio File"
     audio_player_display.short_description = "Audio Player"
-    
+
     def api_endpoint(self, obj):
         """Display API endpoint link and URL"""
         request = getattr(self, '_request', None)
         return get_api_endpoint_display(obj, request=request, for_list=False)
     api_endpoint.short_description = "API Endpoint"
-    
+
     def api_url(self, obj):
         """Display API URL in list view"""
         request = getattr(self, '_request', None)
         return get_api_endpoint_display(obj, request=request, for_list=True)
     api_url.short_description = "API URL"
-    
+
     def changeform_view(self, request, *args, **kwargs):
         """Store request in instance for use in api_endpoint method"""
         self._request = request
         return super().changeform_view(request, *args, **kwargs)
-    
+
     def changelist_view(self, request, *args, **kwargs):
         """Store request for list view"""
         self._request = request
