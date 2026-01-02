@@ -354,6 +354,6 @@ if __name__ == "__main__":
     else:
         # 👉 CHANGE THESE DATES HERE
         FROM_DATE = "2025-12-01"
-        TO_DATE   = "2026-01-31"
+        TO_DATE   = "2026-12-31"
 
         generate_files(FROM_DATE, TO_DATE)
