@@ -19,7 +19,8 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'panchang_api.settings')
 django.setup()
 
 # -------- SETTINGS ----------
-API_URL = "http://127.0.0.1:8000/api/panchang/today/?date="
+API_BASE=os.getenv("PANCHANG_API_BASE", "http://127.0.0.1:8000")
+API_URL = f"{API_BASE}/api/panchang/today/?date="
 OUTPUT_FOLDER = "media/panchang_files"
 MAX_THREADS = 10
 MAX_RETRIES = 3  # Number of retries for failed requests

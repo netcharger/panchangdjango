@@ -29,62 +29,13 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # Use in future for quick reference and management of deployment settings.
 # -------------------------------------------------------------------------
 
-IS_LOCALHOST = os.getenv('IS_LOCALHOST') == 'True'
-USE_MINIO = os.getenv('USE_MINIO') == 'True'
-
-# DEBUG mode is derived from IS_LOCALHOST for consistency
 DEBUG = os.getenv("DEBUG", "False") == "True"
 
 MEDIA_URL = '/media/'
-
-# --------------------
-# STORAGE DECISION
-# --------------------
-
-if USE_MINIO:
-    # MinIO / S3 Object Storage configuration
-    # Requires 'storages' library to be installed
-    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-
-    AWS_ACCESS_KEY_ID = os.getenv('MINIO_ACCESS_KEY')
-    AWS_SECRET_ACCESS_KEY = os.getenv('MINIO_SECRET_KEY')
-    AWS_STORAGE_BUCKET_NAME = os.getenv('MINIO_BUCKET_NAME')
-    AWS_S3_ENDPOINT_URL = os.getenv('MINIO_ENDPOINT')
-
-    # These are common settings for MinIO with S3Boto3Storage
-    AWS_S3_USE_SSL = False  # Set to True if MinIO is served over HTTPS
-    AWS_QUERYSTRING_AUTH = False
-    AWS_DEFAULT_ACL = None # No default ACL
-
-    # Update MEDIA_URL to point to MinIO bucket
-    MEDIA_URL = f"{AWS_S3_ENDPOINT_URL}/{AWS_STORAGE_BUCKET_NAME}/"
-
-else:
-    # Local filesystem storage configuration (default for development)
-    if IS_LOCALHOST:
-        # Local development: media folder inside the project base directory
-        MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-    else:
-        # Production (e.g., Coolify without MinIO): MEDIA_ROOT must be explicitly defined
-        # This path should correspond to a persistent volume mount point in your deployment environment.
-        MEDIA_ROOT = os.getenv('MEDIA_ROOT')
-        if not MEDIA_ROOT:
-            raise RuntimeError("MEDIA_ROOT environment variable is required when not using MinIO in production")
-
-# --------------------
-# PANCHANG FILES (Derived from MEDIA settings)
-# --------------------
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 PANCHANG_FILES_URL = f'{MEDIA_URL}panchang_files/'
-# PANCHANG_FILES_ROOT is only relevant for local storage, not MinIO
-if not USE_MINIO:
-    PANCHANG_FILES_ROOT = os.path.join(MEDIA_ROOT, 'panchang_files')
-else:
-    PANCHANG_FILES_ROOT = None # Not applicable for MinIO, files are in the bucket
-
-# =========================================================================
-# END CORE ENVIRONMENT FLAGS & STORAGE DECISION
-# =========================================================================
+PANCHANG_FILES_ROOT = os.path.join(MEDIA_ROOT, 'panchang_files')
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get("SECRET_KEY")
@@ -95,22 +46,13 @@ import os
 
 ALLOWED_HOSTS = os.getenv(
     "ALLOWED_HOSTS",
-    "api.dailypanchangam.com,.dailypanchangam.com,192.168.1.2,djangoadim.65.108.213.103.sslip.io"
+    "api.dailypanchangam.com,.dailypanchangam.com,192.168.1.2,djangoadim.65.108.213.103.sslip.io,127.0.0.1"
 ).split(",")
 
 CSRF_TRUSTED_ORIGINS = os.getenv(
     "CSRF_TRUSTED_ORIGINS",
     "https://api.dailypanchangam.com"
 ).split(",")
-
-SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
-USE_X_FORWARDED_HOST = True
-
-CSRF_COOKIE_SECURE = True
-SESSION_COOKIE_SECURE = True
-SECURE_SSL_REDIRECT = True
-
-
 
 
 # Base installed apps
@@ -136,12 +78,6 @@ INSTALLED_APPS = [
     'chanting',
 ]
 
-# Add debugging tools only on localhost
-if IS_LOCALHOST:
-    INSTALLED_APPS.insert(0, 'silk')
-    INSTALLED_APPS.append('debug_toolbar')
-    INSTALLED_APPS.append('storages') # Required for MinIO development with local storage
-
 # Base middleware
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -154,11 +90,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
-# Add debugging middleware only on localhost
-if IS_LOCALHOST:
-    MIDDLEWARE.append('debug_toolbar.middleware.DebugToolbarMiddleware')
-    MIDDLEWARE.append('silk.middleware.SilkyMiddleware')
 
 ROOT_URLCONF = 'panchang_api.urls'
 
@@ -229,16 +160,6 @@ USE_TZ = True # Temporarily set to False to bypass MySQL timezone issues on Wind
 os.environ.setdefault('DJANGO_AUTORELOAD_MAX_RETRIES', '10')
 os.environ.setdefault('DJANGO_AUTORELOAD_RETRY_DELAY', '0.1')
 
-# Django Debug Toolbar configuration (only on localhost)
-if IS_LOCALHOST:
-    INTERNAL_IPS = [
-        "127.0.0.1",
-        "localhost",
-    ]
-    # Additional configuration for Debug Toolbar
-    DEBUG_TOOLBAR_CONFIG = {
-        'SHOW_TOOLBAR_CALLBACK': lambda request: IS_LOCALHOST,
-    }
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -259,6 +180,8 @@ REST_FRAMEWORK = {
 }
 
 # CKEditor Configuration
+
+
 CKEDITOR_UPLOAD_PATH = "uploads/"
 CKEDITOR_CONFIGS = {
     'default': {
