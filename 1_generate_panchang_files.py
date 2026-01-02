@@ -21,7 +21,8 @@ django.setup()
 # -------- SETTINGS ----------
 API_BASE=os.getenv("PANCHANG_API_BASE", "http://127.0.0.1:8000")
 API_URL = f"{API_BASE}/api/panchang/today/?date="
-OUTPUT_FOLDER = "media/panchang_files"
+OUTPUT_FOLDER = os.path.join(settings.MEDIA_ROOT, "panchang_files")
+
 MAX_THREADS = 10
 MAX_RETRIES = 3  # Number of retries for failed requests
 RETRY_DELAY = 2  # Seconds to wait between retries

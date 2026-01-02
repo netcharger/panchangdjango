@@ -2,6 +2,7 @@ from django.db import models
 from django.conf import settings
 import os
 from django.core.files import File
+from django.core.files.storage import default_storage # Import default_storage
 from panchang.utils import (
     carousel_image_upload_path,
     convert_and_optimize_uploaded_image,
@@ -26,8 +27,17 @@ class CarouselImage(models.Model):
         verbose_name_plural = "Carousel Images"
 
     def _process_image(self, old_image):
-        if self.image and os.path.exists(self.image.path):
+        # Ensure target directory exists for all images
+        # This is for local storage. For remote, storage backends usually handle this.
+        if settings.MEDIA_ROOT: # Only if MEDIA_ROOT is defined (i.e. local storage)
+            os.makedirs(os.path.join(settings.MEDIA_ROOT, "carousel_images"), exist_ok=True)
+
+        if self.image and default_storage.exists(self.image.name):
+            # For hash calculation, we temporarily need a local path if using remote storage
+            # This is a limitation if calculate_image_hash doesn't support file-like objects
+            # For now, we proceed assuming self.image.path is accessible locally.
             image_path = self.image.path
+            image_name = self.image.name
             current_hash = calculate_image_hash(image_path)
 
             # If image changed or no hash, process it
@@ -35,50 +45,56 @@ class CarouselImage(models.Model):
                 self.image_hash = current_hash
 
                 # Convert original image to WebP and optimize
-                _, ext = os.path.splitext(image_path)
+                _, ext = os.path.splitext(image_name)
                 if ext.lower() != '.webp':
-                    webp_path = convert_and_optimize_uploaded_image(self.image, image_path, quality=88)
-                    if webp_path and os.path.exists(webp_path):
-                        # Replace original file with WebP version
-                        with open(webp_path, 'rb') as f:
-                            self.image.save(os.path.basename(webp_path), File(f), save=False)
-                        # Delete original non-WebP file if different
-                        if webp_path != image_path and os.path.exists(image_path):
-                            try:
-                                os.remove(image_path)
-                            except Exception as e:
-                                print(f"Error deleting original image file: {e}")
-                        image_path = webp_path
+                    webp_file = convert_and_optimize_uploaded_image(self.image, image_path, quality=88)
+                    if webp_file: # webp_file is a File object, check if it was created
+                        # Replace original file with WebP version. This will also update self.image.name
+                        self.image.save(webp_file.name, webp_file, save=False) # save=False as it's part of main model save
+
+                        # Delete original non-WebP file if different and exists in storage
+                        if old_image and old_image.name != self.image.name and default_storage.exists(old_image.name):
+                            default_storage.delete(old_image.name)
+
                         # Recalculate hash for WebP version
-                        self.image_hash = calculate_image_hash(image_path)
+                        if default_storage.exists(self.image.name): # Check if the new image exists in storage
+                             self.image_hash = calculate_image_hash(self.image.path) # Still relies on .path being local
 
                 # Create all image sizes (small, thumb, medium, large) - saved on disk only
-                create_image_sizes(self.image, image_path, settings.MEDIA_ROOT)
+                # create_image_sizes handles saving to disk based on MEDIA_ROOT
+                if default_storage.exists(self.image.name):
+                    create_image_sizes(self.image, self.image.path, settings.MEDIA_ROOT)
 
-            # Delete old image and all sizes if replaced
-            if old_image and old_image != self.image:
+            # Delete old image and all sizes if replaced and storage is the same
+            if old_image and old_image.name != self.image.name and old_image.storage == self.image.storage:
                 try:
-                    old_image.delete(save=False)
-                    # Delete all size folders (small, thumb, medium, large)
-                    old_filename = os.path.basename(old_image.path)
-                    old_base_dir = os.path.dirname(old_image.path)
+                    # Delete the original old image
+                    if default_storage.exists(old_image.name):
+                        default_storage.delete(old_image.name)
+
+                    # Delete all size variants of the old image
+                    old_filename_base = os.path.splitext(os.path.basename(old_image.name))[0]
+                    old_image_dir = os.path.dirname(old_image.name) # e.g., 'carousel_images'
+
                     for size_name in settings.IMAGE_SIZES.keys():
-                        old_size_path = os.path.join(old_base_dir, size_name, old_filename)
-                        if os.path.exists(old_size_path):
-                            os.remove(old_size_path)
+                        old_size_name = f"{old_image_dir}/{size_name}/{old_filename_base}.webp" # Size variants are WebP
+                        if default_storage.exists(old_size_name):
+                            default_storage.delete(old_size_name)
                 except Exception as e:
                     print(f"Error deleting old image/sizes: {e}")
-        elif old_image:
-            # If image was removed, delete old image and all sizes
+        elif old_image and not self.image: # If image was removed entirely
             try:
-                old_image.delete(save=False)
-                # Delete all size folders (small, thumb, medium, large)
-                old_filename = os.path.basename(old_image.path)
-                old_base_dir = os.path.dirname(old_image.path)
+                # Delete the original old image
+                if default_storage.exists(old_image.name):
+                    default_storage.delete(old_image.name)
+
+                old_filename_base = os.path.splitext(os.path.basename(old_image.name))[0]
+                old_image_dir = os.path.dirname(old_image.name)
+
                 for size_name in settings.IMAGE_SIZES.keys():
-                    old_size_path = os.path.join(old_base_dir, size_name, old_filename)
-                    if os.path.exists(old_size_path):
-                        os.remove(old_size_path)
+                    old_size_name = f"{old_image_dir}/{size_name}/{old_filename_base}.webp"
+                    if default_storage.exists(old_size_name):
+                        default_storage.delete(old_size_name)
             except Exception as e:
                 print(f"Error deleting old image/sizes on removal: {e}")
 
@@ -91,34 +107,36 @@ class CarouselImage(models.Model):
             except CarouselImage.DoesNotExist:
                 pass
 
+        # Ensure the media root directory exists before Django tries to save anything
+        if settings.MEDIA_ROOT and not os.path.exists(settings.MEDIA_ROOT):
+             os.makedirs(settings.MEDIA_ROOT, exist_ok=True)
+
+
         super().save(*args, **kwargs)
         self._process_image(old_image)
         super().save(update_fields=['image_hash'])
 
     def delete_image_files(self):
         """Delete the image file and all its size variants"""
-        if self.image:
-            original_path = self.image.path
-            if os.path.exists(original_path):
-                try:
-                    os.remove(original_path)
-                    print(f"Deleted original carousel image file: {original_path}")
-                except Exception as e:
-                    print(f"Error deleting original carousel image file {original_path}: {e}")
+        if self.image and default_storage.exists(self.image.name):
+            try:
+                default_storage.delete(self.image.name) # Delete original image
+                print(f"Deleted original carousel image file: {self.image.name}")
+            except Exception as e:
+                print(f"Error deleting original carousel image file {self.image.name}: {e}")
 
-            # Delete all size folders (thumb, medium, large)
-            base_dir = os.path.dirname(original_path)
-            original_filename = os.path.basename(original_path)
+            # Delete all size variants
+            image_name_base = os.path.splitext(os.path.basename(self.image.name))[0]
+            image_dir = os.path.dirname(self.image.name)
 
             for size_name in settings.IMAGE_SIZES.keys():
-                size_dir = os.path.join(base_dir, size_name)
-                size_path = os.path.join(size_dir, original_filename)
-                if os.path.exists(size_path):
+                size_variant_name = f"{image_dir}/{size_name}/{image_name_base}.webp"
+                if default_storage.exists(size_variant_name):
                     try:
-                        os.remove(size_path)
-                        print(f"Deleted size file: {size_path}")
+                        default_storage.delete(size_variant_name)
+                        print(f"Deleted size file: {size_variant_name}")
                     except Exception as e:
-                        print(f"Error deleting size file {size_path}: {e}")
+                        print(f"Error deleting size file {size_variant_name}: {e}")
 
     def delete(self, *args, **kwargs):
         """Delete associated image files before deleting the model instance"""
@@ -127,6 +145,7 @@ class CarouselImage(models.Model):
 
     def __str__(self):
         return self.heading
+
 
 class SiteSetting(models.Model):
     """
@@ -216,40 +235,42 @@ class SiteSetting(models.Model):
             self.text_value = str(value) if value is not None else None
 
     def _process_image(self, old_image):
-        """Process image: convert to WebP and create sizes"""
-        if self.image_value and os.path.exists(self.image_value.path):
+        # Ensure target directory exists for all images
+        if settings.MEDIA_ROOT: # Only if MEDIA_ROOT is defined (i.e. local storage)
+            os.makedirs(os.path.join(settings.MEDIA_ROOT, "site_settings"), exist_ok=True) # Assuming 'site_settings' is the upload_to for this.
+
+        if self.image_value and default_storage.exists(self.image_value.name):
             image_path = self.image_value.path
+            image_name = self.image_value.name
 
             # Convert original image to WebP and optimize
-            _, ext = os.path.splitext(image_path)
+            _, ext = os.path.splitext(image_name)
             if ext.lower() != '.webp':
-                webp_path = convert_and_optimize_uploaded_image(self.image_value, image_path, quality=88)
-                if webp_path and os.path.exists(webp_path):
-                    # Replace original file with WebP version
-                    with open(webp_path, 'rb') as f:
-                        self.image_value.save(os.path.basename(webp_path), File(f), save=False)
-                    # Delete original non-WebP file if different
-                    if webp_path != image_path and os.path.exists(image_path):
-                        try:
-                            os.remove(image_path)
-                        except Exception as e:
-                            print(f"Error deleting original image file: {e}")
-                    image_path = webp_path
+                webp_file = convert_and_optimize_uploaded_image(self.image_value, image_path, quality=88)
+                if webp_file: # webp_file is a File object
+                    self.image_value.save(webp_file.name, webp_file, save=False)
+
+                    if old_image and old_image.name != self.image_value.name and default_storage.exists(old_image.name):
+                        default_storage.delete(old_image.name)
+                    image_name = self.image_value.name # Update image_name after save
 
             # Create all image sizes (small, thumb, medium, large) - saved on disk only
-            create_image_sizes(self.image_value, image_path, settings.MEDIA_ROOT)
+            if default_storage.exists(self.image_value.name):
+                create_image_sizes(self.image_value, self.image_value.path, settings.MEDIA_ROOT)
 
-        # Delete old image and all sizes if replaced
-        if old_image and old_image != self.image_value:
+        # Delete old image and all sizes if replaced and storage is the same
+        if old_image and old_image.name != self.image_value.name and old_image.storage == self.image_value.storage:
             try:
-                old_image.delete(save=False)
-                # Delete all size folders (small, thumb, medium, large)
-                old_filename = os.path.basename(old_image.path)
-                old_base_dir = os.path.dirname(old_image.path)
+                if default_storage.exists(old_image.name):
+                    default_storage.delete(old_image.name)
+
+                old_filename_base = os.path.splitext(os.path.basename(old_image.name))[0]
+                old_image_dir = os.path.dirname(old_image.name)
+
                 for size_name in settings.IMAGE_SIZES.keys():
-                    old_size_path = os.path.join(old_base_dir, size_name, old_filename)
-                    if os.path.exists(old_size_path):
-                        os.remove(old_size_path)
+                    old_size_name = f"{old_image_dir}/{size_name}/{old_filename_base}.webp"
+                    if default_storage.exists(old_size_name):
+                        default_storage.delete(old_size_name)
             except Exception as e:
                 print(f"Error deleting old image/sizes: {e}")
 
@@ -263,6 +284,10 @@ class SiteSetting(models.Model):
             except SiteSetting.DoesNotExist:
                 pass
 
+        # Ensure the media root directory exists before Django tries to save anything
+        if settings.MEDIA_ROOT and not os.path.exists(settings.MEDIA_ROOT):
+             os.makedirs(settings.MEDIA_ROOT, exist_ok=True)
+
         super().save(*args, **kwargs)
 
         # Process image if one is provided
@@ -274,26 +299,25 @@ class SiteSetting(models.Model):
         if self.pk:
             try:
                 old_instance = SiteSetting.objects.get(pk=self.pk)
-                if old_instance.image_value:
-                    original_path = old_instance.image_value.path
-                    if os.path.exists(original_path):
-                        try:
-                            os.remove(original_path)
-                        except Exception as e:
-                            print(f"Error deleting original site setting image file {original_path}: {e}")
+                if old_instance.image_value and default_storage.exists(old_instance.image_value.name):
+                    try:
+                        default_storage.delete(old_instance.image_value.name)
+                        print(f"Deleted original site setting image file: {old_instance.image_value.name}")
+                    except Exception as e:
+                        print(f"Error deleting original site setting image file {old_instance.image_value.name}: {e}")
 
-                    # Delete all size folders (thumb, medium, large)
-                    base_dir = os.path.dirname(original_path)
-                    original_filename = os.path.basename(original_path)
+                    # Delete all size variants
+                    image_name_base = os.path.splitext(os.path.basename(old_instance.image_value.name))[0]
+                    image_dir = os.path.dirname(old_instance.image_value.name)
 
                     for size_name in settings.IMAGE_SIZES.keys():
-                        size_dir = os.path.join(base_dir, size_name)
-                        size_path = os.path.join(size_dir, original_filename)
-                        if os.path.exists(size_path):
+                        size_variant_name = f"{image_dir}/{size_name}/{image_name_base}.webp"
+                        if default_storage.exists(size_variant_name):
                             try:
-                                os.remove(size_path)
+                                default_storage.delete(size_variant_name)
+                                print(f"Deleted size file: {size_variant_name}")
                             except Exception as e:
-                                print(f"Error deleting size file {size_path}: {e}")
+                                print(f"Error deleting size file {size_variant_name}: {e}")
             except SiteSetting.DoesNotExist:
                 pass
 
@@ -309,3 +333,4 @@ class SiteSetting(models.Model):
     def value(self):
         """Expose the currently active setting value (used by admin/model repr)."""
         return self.get_value()
+        return f"{self.key}: {self.value}"

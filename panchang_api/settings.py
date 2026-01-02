@@ -32,17 +32,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 DEBUG = os.getenv("DEBUG", "False") == "True"
 
 MEDIA_URL = '/media/'
-
-MEDIA_ROOT = os.getenv(
-    "MEDIA_ROOT",
-    os.path.join(BASE_DIR, "media")  # fallback for localhost
-)
-
-
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 PANCHANG_FILES_URL = f'{MEDIA_URL}panchang_files/'
 PANCHANG_FILES_ROOT = os.path.join(MEDIA_ROOT, 'panchang_files')
-
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get("SECRET_KEY")
@@ -161,7 +154,7 @@ AUTH_PASSWORD_VALIDATORS = [
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'Asia/Kolkata'
 USE_I18N = True
-USE_TZ = True # Temporarily set to False to bypass MySQL timezone issues on Windows
+USE_TZ = True
 
 # Autoreloader settings to mitigate WinError 123
 os.environ.setdefault('DJANGO_AUTORELOAD_MAX_RETRIES', '10')
@@ -188,6 +181,7 @@ REST_FRAMEWORK = {
 
 # CKEditor Configuration
 
+PANCHANG_API_URL = os.getenv("PANCHANG_API_URL", "http://127.0.0.1:8000/api/panchang/today/?date=")
 
 CKEDITOR_UPLOAD_PATH = "uploads/"
 CKEDITOR_CONFIGS = {
@@ -226,7 +220,7 @@ CKEDITOR_CONFIGS = {
 
 # Celery Configuration
 CELERY_BROKER_URL = 'redis://127.0.0.1:6379/0'
-CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379/0'
+CELERY_RESULT_BACKEND = 'redis://172.17.0.1:6379/0'
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'

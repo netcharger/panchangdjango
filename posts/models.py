@@ -5,6 +5,7 @@ from django.urls import reverse
 from ckeditor.fields import RichTextField
 from django.conf import settings
 from django.core.files import File
+from django.core.files.storage import default_storage
 import os
 from django.utils.html import format_html
 
@@ -54,26 +55,26 @@ class Category(models.Model):
                     # If a new image was uploaded and converted, or an old one was converted:
                     # Delete the original non-WebP file if it was different and existed.
                     # This applies if an existing JPG was replaced by a new WebP, or if a new JPG was uploaded and converted.
-                    if old_image and old_image.path != webp_path and os.path.exists(old_image.path) and os.path.splitext(old_image.name)[1].lower() != '.webp':
+                    if old_image and old_image.name != self.category_image.name and default_storage.exists(old_image.name) and os.path.splitext(old_image.name)[1].lower() != '.webp' and old_image.storage == self.category_image.storage:
                         try:
-                            os.remove(old_image.path)
-                            print(f"Deleted old non-WebP category image file: {old_image.path}")
+                            default_storage.delete(old_image.name)
+                            print(f"Deleted old non-WebP category image file: {old_image.name}")
                         except Exception as e:
-                            print(f"Error deleting old non-WebP category image file {old_image.path}: {e}")
+                            print(f"Error deleting old non-WebP category image file {old_image.name}: {e}")
                     
                     # Also delete old sizes if they existed before this save and the image itself changed.
-                    if old_image and old_image.name != self.category_image.name:
+                    if old_image and old_image.name != self.category_image.name and old_image.storage == self.category_image.storage:
                         # Delete all size folders (small, thumb, medium, large)
-                        old_filename = os.path.basename(old_image.path)
-                        old_base_dir = os.path.dirname(old_image.path)
+                        old_filename_base = os.path.splitext(os.path.basename(old_image.name))[0]
+                        old_image_dir = os.path.dirname(old_image.name)
                         for size_name in settings.IMAGE_SIZES.keys():
-                            old_size_path = os.path.join(old_base_dir, size_name, old_filename)
-                            if os.path.exists(old_size_path):
+                            old_size_name = f"{old_image_dir}/{size_name}/{old_filename_base}.webp"
+                            if default_storage.exists(old_size_name):
                                 try:
-                                    os.remove(old_size_path)
-                                    print(f"Deleted old size file: {old_size_path}")
+                                    default_storage.delete(old_size_name)
+                                    print(f"Deleted old size file: {old_size_name}")
                                 except Exception as e:
-                                    print(f"Error deleting old size file {old_size_path}: {e}")
+                                    print(f"Error deleting old size file {old_size_name}: {e}")
 
             # Create all image sizes (small, thumb, medium, large) - saved on disk only
             create_image_sizes(self.category_image, self.category_image.path, settings.MEDIA_ROOT)
@@ -113,42 +114,27 @@ class Category(models.Model):
 
     def delete_category_image_files(self):
         """Delete the category image file and all its size variants"""
-        if self.category_image:
+        if self.category_image and default_storage.exists(self.category_image.name):
             try:
-                # Get the path and filename before deletion
-                # Wrap in try-except in case path is not accessible
+                # Delete the original image file
                 try:
-                    original_path = self.category_image.path
-                    base_dir = os.path.dirname(original_path)
-                    original_filename = os.path.basename(original_path)
-                    
-                    # Delete all size folders (thumb, medium, large) first
-                    for size_name in settings.IMAGE_SIZES.keys():
-                        size_dir = os.path.join(base_dir, size_name)
-                        size_path = os.path.join(size_dir, original_filename)
-                        if os.path.exists(size_path):
-                            try:
-                                os.remove(size_path)
-                                print(f"Deleted size file: {size_path}")
-                            except Exception as e:
-                                print(f"Error deleting size file {size_path}: {e}")
-                    
-                    # Delete the original image file
-                    if os.path.exists(original_path):
-                        try:
-                            os.remove(original_path)
-                            print(f"Deleted original category image file: {original_path}")
-                        except Exception as e:
-                            print(f"Error deleting original category image file {original_path}: {e}")
-                except Exception as path_error:
-                    print(f"Could not access image path, trying ImageField delete method: {path_error}")
-                
-                # Always try to use ImageField's delete method to ensure proper cleanup
-                # This handles storage backends properly
-                try:
-                    self.category_image.delete(save=False)
+                    default_storage.delete(self.category_image.name)
+                    print(f"Deleted original category image file: {self.category_image.name}")
                 except Exception as e:
-                    print(f"Error using ImageField delete method: {e}")
+                    print(f"Error deleting original category image file {self.category_image.name}: {e}")
+
+                # Delete all size variants
+                image_name_base = os.path.splitext(os.path.basename(self.category_image.name))[0]
+                image_dir = os.path.dirname(self.category_image.name)
+
+                for size_name in settings.IMAGE_SIZES.keys():
+                    size_variant_name = f"{image_dir}/{size_name}/{image_name_base}.webp"
+                    if default_storage.exists(size_variant_name):
+                        try:
+                            default_storage.delete(size_variant_name)
+                            print(f"Deleted size file: {size_variant_name}")
+                        except Exception as e:
+                            print(f"Error deleting size file {size_variant_name}: {e}")
             except Exception as e:
                 print(f"Error deleting category image files: {e}")
                 import traceback
@@ -230,29 +216,31 @@ class Post(models.Model):
                 create_image_sizes(self.featured_image, image_path, settings.MEDIA_ROOT)
 
             # Delete old image and all sizes if replaced
-            if old_image and old_image != self.featured_image:
+            if old_image and old_image.name != self.featured_image.name and old_image.storage == self.featured_image.storage:
                 try:
-                    old_image.delete(save=False)
+                    if default_storage.exists(old_image.name):
+                        default_storage.delete(old_image.name)
                     # Delete all size folders (small, thumb, medium, large)
-                    old_filename = os.path.basename(old_image.path)
-                    old_base_dir = os.path.dirname(old_image.path)
+                    old_filename_base = os.path.splitext(os.path.basename(old_image.name))[0]
+                    old_image_dir = os.path.dirname(old_image.name)
                     for size_name in settings.IMAGE_SIZES.keys():
-                        old_size_path = os.path.join(old_base_dir, size_name, old_filename)
-                        if os.path.exists(old_size_path):
-                            os.remove(old_size_path)
+                        old_size_name = f"{old_image_dir}/{size_name}/{old_filename_base}.webp"
+                        if default_storage.exists(old_size_name):
+                            default_storage.delete(old_size_name)
                 except Exception as e:
                     print(f"Error deleting old image/sizes: {e}")
         elif old_image:
             # If image was removed, delete old image and all sizes
             try:
-                old_image.delete(save=False)
+                if default_storage.exists(old_image.name):
+                    default_storage.delete(old_image.name)
                 # Delete all size folders (small, thumb, medium, large)
-                old_filename = os.path.basename(old_image.path)
-                old_base_dir = os.path.dirname(old_image.path)
+                old_filename_base = os.path.splitext(os.path.basename(old_image.name))[0]
+                old_image_dir = os.path.dirname(old_image.name)
                 for size_name in settings.IMAGE_SIZES.keys():
-                    old_size_path = os.path.join(old_base_dir, size_name, old_filename)
-                    if os.path.exists(old_size_path):
-                        os.remove(old_size_path)
+                    old_size_name = f"{old_image_dir}/{size_name}/{old_filename_base}.webp"
+                    if default_storage.exists(old_size_name):
+                        default_storage.delete(old_size_name)
             except Exception as e:
                 print(f"Error deleting old image/sizes on removal: {e}")
 
@@ -287,28 +275,25 @@ class Post(models.Model):
 
     def delete_featured_image_files(self):
         """Delete the featured image file and all its size variants"""
-        if self.featured_image:
-            original_path = self.featured_image.path
-            if os.path.exists(original_path):
-                try:
-                    os.remove(original_path)
-                    print(f"Deleted original featured image file: {original_path}")
-                except Exception as e:
-                    print(f"Error deleting original featured image file {original_path}: {e}")
+        if self.featured_image and default_storage.exists(self.featured_image.name):
+            try:
+                default_storage.delete(self.featured_image.name)
+                print(f"Deleted original featured image file: {self.featured_image.name}")
+            except Exception as e:
+                print(f"Error deleting original featured image file {self.featured_image.name}: {e}")
 
-            # Delete all size folders (thumb, medium, large)
-            base_dir = os.path.dirname(original_path)
-            original_filename = os.path.basename(original_path)
+            # Delete all size variants
+            image_name_base = os.path.splitext(os.path.basename(self.featured_image.name))[0]
+            image_dir = os.path.dirname(self.featured_image.name)
 
             for size_name in settings.IMAGE_SIZES.keys():
-                size_dir = os.path.join(base_dir, size_name)
-                size_path = os.path.join(size_dir, original_filename)
-                if os.path.exists(size_path):
+                size_variant_name = f"{image_dir}/{size_name}/{image_name_base}.webp"
+                if default_storage.exists(size_variant_name):
                     try:
-                        os.remove(size_path)
-                        print(f"Deleted size file: {size_path}")
+                        default_storage.delete(size_variant_name)
+                        print(f"Deleted size file: {size_variant_name}")
                     except Exception as e:
-                        print(f"Error deleting size file {size_path}: {e}")
+                        print(f"Error deleting size file {size_variant_name}: {e}")
 
     def delete(self, *args, **kwargs):
         """Delete associated image files before deleting the model instance"""
@@ -356,28 +341,30 @@ class PostImage(models.Model):
                 # Create all image sizes (small, thumb, medium, large) - saved on disk only
                 create_image_sizes(self.image_file, image_path, settings.MEDIA_ROOT)
             
-            if old_image and old_image != self.image_file:
+            if old_image and old_image.name != self.image_file.name and old_image.storage == self.image_file.storage:
                 try:
-                    old_image.delete(save=False)
+                    if default_storage.exists(old_image.name):
+                        default_storage.delete(old_image.name)
                     # Delete all size folders (small, thumb, medium, large)
-                    old_filename = os.path.basename(old_image.path)
-                    old_base_dir = os.path.dirname(old_image.path)
+                    old_filename_base = os.path.splitext(os.path.basename(old_image.name))[0]
+                    old_image_dir = os.path.dirname(old_image.name)
                     for size_name in settings.IMAGE_SIZES.keys():
-                        old_size_path = os.path.join(old_base_dir, size_name, old_filename)
-                        if os.path.exists(old_size_path):
-                            os.remove(old_size_path)
+                        old_size_name = f"{old_image_dir}/{size_name}/{old_filename_base}.webp"
+                        if default_storage.exists(old_size_name):
+                            default_storage.delete(old_size_name)
                 except Exception as e:
                     print(f"Error deleting old image/sizes: {e}")
         elif old_image:
             try:
-                old_image.delete(save=False)
+                if default_storage.exists(old_image.name):
+                    default_storage.delete(old_image.name)
                 # Delete all size folders (small, thumb, medium, large)
-                old_filename = os.path.basename(old_image.path)
-                old_base_dir = os.path.dirname(old_image.path)
+                old_filename_base = os.path.splitext(os.path.basename(old_image.name))[0]
+                old_image_dir = os.path.dirname(old_image.name)
                 for size_name in settings.IMAGE_SIZES.keys():
-                    old_size_path = os.path.join(old_base_dir, size_name, old_filename)
-                    if os.path.exists(old_size_path):
-                        os.remove(old_size_path)
+                    old_size_name = f"{old_image_dir}/{size_name}/{old_filename_base}.webp"
+                    if default_storage.exists(old_size_name):
+                        default_storage.delete(old_size_name)
             except Exception as e:
                 print(f"Error deleting old image/sizes on removal: {e}")
 
@@ -404,28 +391,25 @@ class PostImage(models.Model):
 
     def delete_image_file_files(self):
         """Delete the image file and all its size variants"""
-        if self.image_file:
-            original_path = self.image_file.path
-            if os.path.exists(original_path):
-                try:
-                    os.remove(original_path)
-                    print(f"Deleted original post image file: {original_path}")
-                except Exception as e:
-                    print(f"Error deleting original post image file {original_path}: {e}")
+        if self.image_file and default_storage.exists(self.image_file.name):
+            try:
+                default_storage.delete(self.image_file.name)
+                print(f"Deleted original post image file: {self.image_file.name}")
+            except Exception as e:
+                print(f"Error deleting original post image file {self.image_file.name}: {e}")
 
-            # Delete all size folders (thumb, medium, large)
-            base_dir = os.path.dirname(original_path)
-            original_filename = os.path.basename(original_path)
+            # Delete all size variants
+            image_name_base = os.path.splitext(os.path.basename(self.image_file.name))[0]
+            image_dir = os.path.dirname(self.image_file.name)
 
             for size_name in settings.IMAGE_SIZES.keys():
-                size_dir = os.path.join(base_dir, size_name)
-                size_path = os.path.join(size_dir, original_filename)
-                if os.path.exists(size_path):
+                size_variant_name = f"{image_dir}/{size_name}/{image_name_base}.webp"
+                if default_storage.exists(size_variant_name):
                     try:
-                        os.remove(size_path)
-                        print(f"Deleted size file: {size_path}")
+                        default_storage.delete(size_variant_name)
+                        print(f"Deleted size file: {size_variant_name}")
                     except Exception as e:
-                        print(f"Error deleting size file {size_path}: {e}")
+                        print(f"Error deleting size file {size_variant_name}: {e}")
 
     def delete(self, *args, **kwargs):
         """Delete associated image files before deleting the model instance"""
