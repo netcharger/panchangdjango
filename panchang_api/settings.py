@@ -32,10 +32,17 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 DEBUG = os.getenv("DEBUG", "False") == "True"
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+MEDIA_ROOT = os.getenv(
+    "MEDIA_ROOT",
+    os.path.join(BASE_DIR, "media")  # fallback for localhost
+)
+
+
 
 PANCHANG_FILES_URL = f'{MEDIA_URL}panchang_files/'
 PANCHANG_FILES_ROOT = os.path.join(MEDIA_ROOT, 'panchang_files')
+
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get("SECRET_KEY")
