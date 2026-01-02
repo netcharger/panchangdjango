@@ -32,7 +32,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 DEBUG = os.getenv("DEBUG", "False") == "True"
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.getenv("DJANGO_MEDIA_ROOT_ENV", os.path.join(BASE_DIR, 'media'))
 
 PANCHANG_FILES_URL = f'{MEDIA_URL}panchang_files/'
 PANCHANG_FILES_ROOT = os.path.join(MEDIA_ROOT, 'panchang_files')
