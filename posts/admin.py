@@ -50,17 +50,18 @@ class CustomPostAdminForm(forms.ModelForm):
         tags_string = self.cleaned_data.get('tags_input', '')
         tag_names = [name.strip() for name in tags_string.split(',') if name.strip()]
 
-        if commit:
-            post.save()  # Save the post instance to ensure it has a primary key
-
-        # Clear existing tags and set new ones
-        if tag_names:
+        def save_tags():
             post.tags.clear()
             for tag_name in tag_names:
                 tag, created = Tag.objects.get_or_create(name=tag_name, defaults={'slug': slugify(tag_name)})
                 post.tags.add(tag)
+
+        if commit:
+            post.save()  # Save the post instance to ensure it has a primary key
+            save_tags()
         else:
-            post.tags.clear()
+            # If commit=False, Django Admin will call save_m2m() later
+            self.save_m2m = save_tags
 
         return post
 
