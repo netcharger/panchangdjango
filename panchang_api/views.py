@@ -20,3 +20,10 @@ def welcome_view(request):
 
 
 
+
+
+
+
+
+
+

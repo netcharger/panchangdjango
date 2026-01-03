@@ -54,6 +54,9 @@ CSRF_TRUSTED_ORIGINS = os.getenv(
     "https://api.dailypanchangam.com"
 ).split(",")
 
+USE_TZ = False
+TIME_ZONE = 'Asia/Kolkata'
+
 
 # Base installed apps
 INSTALLED_APPS = [
@@ -128,6 +131,7 @@ DATABASES = {
         "PORT": u.port or 3306,
         "OPTIONS": {
             "charset": "utf8mb4",
+            "init_command": "SET time_zone = '+05:30'",
         },
     }
 }
