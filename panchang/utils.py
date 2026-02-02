@@ -322,7 +322,7 @@ def calculate_future_festival_dates(
         List of dicts with 'date' and 'time' keys for matching dates
     """
     try:
-        from panchang.calculations.panchangam_calculation import compute_panchang_for_date, LOCATION
+        from panchang.calculations.panchangam_calculation_v2 import compute_panchang_for_date, LOCATION
 
         if start_date is None:
             start_date = date.today()

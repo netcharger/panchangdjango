@@ -4,6 +4,9 @@ Models for Panchang API - Festivals and Important Days
 import os
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
+from django.core.files.base import ContentFile
+from django.core.serializers.json import DjangoJSONEncoder
+import json
 from django.utils.html import format_html
 from django.utils.text import slugify
 from django.db.models.signals import post_save, pre_delete
@@ -293,4 +296,108 @@ def delete_images_on_delete(sender, instance, **kwargs):
     if instance.image:
         # Enqueue image deletion task (only original image path needed - sizes are in folders)
         delete_related_images_task.delay(instance.image.name)
+
+
+class PanchangData(models.Model):
+    """Model to store daily Panchang data"""
+    date = models.CharField(max_length=50, unique=True, help_text="Date in YYYY-MM-DD format usually")
+    lunar_month = models.CharField(max_length=100, help_text="Lunar Month (e.g., Pushya)")
+    paksha = models.CharField(max_length=50, help_text="Paksha (e.g., Shuddha)")
+    thithi = models.CharField(max_length=100, help_text="Thithi (e.g., Trayodashi)")
+    thithi_end = models.CharField(max_length=50, help_text="Thithi End Time")
+    nakshatram = models.CharField(max_length=100, help_text="Nakshatram (e.g., Rohini)")
+    nakshatram_end = models.CharField(max_length=50, help_text="Nakshatram End Time")
+    varjyam_time = models.CharField(max_length=100, help_text="Varjyam Time Range")
+    durmuhurtham_1 = models.CharField(max_length=100, help_text="Durmuhurtham 1 Time Range")
+    durmuhurtham_2 = models.CharField(max_length=100, blank=True, null=True, help_text="Durmuhurtham 2 Time Range")
+    
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        db_table = 'panchang_data'
+        ordering = ['date']
+        verbose_name_plural = 'Panchang Data'
+
+    def __str__(self):
+        return f"{self.date} - {self.thithi}"
+
+    # Sunrise/Sunset/Moonrise/Moonset
+    sunrise = models.CharField(max_length=50, blank=True, null=True, help_text="Sunrise Time")
+    sunset = models.CharField(max_length=50, blank=True, null=True, help_text="Sunset Time")
+    moonrise = models.CharField(max_length=50, blank=True, null=True, help_text="Moonrise Time")
+    moonset = models.CharField(max_length=50, blank=True, null=True, help_text="Moonset Time")
+
+    # Auspicious Timings
+    abhijit_muhurtham = models.CharField(max_length=50, blank=True, null=True, help_text="Abhijit Muhurtham")
+    amrita_kalam = models.CharField(max_length=50, blank=True, null=True, help_text="Amrita Kalam")
+    brahma_muhurtham = models.CharField(max_length=50, blank=True, null=True, help_text="Brahma Muhurtham")
+    pratah_sandhya = models.CharField(max_length=50, blank=True, null=True, help_text="Pratah Sandhya")
+    vijaya_muhurtham = models.CharField(max_length=50, blank=True, null=True, help_text="Vijaya Muhurtham")
+    godhuli_muhurtham = models.CharField(max_length=50, blank=True, null=True, help_text="Godhuli Muhurtham")
+    sayam_sandhya = models.CharField(max_length=50, blank=True, null=True, help_text="Sayam Sandhya")
+    nishita_muhurtham = models.CharField(max_length=50, blank=True, null=True, help_text="Nishita Muhurtham")
+
+    # Festivals
+    festivals = models.TextField(blank=True, null=True, help_text="Comma-separated list of festivals")
+
+
+
+class PanchangJSONExport(models.Model):
+    """Model to trigger JSON generation for a specific year"""
+    YEAR_CHOICES = [(y, str(y)) for y in range(2024, 2031)]
+    
+    year = models.IntegerField(choices=YEAR_CHOICES, unique=True, help_text="Select year to generate JSON for")
+    file = models.FileField(upload_to='panchang_files/', blank=True, null=True, help_text="Generated JSON file")
+    created_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        db_table = 'panchang_json_export'
+        verbose_name = 'Panchang JSON Export'
+        verbose_name_plural = 'Panchang JSON Exports'
+
+    def __str__(self):
+        return f"Panchang JSON {self.year}"
+
+    def save(self, *args, **kwargs):
+        # Always generate JSON on save
+        if self.year:
+            # Filter by date string containing the year (e.g., 'YYYY-MM-DD')
+            # Using __startswith assuming date format YYYY-MM-DD or DD-MM-YYYY if we changed it?
+            # User format is DD-MM-YYYY now. So contains is safer or endswith?
+            # The date format is DD-MM-YYYY (e.g., 01-01-2026). So year is at the end.
+            
+            # Let's try to filter by regex or contains.
+            # actually better to just filter date__icontains=str(self.year)
+            
+            queryset = PanchangData.objects.filter(date__icontains=str(self.year))
+            # Exclude created_at and updated_at by explicitly selecting other fields
+            data = list(queryset.values(
+                'id', 'date', 'lunar_month', 'paksha', 'thithi', 'thithi_end',
+                'nakshatram', 'nakshatram_end', 'varjyam_time', 'durmuhurtham_1', 'durmuhurtham_2',
+                # Sun/Moon
+                'sunrise', 'sunset', 'moonrise', 'moonset',
+                # Auspicious
+                'abhijit_muhurtham', 'amrita_kalam', 'brahma_muhurtham', 
+                'pratah_sandhya', 'vijaya_muhurtham', 'godhuli_muhurtham', 
+                'sayam_sandhya', 'nishita_muhurtham',
+                # Festivals
+                'festivals'
+            ))
+            
+            if data:
+                json_content = json.dumps(data, indent=4, ensure_ascii=False, cls=DjangoJSONEncoder)
+                file_name = f"{self.year}_total_panchangam.json"
+                
+                # Save file without saving instance to avoid recursion loop if we called save again, 
+                # but here we are setting the file field which needs a save.
+                # ContentFile allows saving in memory content.
+                
+                # We need to manually assign the file content
+                if self.file:
+                    self.file.delete(save=False) # Delete old file if exists
+                
+                self.file.save(file_name, ContentFile(json_content.encode('utf-8')), save=False)
+            
+        super().save(*args, **kwargs)
 

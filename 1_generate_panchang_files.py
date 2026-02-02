@@ -1,3 +1,11 @@
+
+"""
+TELUGU: http://192.168.1.2:8000/api/panchang/today/?date=2026-01-04&language=te
+
+ENGLISH:http://192.168.1.2:8000/api/panchang/today/?date=2026-01-04
+
+"""
+
 import requests
 import json
 import os
@@ -354,7 +362,7 @@ if __name__ == "__main__":
         retry_failed_dates()
     else:
         # 👉 CHANGE THESE DATES HERE
-        FROM_DATE = "2025-12-01"
-        TO_DATE   = "2026-12-31"
+        FROM_DATE = "2025-12-31"
+        TO_DATE   = "2026-01-31"
 
         generate_files(FROM_DATE, TO_DATE)

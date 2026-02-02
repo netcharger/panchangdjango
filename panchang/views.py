@@ -23,7 +23,7 @@ from .serializers import FestivalSerializer, ImportantDaySerializer, PanchangReq
 
 # Import panchang calculation functions from calculations module
 try:
-    from .calculations.panchangam_calculation import (
+    from .calculations.panchangam_calculation_v2 import (
         compute_panchang_for_date,
         find_amavasya_dates_in_year,
         LOCATION as DEFAULT_LOCATION,

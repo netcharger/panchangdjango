@@ -163,12 +163,9 @@ def get_lunar_month_names(greg_date, tithi_no):
     This is the proper astronomical way to determine lunar months.
     """
     # Calculate Sun's longitude at the given date
-    from datetime import datetime
-    import pytz
-
     # Get sun's position at noon on the given date
     tz = pytz.timezone(LOCATION["tz"])
-    local_midnight = tz.localize(datetime(greg_date.year, greg_date.month, greg_date.day, 12, 0, 0))
+    local_midnight = tz.localize(datetime.datetime(greg_date.year, greg_date.month, greg_date.day, 12, 0, 0))
     jd_ref = dt_to_jd_utc(local_midnight.astimezone(pytz.utc).replace(tzinfo=None))
 
     sun_data = swe.calc_ut(jd_ref, swe.SUN, swe.FLG_SWIEPH | swe.FLG_SIDEREAL)
@@ -221,6 +218,7 @@ def nakshatra_from_longitude(moon_lon):
     within = (moon_lon - (idx * size)) / size
     return idx + 1, NAKSHATRA_NAMES[idx], within
 
+    # Each tithi has two karanas (half-tithis).
 def karana_from_tithi(tithi_no, tithi_frac):
     # Each tithi has two karanas (half-tithis).
     # There are 11 karanas; 7 'fixed' (repeating) and 4 'non-repeating'
@@ -229,35 +227,31 @@ def karana_from_tithi(tithi_no, tithi_frac):
 
     # Tithi number is 1-30. We need to convert it to 0-29 for array indexing if needed.
     # Tithi halves: First half of Tithi N is 2*N-2, second half is 2*N-1 (0-indexed)
-
+    
+    # Total 60 half-tithis in a lunar month (30 tithis * 2 halves).
+    # Index 0 corresponds to the 1st half of Shukla Pratipada (Tithi 1).
     tithi_half_idx = int(tithi_no * 2 - 2 + (1 if tithi_frac >= 0.5 else 0)) # 0 to 59
 
-    # Fixed karanas repeat 8 times for tithis 1-29. (total 56 halves)
-    if tithi_half_idx < 56:
-        karan_idx = tithi_half_idx % 7 # 0-6 for Bava to Vishti
+    # Logic based on standard Karana assignment:
+    # 0 (1st half of 1st Tithi): Kimstughna
+    # 1 to 56: Cycle of 7 moving karanas (Bava..Vishti)
+    # 57 (2nd half of 29th Tithi): Shakuni
+    # 58 (1st half of 30th Tithi): Chatushpada
+    # 59 (2nd half of 30th Tithi): Naga
+
+    if tithi_half_idx == 0:
+        karan_idx = 10 # Kimstughna
+    elif 1 <= tithi_half_idx <= 56:
+        karan_idx = (tithi_half_idx - 1) % 7 # 0-6 for Bava to Vishti
+    elif tithi_half_idx == 57:
+        karan_idx = 7 # Shakuni
+    elif tithi_half_idx == 58:
+        karan_idx = 8 # Chatushpada
+    elif tithi_half_idx == 59:
+        karan_idx = 9 # Naga
     else:
-        # Non-repeating karanas for the last few tithi halves (tithi 29 second half, tithi 30 first/second half)
-        # Kimstughna (0) for 1st half of tithi 1
-        # Shakuni (7) for 1st half of tithi 14
-        # Chatushpada (8) for 2nd half of tithi 14
-        # Naga (9) for 1st half of tithi 15
-        # Kimstughna is special; it's the first half of the first tithi (Shukla Pratipada)
-        # Simplified for direct mapping
-        if tithi_no == 1 and tithi_frac < 0.5: # Shukla Pratipada 1st half
-            karan_idx = 10 # Kimstughna
-        elif tithi_no == 14 and tithi_frac < 0.5: # Krishna Chaturdashi 1st half
-            karan_idx = 7 # Shakuni
-        elif tithi_no == 14 and tithi_frac >= 0.5: # Krishna Chaturdashi 2nd half
-            karan_idx = 8 # Chatushpada
-        elif tithi_no == 15 and tithi_frac < 0.5: # Amavasya 1st half
-            karan_idx = 9 # Naga
-        elif tithi_no == 30 and tithi_frac < 0.5: # Amavasya 1st half (Amanta system, t_no 30 is Amavasya)
-            karan_idx = 9 # Naga
-        elif tithi_no == 30 and tithi_frac >= 0.5: # Amavasya 2nd half (Amanta system)
-            karan_idx = 10 # Kimstughna
-        else:
-            # This else should ideally not be hit with a robust tithi_half_idx mapping
-            karan_idx = 0 # Default to Bava or handle error
+        # Fallback (should not happen if tithi_no is within 1-30)
+        karan_idx = 0 
 
     return karan_idx + 1, KARANA_NAMES[karan_idx], tithi_frac # Return frac for 'within'
 
@@ -342,24 +336,33 @@ def find_all_crossings(jd_start, func_angle_deg, segment_size, search_window_day
 
     return crossings
 
-def create_event_intervals(jds_transitions, jd_start_window, tz, angle_calc_func, name_list, tol_seconds, initial_t_or_nak_calc_func=None, segment_size=None, kind=None, initial_event_name=None, initial_event_ordinal=None):
+def create_event_intervals(jds_transitions, jd_start_window, tz, angle_calc_func, name_list, tol_seconds, initial_t_or_nak_calc_func=None, segment_size=None, kind=None, initial_event_name=None, initial_event_ordinal=None, clip_start_jd=None, clip_end_jd=None):
     events = []
-    # Ensure the start of the window is the first point if it's not already covered
-    processed_jds = sorted(list(set(jds_transitions + [jd_start_window])))
+    # Don't automatically include jd_start_window here to avoid splitting events at midnight
+    # processed_jds = sorted(list(set(jds_transitions + [jd_start_window]))) 
+    processed_jds = sorted(list(set(jds_transitions)))
 
-    # Filter JDs to only include those that are within or just after the start of the window
-    # and within a reasonable range (e.g., up to ~2 days after start_window for full transitions)
-    filtered_jds = [jd for jd in processed_jds if jd >= jd_start_window - (2/24.0) and jd < jd_start_window + 2.0 ] # A bit more than 1 day
+    # Filter JDs to only include those that are within our clipping window (+ margin)
+    # We want events that overlap with [clip_start_jd, clip_end_jd]
+    start_margin = clip_start_jd - (1.0/24.0) if clip_start_jd else jd_start_window - 1.1
+    end_margin = clip_end_jd + (1.0/24.0) if clip_end_jd else jd_start_window + 2.0
+    
+    filtered_jds = [jd for jd in processed_jds if jd >= start_margin and jd < end_margin]
 
-    # Ensure filtered_jds is sorted and unique again
+    # Ensure filtered_jds is sorted and unique
     filtered_jds = sorted(list(set(filtered_jds)))
 
-    # Ensure we have at least one transition for the day, even if it's just the start of the day
-    if not filtered_jds or filtered_jds[0] > jd_start_window + (1/24.0): # If first transition is much later
-        filtered_jds.insert(0, jd_start_window)
-    # Ensure the end of the day is also considered for the last event's end time
-    if filtered_jds[-1] < jd_start_window + 1.0 - (tol_seconds / (24 * 3600.0)): # If last transition is before end of day
-        filtered_jds.append(jd_start_window + 1.0)
+    # Ensure we cover the start of the clipping window if needed
+    effective_start = clip_start_jd if clip_start_jd else jd_start_window
+    
+    # If no transitions or first transition is after effective_start, insert effective_start
+    if not filtered_jds or filtered_jds[0] > effective_start + (tol_seconds / (24 * 3600.0)): 
+        filtered_jds.insert(0, effective_start)
+        
+    # Ensure end is covered
+    effective_end = clip_end_jd if clip_end_jd else (jd_start_window + 1.0)
+    if filtered_jds[-1] < effective_end - (tol_seconds / (24 * 3600.0)):
+        filtered_jds.append(effective_end)
 
     # Determine the name and ordinal for the event active at jd_start_window
     initial_jd_point = jd_start_window # Or slightly after if jd_start_window is exactly a transition point
@@ -460,12 +463,18 @@ def create_event_intervals(jds_transitions, jd_start_window, tz, angle_calc_func
         start_dt = jd_to_local_datetime(interval["start_jd"], tz)
         end_dt = jd_to_local_datetime(interval["end_jd"], tz)
 
-        # Clip events to the target date boundaries
-        target_date_start_dt = jd_to_local_datetime(jd_start_window, tz)
-        target_date_end_dt = jd_to_local_datetime(jd_start_window + 1.0, tz)
+        event_start_dt = start_dt
+        event_end_dt = end_dt
 
-        event_start_dt = max(start_dt, target_date_start_dt)
-        event_end_dt = min(end_dt, target_date_end_dt)
+        # Apply clipping if boundaries are provided (Sunrise to Next Sunrise)
+        start_clip_dt = jd_to_local_datetime(clip_start_jd, tz) if clip_start_jd else None
+        end_clip_dt = jd_to_local_datetime(clip_end_jd, tz) if clip_end_jd else None
+
+        if start_clip_dt:
+            event_start_dt = max(start_dt, start_clip_dt)
+        
+        if end_clip_dt:
+            event_end_dt = min(end_dt, end_clip_dt)
 
         if kind == 'nakshatra':
             pass # Removed debug print
@@ -670,6 +679,15 @@ def compute_panchang_for_date(
         # Moon doesn't set on this date (can happen at certain locations/dates)
         moonset_time = None
 
+    # Calculate Sunrise for "Today" and "Tomorrow" to define the Panchang Day
+    # Note: 'sunrise' variable already holds today's sunrise from above
+    next_day_date = date_local + datetime.timedelta(days=1)
+    s_next = sun(locinfo.observer, date=next_day_date, tzinfo=tz)
+    next_sunrise = s_next["sunrise"]
+    
+    sunrise_jd = dt_to_jd_utc(sunrise.astimezone(pytz.utc).replace(tzinfo=None))
+    next_sunrise_jd = dt_to_jd_utc(next_sunrise.astimezone(pytz.utc).replace(tzinfo=None))
+
     ref_utc = local_midnight.astimezone(pytz.utc).replace(tzinfo=None)
     jd_ref = dt_to_jd_utc(ref_utc)
 
@@ -707,7 +725,9 @@ def compute_panchang_for_date(
         kind='tithi',
         segment_size=tithi_segment_size,
         initial_event_name=initial_t_name_extended, # Pass the initial event name
-        initial_event_ordinal=initial_t_no_extended # Pass the initial event ordinal
+        initial_event_ordinal=initial_t_no_extended, # Pass the initial event ordinal
+        clip_start_jd=sunrise_jd,
+        clip_end_jd=next_sunrise_jd
     )
 
     # --- Nakshatra Calculations ---
@@ -737,7 +757,9 @@ def compute_panchang_for_date(
         kind='nakshatra',
         segment_size=nakshatra_segment_size,
         initial_event_name=initial_nak_name_extended, # Pass the initial event name
-        initial_event_ordinal=initial_nak_idx_extended # Pass the initial event ordinal
+        initial_event_ordinal=initial_nak_idx_extended, # Pass the initial event ordinal
+        clip_start_jd=sunrise_jd,
+        clip_end_jd=next_sunrise_jd
     )
 
     # --- Karana Calculations ---
@@ -766,7 +788,9 @@ def compute_panchang_for_date(
         kind='karana',
         segment_size=karana_segment_size,
         initial_event_name=initial_kar_name_extended,
-        initial_event_ordinal=initial_kar_idx_extended
+        initial_event_ordinal=initial_kar_idx_extended,
+        clip_start_jd=sunrise_jd,
+        clip_end_jd=next_sunrise_jd
     )
 
     # --- Yoga Calculations ---
@@ -794,7 +818,9 @@ def compute_panchang_for_date(
         kind='yoga',
         segment_size=yoga_segment_size,
         initial_event_name=initial_yog_name_extended,
-        initial_event_ordinal=initial_yog_idx_extended
+        initial_event_ordinal=initial_yog_idx_extended,
+        clip_start_jd=sunrise_jd,
+        clip_end_jd=next_sunrise_jd
     )
 
     saka_year, saka_month_name, saka_day = convert_gregorian_to_saka(date_local)

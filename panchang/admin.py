@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.utils.html import format_html
-from .models import Festival, ImportantDay, FestivalGallery, ImportantDayGallery
+from .models import Festival, ImportantDay, FestivalGallery, ImportantDayGallery, PanchangData, PanchangJSONExport
 from admin_utils import get_api_endpoint_url
 from admin_api_helper import get_api_endpoint_display
 
@@ -257,6 +257,74 @@ class FestivalGalleryAdmin(admin.ModelAdmin):
             'fields': ('created_at', 'updated_at')
         }),
     )
+
+
+@admin.register(PanchangData)
+class PanchangDataAdmin(admin.ModelAdmin):
+    list_display = ['date', 'thithi', 'nakshatram', 'lunar_month']
+    search_fields = ['date', 'thithi', 'nakshatram', 'lunar_month']
+    list_filter = ['lunar_month', 'paksha']
+    readonly_fields = ['created_at', 'updated_at', 'thithi_end_display', 'nakshatram_end_display']
+    fieldsets = (
+        ('Basic Details', {
+            'fields': ('date', 'lunar_month', 'paksha', 'festivals')
+        }),
+        ('Sun & Moon', {
+            'fields': (('sunrise', 'sunset'), ('moonrise', 'moonset'))
+        }),
+        ('Thithi & Nakshatram', {
+            'fields': (
+                'thithi',
+                ('thithi_end', 'thithi_end_display'), 
+                'nakshatram', 
+                ('nakshatram_end', 'nakshatram_end_display')
+            )
+        }),
+        ('Auspicious Timings', {
+            'fields': (
+                'abhijit_muhurtham', 'amrita_kalam', 'brahma_muhurtham', 
+                'pratah_sandhya', 'vijaya_muhurtham', 'godhuli_muhurtham', 
+                'sayam_sandhya', 'nishita_muhurtham'
+            )
+        }),
+        ('Inauspicious Timings', {
+            'fields': (
+                'varjyam_time', 'durmuhurtham_1', 'durmuhurtham_2'
+            )
+        }),
+        ('Timestamps', {
+            'fields': ('created_at', 'updated_at')
+        }),
+    )
+
+    def _format_time_display(self, time_str):
+        if not time_str:
+            return ""
+        try:
+            # Assuming format HH:MM:SS
+            from datetime import datetime
+            dt = datetime.strptime(time_str, "%H:%M:%S")
+            return dt.strftime("%I:%M %p")
+        except ValueError:
+            return time_str # Return original if parse fails
+
+    def thithi_end_display(self, obj):
+        return self._format_time_display(obj.thithi_end)
+    thithi_end_display.short_description = "Time (AM/PM)"
+
+    def nakshatram_end_display(self, obj):
+        return self._format_time_display(obj.nakshatram_end)
+    nakshatram_end_display.short_description = "Time (AM/PM)"
+
+
+@admin.register(PanchangJSONExport)
+class PanchangJSONExportAdmin(admin.ModelAdmin):
+    list_display = ['year', 'file', 'created_at']
+    readonly_fields = ['file', 'created_at']
+    
+    def save_model(self, request, obj, form, change):
+        # The save method in the model handles the file generation
+        super().save_model(request, obj, form, change)
 
 
 @admin.register(ImportantDayGallery)

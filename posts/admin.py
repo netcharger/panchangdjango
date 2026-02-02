@@ -34,7 +34,7 @@ class CustomPostAdminForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         # Display category with parent > child format in dropdown
-        self.fields['category'].queryset = Category.objects.select_related('parent').order_by('parent__order', 'parent__name', 'order', 'name')
+        self.fields['category'].queryset = Category.objects.filter(parent__isnull=False).select_related('parent').order_by('parent__order', 'parent__name', 'order', 'name')
         self.fields['category'].label_from_instance = lambda obj: obj.get_full_path()
         if self.instance and self.instance.pk:
             # Populate tags_input with existing tags
