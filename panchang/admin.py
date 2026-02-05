@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.utils.html import format_html
-from .models import Festival, ImportantDay, FestivalGallery, ImportantDayGallery, PanchangData, PanchangJSONExport
+from .models import Festival, ImportantDay, FestivalGallery, ImportantDayGallery, PanchangData, PanchangJSONExport, PanchangDailyFestival
 from admin_utils import get_api_endpoint_url
 from admin_api_helper import get_api_endpoint_display
 
@@ -259,6 +259,12 @@ class FestivalGalleryAdmin(admin.ModelAdmin):
     )
 
 
+class PanchangDailyFestivalInline(admin.TabularInline):
+    model = PanchangDailyFestival
+    extra = 1
+    autocomplete_fields = ['festival_reference']
+
+
 @admin.register(PanchangData)
 class PanchangDataAdmin(admin.ModelAdmin):
     list_display = ['date', 'thithi', 'nakshatram', 'lunar_month']
@@ -267,7 +273,7 @@ class PanchangDataAdmin(admin.ModelAdmin):
     readonly_fields = ['created_at', 'updated_at', 'thithi_end_display', 'nakshatram_end_display']
     fieldsets = (
         ('Basic Details', {
-            'fields': ('date', 'lunar_month', 'paksha', 'festivals')
+            'fields': ('date', 'lunar_month', 'paksha')
         }),
         ('Sun & Moon', {
             'fields': (('sunrise', 'sunset'), ('moonrise', 'moonset'))
@@ -296,6 +302,7 @@ class PanchangDataAdmin(admin.ModelAdmin):
             'fields': ('created_at', 'updated_at')
         }),
     )
+    inlines = [PanchangDailyFestivalInline]
 
     def _format_time_display(self, time_str):
         if not time_str:

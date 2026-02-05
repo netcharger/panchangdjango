@@ -18,8 +18,8 @@ from rest_framework.views import APIView
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters
 
-from .models import Festival, ImportantDay
-from .serializers import FestivalSerializer, ImportantDaySerializer, PanchangRequestSerializer
+from .models import Festival, ImportantDay, PanchangData
+from .serializers import FestivalSerializer, ImportantDaySerializer, PanchangRequestSerializer, PanchangDataSerializer
 
 # Import panchang calculation functions from calculations module
 try:
@@ -637,3 +637,49 @@ class AmavasyaAPIView(APIView):
                 status=status.HTTP_500_INTERNAL_SERVER_ERROR
             )
 
+
+class PanchangDataDetailAPIView(APIView):
+    """
+    API endpoint to fetch stored Panchang data for a specific date.
+    
+    GET /api/panchang/data/?date=YYYY-MM-DD
+    """
+    def get(self, request):
+        date_str = request.query_params.get('date')
+        if not date_str:
+            return Response(
+                {'error': 'date parameter required (format: YYYY-MM-DD)'},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+            
+        try:
+            # Validate date format
+            formatted_date = datetime.datetime.strptime(date_str, '%Y-%m-%d').strftime('%Y-%m-%d')
+            
+            # Fetch data from database
+            # Since date is stored as string DD-MM-YYYY in current DB, we need to handle that or standard date field
+            # The model definition says date = models.CharField(max_length=20, unique=True)
+            # And checking the data import, it seemed to use YYYY-MM-DD. 
+            # Let's try direct match first.
+            
+            panchang_data = PanchangData.objects.filter(date=formatted_date).first()
+            
+            if not panchang_data:
+                # Try alternative format DD-MM-YYYY just in case
+                alt_date = datetime.datetime.strptime(date_str, '%Y-%m-%d').strftime('%d-%m-%Y')
+                panchang_data = PanchangData.objects.filter(date=alt_date).first()
+                
+            if not panchang_data:
+                return Response(
+                    {'error': f'No panchang data found for date {date_str}'},
+                    status=status.HTTP_404_NOT_FOUND
+                )
+                
+            serializer = PanchangDataSerializer(panchang_data, context={'request': request})
+            return Response(serializer.data)
+            
+        except ValueError:
+            return Response(
+                {'error': 'Invalid date format. Use YYYY-MM-DD'},
+                status=status.HTTP_400_BAD_REQUEST
+            )

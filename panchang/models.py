@@ -9,7 +9,7 @@ from django.core.serializers.json import DjangoJSONEncoder
 import json
 from django.utils.html import format_html
 from django.utils.text import slugify
-from django.db.models.signals import post_save, pre_delete
+from django.db.models.signals import post_save, pre_delete, post_delete
 from django.dispatch import receiver
 from django.conf import settings
 from ckeditor.fields import RichTextField
@@ -338,8 +338,20 @@ class PanchangData(models.Model):
     sayam_sandhya = models.CharField(max_length=50, blank=True, null=True, help_text="Sayam Sandhya")
     nishita_muhurtham = models.CharField(max_length=50, blank=True, null=True, help_text="Nishita Muhurtham")
 
-    # Festivals
-    festivals = models.TextField(blank=True, null=True, help_text="Comma-separated list of festivals")
+
+class PanchangDailyFestival(models.Model):
+    """Model to link specific festivals to a Panchang date with a display name"""
+    panchang_data = models.ForeignKey(PanchangData, on_delete=models.CASCADE, related_name='daily_festivals')
+    festival_name = models.CharField(max_length=200, help_text="Display name for the festival on this day")
+    festival_reference = models.ForeignKey(Festival, on_delete=models.SET_NULL, blank=True, null=True, help_text="Reference to the master Festival record")
+
+    class Meta:
+        db_table = 'panchang_data_daily_festivals'
+        verbose_name = 'Panchang Daily Festival'
+        verbose_name_plural = 'Panchang Daily Festivals'
+
+    def __str__(self):
+        return self.festival_name
 
 
 
@@ -380,10 +392,22 @@ class PanchangJSONExport(models.Model):
                 # Auspicious
                 'abhijit_muhurtham', 'amrita_kalam', 'brahma_muhurtham', 
                 'pratah_sandhya', 'vijaya_muhurtham', 'godhuli_muhurtham', 
-                'sayam_sandhya', 'nishita_muhurtham',
-                # Festivals
-                'festivals'
+                'sayam_sandhya', 'nishita_muhurtham'
             ))
+            
+            # Add related festivals to each day
+            for day_data in data:
+                day_obj = PanchangData.objects.get(id=day_data['id'])
+                enriched_festivals = []
+                for df in day_obj.daily_festivals.select_related('festival_reference').all():
+                    fest_data = {
+                        'festival_name': df.festival_name,
+                        'festival_reference_id': df.festival_reference_id,
+                        'slug': df.festival_reference.slug if df.festival_reference else None,
+                        'image': df.festival_reference.image.url if df.festival_reference and df.festival_reference.image else None
+                    }
+                    enriched_festivals.append(fest_data)
+                day_data['festivals'] = enriched_festivals
             
             if data:
                 json_content = json.dumps(data, indent=4, ensure_ascii=False, cls=DjangoJSONEncoder)
@@ -401,3 +425,16 @@ class PanchangJSONExport(models.Model):
             
         super().save(*args, **kwargs)
 
+
+@receiver(post_delete, sender=PanchangJSONExport)
+def auto_delete_file_on_delete(sender, instance, **kwargs):
+    """
+    Deletes file from filesystem
+    when corresponding `PanchangJSONExport` object is deleted.
+    """
+    if instance.file:
+        try:
+            if os.path.isfile(instance.file.path):
+                os.remove(instance.file.path)
+        except Exception:
+            pass

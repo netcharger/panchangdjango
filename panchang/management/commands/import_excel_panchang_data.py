@@ -46,7 +46,6 @@ class Command(BaseCommand):
                         'varjyam_time': str(row['Varjyam_Time']).strip() if pd.notna(row['Varjyam_Time']) else '',
                         'durmuhurtham_1': str(row['Durmuhurtham_1']).strip() if pd.notna(row['Durmuhurtham_1']) else '',
                         'durmuhurtham_2': str(row['Durmuhurtham_2']).strip() if pd.notna(row['Durmuhurtham_2']) else '',
-                        'festivals': '', # Placeholder for future manual insertion
                     }
 
                     obj, created = PanchangData.objects.update_or_create(
