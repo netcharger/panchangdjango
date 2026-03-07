@@ -10,9 +10,14 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.AddField(
-            model_name='festival',
-            name='observation',
-            field=models.TextField(blank=True, help_text='Admin observation/notes about this festival', null=True),
+        migrations.SeparateDatabaseAndState(
+            state_operations=[
+                migrations.AddField(
+                    model_name='festival',
+                    name='observation',
+                    field=models.TextField(blank=True, help_text='Admin observation/notes about this festival', null=True),
+                ),
+            ],
+            database_operations=[]
         ),
     ]

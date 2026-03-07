@@ -10,24 +10,29 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.AddField(
-            model_name='festival',
-            name='image_hash',
-            field=models.CharField(blank=True, db_index=True, help_text='MD5 hash of image content for duplicate detection', max_length=64, null=True),
-        ),
-        migrations.AddField(
-            model_name='festivalgallery',
-            name='image_hash',
-            field=models.CharField(blank=True, db_index=True, help_text='MD5 hash of image content for duplicate detection', max_length=64, null=True),
-        ),
-        migrations.AddField(
-            model_name='importantday',
-            name='image_hash',
-            field=models.CharField(blank=True, db_index=True, help_text='MD5 hash of image content for duplicate detection', max_length=64, null=True),
-        ),
-        migrations.AddField(
-            model_name='importantdaygallery',
-            name='image_hash',
-            field=models.CharField(blank=True, db_index=True, help_text='MD5 hash of image content for duplicate detection', max_length=64, null=True),
+        migrations.SeparateDatabaseAndState(
+            state_operations=[
+                migrations.AddField(
+                    model_name='festival',
+                    name='image_hash',
+                    field=models.CharField(blank=True, db_index=True, help_text='MD5 hash of image content for duplicate detection', max_length=64, null=True),
+                ),
+                migrations.AddField(
+                    model_name='festivalgallery',
+                    name='image_hash',
+                    field=models.CharField(blank=True, db_index=True, help_text='MD5 hash of image content for duplicate detection', max_length=64, null=True),
+                ),
+                migrations.AddField(
+                    model_name='importantday',
+                    name='image_hash',
+                    field=models.CharField(blank=True, db_index=True, help_text='MD5 hash of image content for duplicate detection', max_length=64, null=True),
+                ),
+                migrations.AddField(
+                    model_name='importantdaygallery',
+                    name='image_hash',
+                    field=models.CharField(blank=True, db_index=True, help_text='MD5 hash of image content for duplicate detection', max_length=64, null=True),
+                ),
+            ],
+            database_operations=[]
         ),
     ]

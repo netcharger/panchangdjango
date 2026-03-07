@@ -10,9 +10,14 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.AddField(
-            model_name='festival',
-            name='festival_dates',
-            field=models.JSONField(blank=True, default=dict, help_text="JSON object storing festival dates: {year: [{'date': 'YYYY-MM-DD', 'time': 'HH:MM AM/PM', 'datetime': 'ISO'}]}", null=True),
+        migrations.SeparateDatabaseAndState(
+            state_operations=[
+                migrations.AddField(
+                    model_name='festival',
+                    name='festival_dates',
+                    field=models.JSONField(blank=True, default=dict, help_text="JSON object storing festival dates: {year: [{'date': 'YYYY-MM-DD', 'time': 'HH:MM AM/PM', 'datetime': 'ISO'}]}", null=True),
+                ),
+            ],
+            database_operations=[]
         ),
     ]
