@@ -10,8 +10,13 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.AlterModelTable(
-            name='panchangdailyfestival',
-            table='panchang_data_daily_festivals',
+        migrations.SeparateDatabaseAndState(
+            state_operations=[
+                migrations.AlterModelTable(
+                    name='panchangdailyfestival',
+                    table='panchang_data_daily_festivals',
+                ),
+            ],
+            database_operations=[]
         ),
     ]

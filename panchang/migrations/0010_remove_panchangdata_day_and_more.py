@@ -10,25 +10,30 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='panchangdata',
-            name='day',
-        ),
-        migrations.RemoveField(
-            model_name='panchangdata',
-            name='gulika_kalam',
-        ),
-        migrations.RemoveField(
-            model_name='panchangdata',
-            name='rahu_kalam',
-        ),
-        migrations.RemoveField(
-            model_name='panchangdata',
-            name='yamagandam',
-        ),
-        migrations.AddField(
-            model_name='panchangdata',
-            name='festivals',
-            field=models.TextField(blank=True, help_text='Comma-separated list of festivals', null=True),
+        migrations.SeparateDatabaseAndState(
+            state_operations=[
+                migrations.RemoveField(
+                    model_name='panchangdata',
+                    name='day',
+                ),
+                migrations.RemoveField(
+                    model_name='panchangdata',
+                    name='gulika_kalam',
+                ),
+                migrations.RemoveField(
+                    model_name='panchangdata',
+                    name='rahu_kalam',
+                ),
+                migrations.RemoveField(
+                    model_name='panchangdata',
+                    name='yamagandam',
+                ),
+                migrations.AddField(
+                    model_name='panchangdata',
+                    name='festivals',
+                    field=models.TextField(blank=True, help_text='Comma-separated list of festivals', null=True),
+                ),
+            ],
+            database_operations=[]
         ),
     ]

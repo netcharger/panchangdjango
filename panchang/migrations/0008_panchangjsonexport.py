@@ -10,18 +10,23 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.CreateModel(
-            name='PanchangJSONExport',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('year', models.IntegerField(choices=[(2024, '2024'), (2025, '2025'), (2026, '2026'), (2027, '2027'), (2028, '2028'), (2029, '2029'), (2030, '2030')], help_text='Select year to generate JSON for', unique=True)),
-                ('file', models.FileField(blank=True, help_text='Generated JSON file', null=True, upload_to='panchang_files/')),
-                ('created_at', models.DateTimeField(auto_now=True)),
+        migrations.SeparateDatabaseAndState(
+            state_operations=[
+                migrations.CreateModel(
+                    name='PanchangJSONExport',
+                    fields=[
+                        ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                        ('year', models.IntegerField(choices=[(2024, '2024'), (2025, '2025'), (2026, '2026'), (2027, '2027'), (2028, '2028'), (2029, '2029'), (2030, '2030')], help_text='Select year to generate JSON for', unique=True)),
+                        ('file', models.FileField(blank=True, help_text='Generated JSON file', null=True, upload_to='panchang_files/')),
+                        ('created_at', models.DateTimeField(auto_now=True)),
+                    ],
+                    options={
+                        'verbose_name': 'Panchang JSON Export',
+                        'verbose_name_plural': 'Panchang JSON Exports',
+                        'db_table': 'panchang_json_export',
+                    },
+                ),
             ],
-            options={
-                'verbose_name': 'Panchang JSON Export',
-                'verbose_name_plural': 'Panchang JSON Exports',
-                'db_table': 'panchang_json_export',
-            },
+            database_operations=[]
         ),
     ]

@@ -11,22 +11,27 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='panchangdata',
-            name='festivals',
-        ),
-        migrations.CreateModel(
-            name='PanchangDailyFestival',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('festival_name', models.CharField(help_text='Display name for the festival on this day', max_length=200)),
-                ('festival_reference', models.ForeignKey(blank=True, help_text='Reference to the master Festival record', null=True, on_delete=django.db.models.deletion.SET_NULL, to='panchang.festival')),
-                ('panchang_data', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='daily_festivals', to='panchang.panchangdata')),
+        migrations.SeparateDatabaseAndState(
+            state_operations=[
+                migrations.RemoveField(
+                    model_name='panchangdata',
+                    name='festivals',
+                ),
+                migrations.CreateModel(
+                    name='PanchangDailyFestival',
+                    fields=[
+                        ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                        ('festival_name', models.CharField(help_text='Display name for the festival on this day', max_length=200)),
+                        ('festival_reference', models.ForeignKey(blank=True, help_text='Reference to the master Festival record', null=True, on_delete=django.db.models.deletion.SET_NULL, to='panchang.festival')),
+                        ('panchang_data', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='daily_festivals', to='panchang.panchangdata')),
+                    ],
+                    options={
+                        'verbose_name': 'Panchang Daily Festival',
+                        'verbose_name_plural': 'Panchang Daily Festivals',
+                        'db_table': 'panchang_daily_festivals',
+                    },
+                ),
             ],
-            options={
-                'verbose_name': 'Panchang Daily Festival',
-                'verbose_name_plural': 'Panchang Daily Festivals',
-                'db_table': 'panchang_daily_festivals',
-            },
+            database_operations=[]
         ),
     ]
