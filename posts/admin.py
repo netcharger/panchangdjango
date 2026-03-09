@@ -34,7 +34,24 @@ class CustomPostAdminForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         # Display category with parent > child format in dropdown
-        self.fields['category'].queryset = Category.objects.filter(parent__isnull=False).select_related('parent').order_by('parent__order', 'parent__name', 'order', 'name')
+        from django.db.models import Case, When, IntegerField, F, Value
+        from django.db.models.functions import Coalesce
+        
+        qs = Category.objects.all().select_related('parent')
+        qs = qs.annotate(
+            parent_order_value=Case(
+                When(parent__isnull=True, then=Coalesce(F('order'), Value(999999))),
+                default=Coalesce(F('parent__order'), Value(999999)),
+                output_field=IntegerField()
+            ),
+            is_parent=Case(
+                When(parent__isnull=True, then=Value(0)),
+                default=Value(1),
+                output_field=IntegerField()
+            )
+        ).order_by('parent_order_value', 'is_parent', 'order', 'name')
+        
+        self.fields['category'].queryset = qs
         self.fields['category'].label_from_instance = lambda obj: obj.get_full_path()
         if self.instance and self.instance.pk:
             # Populate tags_input with existing tags
